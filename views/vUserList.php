@@ -1,4 +1,5 @@
 <table class="table">
+      <!--Column-->
        <tr>
          <th>No.</th>
          <th>Firstname</th>
@@ -8,6 +9,7 @@
          <th></th>
          <th></th>
        </tr>
+       <!--Pull the updateData-->
        <?php if ($aUser == 'empty') {
                 echo '<tr><td colspan="7">Empty Data.</td></tr>';
              }else{
@@ -18,8 +20,8 @@
                 $Lastname = $user->Lastname;
                 $DOB = $user->DOB;
                 $Gender = $user->Gender;
-
        ?>
+       <!--Show updated data-->
                <tr>
                  <td><?php echo $No;?></td>
                  <td><?php echo $user->Firstname; ?></td>
