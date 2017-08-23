@@ -6,11 +6,11 @@ $(document).ready(function(){
       register();
   });
 });
-
+//show ADD new user popup modal
 function Addnewuser(){
      $('#myModalLabel').text('ADD NEW USER');
 }
-
+//Edit user popup
 function EditLine(UserID,Fristname,Lastname,UserDOB,Gender){
      $('#myModalLabel').text('EDIT USER');
      $('#sFirstname').val(Fristname);
@@ -28,11 +28,14 @@ function select_gender(gender){
          $("#gender").val(gender);
 }
 
-// แสดงข้อมูลผู้ใช้
+// show userlist
 function userlist(){
+  var fristname_f = $('#fristname_f').val();
+  var lastname_f = $('#lastname_f').val();
+  var gender_f = $('#gender_f').val();
       $.ajax({
-        url:'user_list',
-        data:{},
+        url:'user_list',                                       //route
+        data:{fristname_f:fristname_f,lastname_f:lastname_f,gender_f:gender_f},
         method:"GET"
       })
       .done(function(tResult) {
@@ -41,35 +44,38 @@ function userlist(){
 
       })
       .fail(function(jqXHR, textStatus){
+
           alert('Error:'+ jqXHR +' '+ textStatus);
+
       });
 }
-
 //register
 function register(){
 
       if ($('#sFirstname').val().length == 0) {
           $('#sFirstname').focus();
       }
+
       else if ($('#sLastname').val().length == 0) {
           $('#sLastname').focus();
+
       }else{
-            console.log('validate done');
+            console.log('validate done');                      //validate process
             var UserID = $('#UserID').val();
             var sFirstname = $('#sFirstname').val();
             var sLastname = $('#sLastname').val();
             var sDob = $('#sDob').val();
             var sGender = $('#gender').val();
             var action_mode = $('#action_mode').val();
-            console.log(action_mode);
-            console.log(sDob+'+'+sGender);
+            console.log(action_mode);                          //check mode 1 add or 2 edit
+            console.log(sDob+'+'+sGender);                     //check dob and gender parameter
             $.ajax({
               url:'save',
               data:{UserID:UserID,sFirstname:sFirstname,sLastname:sLastname,sDob:sDob,sGender:sGender,action_mode:action_mode},
               method:"post"
             })
             .done(function(tResult) {
-                  console.log('done');
+                  console.log('done');                        //check processing
                   if (tResult == 'error') {
                       alert('!Cannot to save.');
                   }else{
@@ -79,12 +85,10 @@ function register(){
                     $('#sDob').val('');
                     $('#sDob').val('male');
                     $('#action_mode').val(1);
-
                     // close popup form
                     $('#userform').modal('hide');
                     $('body').removeClass('modal-open');
                     $('.modal-backdrop').remove();
-
                     //update user grid
                     userlist();
                   }
@@ -95,7 +99,6 @@ function register(){
             });
       }
 }
-
 //Delete User
  function DeleteUser(UserID,Fristname){
       if (confirm('Are you sure to delete user ' + Fristname)) {
@@ -110,8 +113,6 @@ function register(){
                  }else{
                      userlist();
                  }
-
-
             })
             .fail(function(jqXHR, textStatus){
                 alert('Error:'+ jqXHR +' '+ textStatus);

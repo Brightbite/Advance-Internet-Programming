@@ -17,7 +17,12 @@ class cUser extends CI_Controller {
   //showing updated table load from model
   public function cuserlist(){
          $aData = array();
-         $aData['aUser'] = $this->MUser->mUserList();
+
+         $firstname_f = $this->input->get('fristname_f');       //get post data from view page
+         $lastname_f = $this->input->get('lastname_f');
+         $gender_f = $this->input->get('gender_f');
+
+         $aData['aUser'] = $this->MUser->mUserList($firstname_f ,$lastname_f ,$gender_f);
          $this->load->view('vUserList',$aData);
   }
 

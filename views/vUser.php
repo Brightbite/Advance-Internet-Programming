@@ -11,9 +11,27 @@
           <div class="col-md-6">
                <h3>User List</h3>
           </div>
-          <div class="col-md-6">
-               <button type="button" name="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#userform" onclick="Addnewuser()">+ ADD</button>
+          <div class="row">
+            <div class="col-md-6">
+                 <button type="button" name="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#userform" onclick="Addnewuser()">+ ADD</button>
+            </div>
+              <div class="col-md-3">
+                 <input type="text" name="fristname_f" id="fristname_f" placeholder="fristname" class="form-control">
+              </div>
+              <div class="col-md-3"> <input type="text" name="lastname_f" id="lastname_f" placeholder="lastname" class="form-control"></div>
+              <div class="col-md-3">
+                <select class="from-control" name="gender_f" id="gender_f">
+                                 <option value="">gender</option>
+                                 <option value="male">male</option>
+                                 <option value="female">female</option>
+                                 <option value="other">other</option>
+                 </select>
+            </div>
+            <div class="col-md-3">
+                 <button type="button" name="button" class="btn btn-success" onclick="userlist()">Filter</button>
+            </div>
           </div>
+
           <div class="col-md-12 UserList" id="UserList">Load...</div>
            <!--  form Add User-->
            <div class="modal fade" id="userform" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

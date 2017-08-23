@@ -7,9 +7,19 @@
            parent::__construct();
        }
        //updated list
-       public function mUserList(){
+       public function mUserList($fname , $lname,$gender){
               //SQL Statement
-              $SQL = "SELECT * FROM register";
+              $SQL = "SELECT * FROM register WHERE 1 ";
+              if ($fname !='') {
+                  $SQL.=" AND Firstname LIKE '%$fname%'";
+              }
+              if ($lname !='') {
+                  $SQL.=" AND Lastname LIKE '%$lname%'";
+              }
+              if ($gender !=''){
+                $SQL.=" AND Gender = '$gender'";
+              }
+              echo $SQL;
               $query = $this->db->query($SQL);
               if ($query->num_rows() > 0) {
                 return $query->result();
