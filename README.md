@@ -1,5 +1,5 @@
 # Advance-Internet-Programming Project Spring 2017
-## 12634123
+- 12634123
 
 # Project files
 ```
@@ -52,4 +52,4 @@ juser.php
 
 * Principle of least astonishment - The principle of least astonishment is usually referenced in regards to the user interface, but the same principle applies to written code. Code should surprise the reader as little as possible. The means following standard conventions, code should do what the comments and name suggest, and potentially surprising side effects should be avoided as much as possible.
 
-### https://en.wikipedia.org/wiki/Category:Programming_principles
+###
