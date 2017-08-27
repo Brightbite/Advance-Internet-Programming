@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
@@ -52,10 +53,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'welcome';
 $route['mypage'] = 'mypage';
 $route['test'] = 'test';
+=======
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+$route['default_controller'] = 'cUser/index';
+$route['user'] = 'cUser/index';
+//$route['register'] = 'cTest/register';
+$route['mypage'] = 'mypage';
+$route['test'] = 'cUser/index';
+>>>>>>> test commit
 $route['user_list']   = 'cUser/cuserlist';
 $route['save']   = 'cUser/save';
 $route['remove'] = 'cUser/remove';
 $route['update'] = 'cUser/update';
+<<<<<<< HEAD
 $route['menu'] = 'menu/testmenu';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+=======
+$route['menu'] = 'Cmenu/testmenu';
+$route['404_override'] = '';
+$route['translate_uri_dashes'] = FALSE;
+?>
+>>>>>>> test commit

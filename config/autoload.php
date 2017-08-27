@@ -58,7 +58,11 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
+<<<<<<< HEAD
 $autoload['libraries'] = array('database');
+=======
+$autoload['libraries'] = array('database','session');
+>>>>>>> test commit
 
 /*
 | -------------------------------------------------------------------
@@ -89,7 +93,11 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
+<<<<<<< HEAD
 $autoload['helper'] = array();
+=======
+$autoload['helper'] = array('url','form','html','fn');
+>>>>>>> test commit
 
 /*
 | -------------------------------------------------------------------

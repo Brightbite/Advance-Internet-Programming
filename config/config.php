@@ -23,7 +23,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
+<<<<<<< HEAD
 $config['base_url'] = '';
+=======
+//$config['base_url'] = 'localhost/CI';
+>>>>>>> test commit
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +39,11 @@ $config['base_url'] = '';
 | variable so that it is blank.
 |
 */
+<<<<<<< HEAD
 $config['index_page'] = 'index.php';
+=======
+$config['index_page'] = '';
+>>>>>>> test commit
 
 /*
 |--------------------------------------------------------------------------
@@ -52,7 +60,11 @@ $config['index_page'] = 'index.php';
 |
 | WARNING: If you set this to 'PATH_INFO', URIs will always be URL-decoded!
 */
+<<<<<<< HEAD
 $config['uri_protocol']	= 'REQUEST_URI';
+=======
+$config['uri_protocol']	= 'AUTO';
+>>>>>>> test commit
 
 /*
 |--------------------------------------------------------------------------
@@ -76,7 +88,13 @@ $config['url_suffix'] = '';
 | than english.
 |
 */
+<<<<<<< HEAD
 $config['language']	= 'english';
+=======
+// $config['language']	= 'english';
+
+$config['language']	= 'th';
+>>>>>>> test commit
 
 /*
 |--------------------------------------------------------------------------
@@ -90,7 +108,10 @@ $config['language']	= 'english';
 |
 */
 $config['charset'] = 'UTF-8';
+<<<<<<< HEAD
 
+=======
+>>>>>>> test commit
 /*
 |--------------------------------------------------------------------------
 | Enable/Disable System Hooks
@@ -324,7 +345,11 @@ $config['cache_query_string'] = FALSE;
 | https://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
+<<<<<<< HEAD
 $config['encryption_key'] = '';
+=======
+$config['encryption_key'] = 'iyouuu';
+>>>>>>> test commit
 
 /*
 |--------------------------------------------------------------------------
@@ -521,3 +546,18 @@ $config['rewrite_short_tags'] = FALSE;
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
+<<<<<<< HEAD
+=======
+
+// 1 อุทยาน
+// 2 โรงหนัง
+// 3 คอนเสริต
+$config['business'] = '1';
+
+
+//3 ภาษา th-> ไทย | en-> อังกฤษ |  cn-> จีน
+$config['alang'] = array(
+	'th' => 'ภาษาไทย',
+	'en' => 'English'
+);
+>>>>>>> test commit
