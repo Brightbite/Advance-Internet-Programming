@@ -56,7 +56,7 @@ $route['test'] = 'test';
 =======
 
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+//
 $route['default_controller'] = 'cUser/index';
 $route['user'] = 'cUser/index';
 //$route['register'] = 'cTest/register';

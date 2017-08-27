@@ -24,7 +24,7 @@ function EditLine(UserID,Fristname,Lastname,UserDOB,Gender){
      $('#action_mode').val(2);
 
 }
-
+//
 function select_gender(gender){
          $("#gender").val(gender);
 }
