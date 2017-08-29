@@ -1,79 +1,26 @@
 <?php
-<<<<<<< HEAD
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-/*
-| -------------------------------------------------------------------------
-| URI ROUTING
-| -------------------------------------------------------------------------
-| This file lets you re-map URI requests to specific controller functions.
-|
-| Typically there is a one-to-one relationship between a URL string
-| and its corresponding controller class/method. The segments in a
-| URL normally follow this pattern:
-|
-|	example.com/class/method/id/
-|
-| In some instances, however, you may want to remap this relationship
-| so that a different class/function is called than the one
-| corresponding to the URL.
-|
-| Please see the user guide for complete details:
-|
-|	https://codeigniter.com/user_guide/general/routing.html
-|
-| -------------------------------------------------------------------------
-| RESERVED ROUTES
-| -------------------------------------------------------------------------
-|
-| There are three reserved routes:
-|
-|	$route['default_controller'] = 'welcome';
-|
-| This route indicates which controller class should be loaded if the
-| URI contains no data. In the above example, the "welcome" class
-| would be loaded.
-|
-|	$route['404_override'] = 'errors/page_missing';
-|
-| This route will tell the Router which controller/method to use if those
-| provided in the URL cannot be matched to a valid route.
-|
-|	$route['translate_uri_dashes'] = FALSE;
-|
-| This is not exactly a route, but allows you to automatically route
-| controller and method names that contain dashes. '-' isn't a valid
-| class or method name character, so it requires translation.
-| When you set this option to TRUE, it will replace ALL dashes in the
-| controller and method URI segments.
-|
-| Examples:	my-controller/index	-> my_controller/index
-|		my-controller/my-method	-> my_controller/my_method
-*/
-$route['default_controller'] = 'welcome';
-$route['mypage'] = 'mypage';
-$route['test'] = 'test';
-=======
 
 defined('BASEPATH') OR exit('No direct script access allowed');
-//
-$route['default_controller'] = 'cUser/index';
-$route['user'] = 'cUser/index';
-//$route['register'] = 'cTest/register';
-$route['mypage'] = 'mypage';
-$route['test'] = 'cUser/index';
->>>>>>> test commit
-$route['user_list']   = 'cUser/cuserlist';
-$route['save']   = 'cUser/save';
-$route['remove'] = 'cUser/remove';
-$route['update'] = 'cUser/update';
-<<<<<<< HEAD
-$route['menu'] = 'menu/testmenu';
+
+//AIP
+//$route['default_controller'] = 'AIP/cUser/index';
+$route['aindex']      = 'AIP/cUser/index';
+$route['aUser_list']  = 'AIP/cUser/aUserlist';
+$route['aSave']       = 'AIP/cUser/aSave';
+$route['aRemove']     = 'AIP/cUser/aRemove';
+$route['aUpdate']     = 'AIP/cUser/aUpdate';
+//RP
+$route['rindex']     = 'RP/cUser/index';
+$route['rUser_list'] = 'RP/cUser/rUserlist';
+$route['rSave']      = 'RP/cUser/rSave';
+$route['rRemove']    = 'RP/cUser/rRemove';
+$route['rUpdate']    = 'RP/cUser/rUpdate';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
-=======
-$route['menu'] = 'Cmenu/testmenu';
-$route['404_override'] = '';
-$route['translate_uri_dashes'] = FALSE;
+
+// $route['register'] = 'cTest/register';
+// $route['mypage'] = 'cUser/index';
+// $route['test'] = 'cUser/index';
+// $route['menu'] = 'Cmenu/testmenu';
 ?>
->>>>>>> test commit
