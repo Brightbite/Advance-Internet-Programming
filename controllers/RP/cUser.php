@@ -11,8 +11,13 @@ class cUser extends CI_Controller {
 
   public function index()
   {
+    $header = array(
+      'title' => 'Homepage',
+    );
     $data = array();
+    $this->load->view('RP/template/header'); //header
     $this->load->view('RP/vUser',$data); //load view
+    $this->load->view('RP/template/footer'); //footer
   }
   //showing updated table load from model
   public function rUserlist(){

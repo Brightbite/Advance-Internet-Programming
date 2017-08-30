@@ -1,19 +1,18 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <title></title>
-    <link rel="stylesheet" href="<?php echo base_url('application/assets/RP/css/'); ?>bootstrap.css">
-  </head>
+    <link rel="stylesheet" href="<-?php echo base_url('application/assets/RP/css/'); ?>bootstrap.css">
+  </head> -->
 
-  <body>
+  <!-- <body> -->
       <div class="container">
-          <div class="col-md-6">
-               <h3>RP User List</h3>
-          </div>
+        <h1 class="my-4">RP User List</h1>
           <div class="row">
-            <div class="col-md-6">
-                 <button type="button" name="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#userform" onclick="Addnewuser()">+ ADD</button>
+            <div class="col-md-3">
+                <button type="button" name="button" class="btn btn-success " data-toggle="modal" data-target="#userform" onclick="Addnewuser()">+ ADD</button>
+                <button type="button" name="button" class="btn btn-success pull-right" onclick="rUserlist()">Filter</button>
             </div>
               <div class="col-md-3">
                  <input type="text" name="fristname_f" id="fristname_f" placeholder="fristname" class="form-control">
@@ -26,9 +25,7 @@
                                  <option value="female">female</option>
                                  <option value="other">other</option>
                  </select>
-            </div>
-            <div class="col-md-3">
-                 <button type="button" name="button" class="btn btn-success" onclick="userlist()">Filter</button>
+
             </div>
           </div>
 
@@ -71,8 +68,8 @@
            <!--  End Form-->
       </div>
       <!-- Javascript -->
-      <script type="text/javascript" src="<?php echo base_url('application/assets/RP/js/'); ?>jquery.js"></script>
-      <script type="text/javascript" src="<?php echo base_url('application/assets/RP/js/'); ?>bootstrap.js"></script>
-      <script type="text/javascript" src="<?php echo base_url('application/assets/RP/src/'); ?>juser.js"></script>
+      <!-- <script type="text/javascript" src="</?php echo base_url('application/assets/RP/js/'); ?>jquery.js"></script>
+      <script type="text/javascript" src="</?php echo base_url('application/assets/RP/js/'); ?>bootstrap.js"></script>
+      <script type="text/javascript" src="</?php echo base_url('application/assets/RP/src/'); ?>juser.js"></script>
     </body>
-</html>
+</html> -->

@@ -10,6 +10,7 @@ $route['aSave']       = 'AIP/cUser/aSave';
 $route['aRemove']     = 'AIP/cUser/aRemove';
 $route['aUpdate']     = 'AIP/cUser/aUpdate';
 //RP
+$route['rhome']      = 'RP/cHome/index';
 $route['rindex']     = 'RP/cUser/index';
 $route['rUser_list'] = 'RP/cUser/rUserlist';
 $route['rSave']      = 'RP/cUser/rSave';

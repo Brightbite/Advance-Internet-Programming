@@ -28,7 +28,7 @@
                  </select>
             </div>
             <div class="col-md-3">
-                 <button type="button" name="button" class="btn btn-success" onclick="userlist()">Filter</button>
+                 <button type="button" name="button" class="btn btn-success" onclick="aUserlist()">Filter</button>
             </div>
           </div>
 

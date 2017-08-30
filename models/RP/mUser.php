@@ -7,7 +7,7 @@
            parent::__construct();
        }
        //updated list
-       public function mUserList($fname , $lname,$gender){
+       public function mUserList($fname, $lname, $gender){
               //SQL Statement
               $SQL = "SELECT * FROM r_register WHERE 1 ";
               if ($fname !='') {
