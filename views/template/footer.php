@@ -13,6 +13,7 @@
     <!--Angularjs-->
     <script type="text/javascript" src="<?php echo base_url('application/assets/js/angular/'); ?>angular.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url('application/assets/js/angular/'); ?>app.js"></script>
+    <script type="text/javascript" src="<?php echo base_url('application/assets/js/angular/'); ?>loginController.js"></script>
 
     <div class="container">
         <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>

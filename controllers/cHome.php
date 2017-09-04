@@ -6,7 +6,7 @@ class cHome extends CI_Controller {
   function __construct(){
           parent::__construct();
           $this->load->helper('url');
-          //$this->load->model('RP/mUser','MUser'); //load model first before view
+          // $this->load->model('mLogin','MLogin'); //load model first before view
   }
 
   public function index()
@@ -28,6 +28,9 @@ class cHome extends CI_Controller {
     $this->load->view('template/footer');
 
   }
-  //showing updated table load from model
+  // public function login(){
+  //
+  // }
+
 }
 ?>

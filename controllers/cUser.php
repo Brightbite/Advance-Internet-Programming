@@ -20,12 +20,10 @@ class cUser extends CI_Controller {
     $index = array(
       'top' => 'User list',
     );
-
-    $data = array();
-
     $this->load->view('template/header',$header); //header
     $this->load->view('vUser',$index); //load view
     $this->load->view('template/footer'); //footer
+
   }
   //showing updated table load from model
   public function userlist(){
@@ -33,9 +31,9 @@ class cUser extends CI_Controller {
 
          $firstname_f = $this->input->get('fristname_f');       //get post data from view page
          $lastname_f = $this->input->get('lastname_f');
-         $gender_f = $this->input->get('gender_f');
+         $email_f = $this->input->get('email_f');
 
-         $aData['aUser'] = $this->MUser->mUserList($firstname_f ,$lastname_f ,$gender_f);
+         $aData['aUser'] = $this->MUser->mUserList($firstname_f ,$lastname_f ,$email_f);
          $this->load->view('vUserList',$aData);
   }
 
@@ -45,14 +43,16 @@ class cUser extends CI_Controller {
       $lastname = $this->input->post('sLastname');
       $dob = $this->input->post('sDob');
       $gender = $this->input->post('sGender');
+      $email = $this->input->post('sEmail');
+      $password = $this->input->post('sPassword');
       $action_mode = $this->input->post('action_mode');
 
       if ($action_mode == '1') {
         //save new user to register
         $data = array('Firstname' =>$firstname ,        //store data from view page as array
                       'Lastname'=>$lastname,
-                      'DOB'=>$dob,
-                      'Gender'=>$gender
+                      'email' => $email,
+                      'password' => $password
                     );
          $res = $this->MUser->mSave($data);
          echo $res;
@@ -62,8 +62,8 @@ class cUser extends CI_Controller {
         $data = array(                        //store array before send to Model
                       'Firstname' => $firstname,
                       'Lastname' => $lastname,
-                      'DOB' => $dob,
-                      'Gender' => $gender
+                      'email' => $email,
+                      'password' => $password
                     );
                     $res = $this->MUser->mUpdate($id,$data);      //result
                     echo $res;

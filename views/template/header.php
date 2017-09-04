@@ -4,11 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><?php echo $title; ?></title>
+    <meta name="baseUrl" content="<?php echo base_url(); ?>">
     <meta name="keywords" content="<?php echo $keywords; ?>">
     <meta name="description" content="<?php echo $description; ?>">
     <meta name="author" content="<?php echo $author; ?>">
     <link rel="stylesheet" href="<?php echo base_url('application/assets/css/'); ?>shop-homepage.css">
-    <link rel="stylesheet" href="<?php echo base_url('application/assets/css/'); ?>css/shop-item.css">
+    <link rel="stylesheet" href="<?php echo base_url('application/assets/css/'); ?>shop-item.css">
     <link rel="stylesheet" href="<?php echo base_url('application/assets/css/'); ?>font-awesome.min.css">
     <link rel="stylesheet" href="<?php echo base_url('application/assets/css/'); ?>custom.css">
     <link rel="stylesheet" href="<?php echo base_url('application/assets/vendor/bootstrap/css/'); ?>bootstrap.css">
@@ -34,7 +35,7 @@
               <a class="nav-link" href="#">Cart</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal">Sign in</a>
+              <a class="nav-link" href="#" data-toggle="modal" data-target="#sModal">Sign in</a>
             </li>
           </ul>
         </div>
@@ -42,33 +43,27 @@
     </nav>
   </header>
   <body>
-    <div id="fb-root"></div>
-
-
 
     <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="sModal" tabindex="-1" role="dialog" aria-labelledby="sModalLabel" ng-controller="loginController">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
 
           <div class="modal-header">
-            <h4 class="modal-title" id="myModalLabel">Sign in</h4>
+            <h4 class="modal-title" id="sModalLabel">Sign in</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           </div>
-
+          <form id="formsignin"  enctype="multipart/form-data">
           <div class="modal-body">
             Username<br>
-            <input type="text" name="loginName" id="loginName" class="form-control" required placeholder="Username" maxlength="20"><br>
+            <input type="text" name="email" id="email" class="form-control" required placeholder="Email" maxlength="50"><br>
             Password<br>
-            <input type="text" name="loginPass" id="loginPass" class="form-control" required placeholder="Password" maxlength="20"><br>
-            <button type="button" class="btn btn-primary btn-lg btn-block">Sign In</button><br>
-            <h5><p class="text-center">or</p><br></h5>
-              <a href="#" class="fb">
-              <img  src="<?php echo base_url('application/assets/img/fb_login.png'); ?>" height="75" width="468" >
-            </a>
+            <input type="text" name="password" id="password" class="form-control" required placeholder="Password" maxlength="20"><br>
+            <button type="button" class="btn btn-primary btn-lg btn-block" id="btn-signIn">Sign In</button><br>
           </div>
+        </form>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default btn-lg btn-block">Create your Bite Shop account</button>
+            <a href="register" button type="button" class="btn btn-outline-primary btn-lg btn-block">Create your CindyBite Shop account</button></a>
           </div>
         </div>
       </div>

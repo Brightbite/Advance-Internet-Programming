@@ -2,26 +2,25 @@
       <div class="container">
         <h1 class="my-4"><?php echo $top; ?></h1>
           <div class="row">
-            <div class="col-md-3">
-                <button type="button" name="button" class="btn btn-success " data-toggle="modal" data-target="#userform" onclick="Addnewuser()">+ ADD</button>
-                <button type="button" name="button" class="btn btn-success pull-right" onclick="userlist()">Filter</button>
-            </div>
-              <div class="col-md-3">
-                 <input type="text" name="fristname_f" id="fristname_f" placeholder="fristname" class="form-control">
-              </div>
-              <div class="col-md-3"> <input type="text" name="lastname_f" id="lastname_f" placeholder="lastname" class="form-control"></div>
-              <div class="col-md-3">
-                <select class="from-control" name="gender_f" id="gender_f">
-                                 <option value="">gender</option>
-                                 <option value="male">male</option>
-                                 <option value="female">female</option>
-                                 <option value="other">other</option>
-                 </select>
 
+              <div class="col-md-3">
+                 <input type="text" name="fristname_f" id="fristname_f" placeholder="fristname" class="form-control pull-left">
+              </div>
+              <div class="col-md-3">
+                <input type="text" name="lastname_f" id="lastname_f" placeholder="lastname" class="form-control">
+              </div>
+              <div class="col-md-3">
+                <input type="text" name="email_f" id="email_f" placeholder="email" class="form-control">
+              </div>
+
+
+            <div class="col-md-3">
+                <button type="button" name="button" class="btn btn-info " onclick="userlist()">Search</button>
+                <button type="button" name="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#userform" onclick="Addnewuser()">Register</button>
             </div>
           </div>
+          <br>
           <div class="col-md-12 UserList" id="UserList">Load...</div>
-
            <!--  form Add User-->
            <div class="modal fade" id="userform" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog modal-lg" role="document">
@@ -37,13 +36,17 @@
                                 <input type="text" name="sFirstname" id="sFirstname" class="form-control" required autocomplete="false" placeholder="enter firstname" maxlength="20"><br>
                                 Last name:<br>
                                 <input type="text" name="sLastname" id="sLastname" class="form-control" required placeholder = "Lastname" maxlength="20"><br>
-                                Date of birth:<br>
-                                <input type="date" name="sDob" id="sDob" class="form-control" required><br>
-                                Gender:<br>
-                                <input type="radio" name="sGender" value="male" checked onclick="select_gender('male')"> Male<br>
-                                <input type="radio" name="sGender" value="female" onclick="select_gender('female')"> Female<br>
-                                <input type="radio" name="sGender" value="other" onclick="select_gender('other')"> Other<br>
-                                <input type="hidden" name="" id="gender" value="male">
+                                <div class="form-group row">
+                                  <label class="col-md-6 col-form-label">Email</label>
+                                  <label class="col-md-6 col-form-label">Password</label>
+                                  <div class="col-md-6">
+                                    <input type="text" name="sEmail" id="sEmail" class="form-control" required placeholder="Example@email.com" maxlength="50"><br>
+                                </div>
+                                  <div class="col-md-6">
+                                  <input type="text" name="sPassword" id="sPassword" class="form-control" required placeholder="Password" maxlength="20"><br>
+
+                                </div>
+                                </div>
                                 <input type="hidden" name="" id="UserID">
                                 <!--  mode 1 = add 2=edit-->
                                 <input type="hidden" name="" id="action_mode" value="1"><br>
