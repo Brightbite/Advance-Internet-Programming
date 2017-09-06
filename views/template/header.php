@@ -35,7 +35,9 @@
               <a class="nav-link" href="#">Cart</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" data-toggle="modal" data-target="#sModal">Sign in</a>
+              <?php //echo $PrivilegeID;?>
+              <?php if (isset($custname)){ ?> <a class="nav-link" href="logout"><?php echo 'Logout';?></a><?php } else{?><a class="nav-link" href="#" data-toggle="modal" data-target="#sModal">Sign in</a><?php } ?>
+
             </li>
           </ul>
         </div>
@@ -56,7 +58,7 @@
           <form id="formsignin"  enctype="multipart/form-data">
           <div class="modal-body">
             Username<br>
-            <input type="text" name="email" id="email" class="form-control" required placeholder="Email" maxlength="50"><br>
+            <input type="text" name="username" id="username" class="form-control" required placeholder="username" maxlength="50"><br>
             Password<br>
             <input type="text" name="password" id="password" class="form-control" required placeholder="Password" maxlength="20"><br>
             <button type="button" class="btn btn-primary btn-lg btn-block" id="btn-signIn">Sign In</button><br>

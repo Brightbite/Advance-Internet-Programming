@@ -9,7 +9,7 @@
        //updated list
        public function mUserList($fname, $lname, $email){
               //SQL Statement
-              $SQL = "SELECT * FROM member WHERE 1 ";
+              $SQL = "SELECT * FROM customer WHERE 1 ";
               if ($fname !='') {
                   $SQL.=" AND Firstname LIKE '%$fname%'";
               }
@@ -29,7 +29,15 @@
        }
        //Add function
        public  function mSave($data){
-              if ($this->db->insert('member',$data)) { //INSERT .... INTO register
+              if ($this->db->insert('customer',$data)) { //INSERT .... INTO register
+                return 'success';
+              }else{
+                return 'error';
+              }
+       }
+       
+       public  function mSaveP($data2){
+              if ($this->db->insert('customer_privilege',$data2)) { //INSERT .... INTO register
                 return 'success';
               }else{
                 return 'error';
@@ -38,7 +46,7 @@
 
        //Delete function
        public function mRemove($data){
-            if ($this->db->delete('member',$data)) { // DELETE FROM register ....
+            if ($this->db->delete('customer',$data)) { // DELETE FROM register ....
               return 'delete success';
             }else{
               return 'error';
@@ -48,8 +56,8 @@
 
       //Update function
        public function mUpdate($id,$data){
-            $this->db->where('ID',$id); // WHERE id = ' ';
-            if ($this->db->update('member',$data)) { // UPDATE SET ...
+            $this->db->where('CustomerID',$id); // WHERE id = ' ';
+            if ($this->db->update('customer',$data)) { // UPDATE SET ...
               return "success";
             }else{
               return 'error';

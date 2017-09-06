@@ -5,6 +5,7 @@ class cLogin extends CI_Controller {
 
   function __construct(){
           parent::__construct();
+          $this->load->library('session');
           $this->load->helper('url');
           $this->load->model('mLogin','MLogin'); //load model first before view
   }
@@ -29,12 +30,34 @@ class cLogin extends CI_Controller {
 
   }
   public function signIn()
-          {
-            $email      = $this->input->post('email');
+  {
+            $username      = $this->input->post('username');
             $password   = $this->input->post('password');
-            $res = $this->MLogin->Login($email,$password);
-            echo $res;
-          }
+
+            // echo $res;
+            $pwEnc = base64_encode($password);
+            $csinfo = $this->MLogin->Login($username,$pwEnc);
+            if ($csinfo == 'empty') {
+               echo 'false';
+            }else{
+              echo 'true';
+              $cusdata = array('customerNameSess'  => $csinfo->CustomerFirstname,
+                                'customerLastSess'     => $csinfo->CustomerLastname,
+                                'PrivilegeID' => $csinfo->PrivilegeID,
+                                'usernameSess' =>  $csinfo->Username
+                              );
+
+                $this->session->set_userdata($cusdata);
+            }
+
+
+       //
+      //  echo  $this->log_info();
+  }
+  public function log_info(){
+          return $this->session->userdata('username_sess');
+  }
+
 
     // public function validate(){
       // $this->load->helper(array('form', 'url'));

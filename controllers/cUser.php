@@ -5,24 +5,42 @@ class cUser extends CI_Controller {
 
   function __construct(){
           parent::__construct();
+          $this->load->library('session');
           $this->load->helper('url');
           $this->load->model('mUser','MUser'); //load model first before view
   }
 
   public function index()
   {
-    $header = array(
-      'title' => 'Userpage',
-      'keywords' => 'shopping',
-      'description' => 'Userpage',
-      'author' => 'Kunanon Pititheerachot #12634123 UTS'
-    );
-    $index = array(
-      'top' => 'User list',
-    );
-    $this->load->view('template/header',$header); //header
-    $this->load->view('vUser',$index); //load view
-    $this->load->view('template/footer'); //footer
+
+
+
+      if ($this->session->has_userdata('customerNameSess')) {
+        $custname = $this->session->userdata('customerNameSess');
+      }else {
+        $custname = '';
+      }
+
+      if ($this->session->has_userdata('PrivilegeID')) {
+        $PrivilegeID = $this->session->userdata('PrivilegeID');
+      }else {
+        $PrivilegeID = '';
+      }
+      $header = array(
+        'title' => 'Userpage',
+        'keywords' => 'shopping',
+        'description' => 'Userpage',
+        'author' => 'Kunanon Pititheerachot #12634123 UTS',
+        'custname' => $custname,
+        'PrivilegeID'=>$PrivilegeID
+      );
+      $index = array(
+        'top' => 'User list',
+      );
+      $this->load->view('template/header',$header); //header
+      $this->load->view('vUser',$index); //load view
+      $this->load->view('template/footer'); //footer
+
 
   }
   //showing updated table load from model
@@ -39,31 +57,46 @@ class cUser extends CI_Controller {
 
   public function save(){
       //receive parameter from view page
+      $privilegeID = $this->input->post('sPrivilegeID');
       $firstname = $this->input->post('sFirstname');       //get post data from view page
       $lastname = $this->input->post('sLastname');
-      $dob = $this->input->post('sDob');
-      $gender = $this->input->post('sGender');
-      $email = $this->input->post('sEmail');
+      $address = $this->input->post('sAddress');
+      $username = $this->input->post('sUsername');
       $password = $this->input->post('sPassword');
+      $email = $this->input->post('sEmail');
+      $tel = $this->input->post('sTel');
       $action_mode = $this->input->post('action_mode');
 
-      if ($action_mode == '1') {
+      if ($action_mode == '1' && $privilegeID == '1') {
         //save new user to register
-        $data = array('Firstname' =>$firstname ,        //store data from view page as array
-                      'Lastname'=>$lastname,
-                      'email' => $email,
-                      'password' => $password
+        $data = array('CustomerFirstname' =>$firstname ,        //store data from view page as array
+                      'CustomerLastname'=>$lastname,
+                      'CustomerAddr' => $address,
+                      'Username' => $username,
+                      'Password' => $password,
+                      'Email' => $email,
+                      'CustomerTel' => $tel
                     );
          $res = $this->MUser->mSave($data);
          echo $res;
+
+        //  $data2 = array(
+        //               'PrivilegeID' =>  $privilegeID
+        //             );
+        //  $res2 = $this->MUser->mSaveP($data2);
+        //  echo $res2;
+
       }else{
         //update request
         $id = $this->input->post('UserID');
-        $data = array(                        //store array before send to Model
-                      'Firstname' => $firstname,
-                      'Lastname' => $lastname,
-                      'email' => $email,
-                      'password' => $password
+        $data = array(  'PrivilegeID' =>$privilegeID,
+                        'CustomerFirstname' =>$firstname ,        //store data from view page as array
+                        'CustomerLastname'=>$lastname,
+                        'CustomerAddr' => $address,
+                        'Username' => $username,
+                        'Password' => $password,
+                        'Email' => $email,
+                        'CustomerTel' => $tel
                     );
                     $res = $this->MUser->mUpdate($id,$data);      //result
                     echo $res;
@@ -73,7 +106,7 @@ class cUser extends CI_Controller {
   //deleting
   public function remove(){
       $id = $this->input->get('UserID');
-      $data = array('ID' => $id);
+      $data = array('CustomerID' => $id);
       $res = $this->MUser->mRemove($data);
       echo $res;
   }

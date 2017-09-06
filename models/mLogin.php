@@ -7,17 +7,20 @@
            parent::__construct();
        }
 
-       public function Login ($email,$password){
+       public function Login ($username,$password){
+           $SQL = "SELECT CustomerFirstname,CustomerLastname,Username,PrivilegeID FROM customer WHERE Username = '$username' AND Password = '$password'";
 
-         $SQL = "SELECT firstname,lastname FROM member WHERE email = $email ";
-        //  if ($email == $loginData){
-        //    $SQL.=" AND email = '$email'";
-        //  }
+          //echo $SQL;
+        //  $SQL = "SELECT firstname,lastname FROM member WHERE email = $email ";
+        // //  if ($email == $loginData){
+        // //    $SQL.=" AND email = '$email'";
+        // //  }
          $query = $this->db->query($SQL);
           if ($query->num_rows() > 0) {
-            return $query->result();
+            return $query->row();
           }else{
             return 'empty';
           }
        }
+}
 ?>
