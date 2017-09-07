@@ -12,9 +12,20 @@ class cLogout extends CI_Controller {
 
   public function index()
   {
+    // $header = array(
+    //   'title' => 'Userpage',
+    //   'keywords' => 'shopping',
+    //   'description' => 'Userpage',
+    //   'author' => 'Kunanon Pititheerachot #12634123 UTS',
+    // );
 
     $this->session->sess_destroy();
-    echo "<script> window.location='home';</script>";
+    $this->session->unset_userdata('customerNameSess');
+    //$this->load->controller('cHome');
+    // $this->load->view('template/header',$header);
+    // $this->load->view('vLogout',$header);
+    // $this->load->view('template/footer');
+    echo "<script> window.location = 'home';</script>";
   }
 }
 ?>

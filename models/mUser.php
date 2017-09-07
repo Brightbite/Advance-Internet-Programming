@@ -35,7 +35,7 @@
                 return 'error';
               }
        }
-       
+
        public  function mSaveP($data2){
               if ($this->db->insert('customer_privilege',$data2)) { //INSERT .... INTO register
                 return 'success';
@@ -62,6 +62,16 @@
             }else{
               return 'error';
          }
+       }
+
+       public function mPrivilegeList(){
+               $SQL = "SELECT * FROM customer_privilege";
+             $query = $this->db->query($SQL);
+             if ($query->num_rows() > 0) {
+               return $query->result();
+             }else{
+               return 'empty';
+             }
        }
 
  }

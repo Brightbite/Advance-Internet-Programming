@@ -13,30 +13,43 @@ class cUser extends CI_Controller {
   public function index()
   {
 
-
-
       if ($this->session->has_userdata('customerNameSess')) {
-        $custname = $this->session->userdata('customerNameSess');
+          $custname = $this->session->userdata('customerNameSess');
       }else {
-        $custname = '';
+          $custname = '';
       }
 
       if ($this->session->has_userdata('PrivilegeID')) {
-        $PrivilegeID = $this->session->userdata('PrivilegeID');
+          $PrivilegeID = $this->session->userdata('PrivilegeID');
       }else {
-        $PrivilegeID = '';
+          $PrivilegeID = '';
       }
+
+      // if ($this->session->has_userdata('descSess')) {
+      //     $PrivDesc = $this->session->userdata('descSess');
+      // }else {
+      //     $PrivDesc = '';
+      // }
+
+
+
       $header = array(
         'title' => 'Userpage',
         'keywords' => 'shopping',
         'description' => 'Userpage',
         'author' => 'Kunanon Pititheerachot #12634123 UTS',
         'custname' => $custname,
-        'PrivilegeID'=>$PrivilegeID
+        'PrivilegeID'=> $PrivilegeID
       );
+
+      $pvlList = $this->MUser->mPrivilegeList();
+
       $index = array(
         'top' => 'User list',
+        'PrivilegeID'=> $PrivilegeID,
+        'PrivList' => $pvlList
       );
+
       $this->load->view('template/header',$header); //header
       $this->load->view('vUser',$index); //load view
       $this->load->view('template/footer'); //footer
@@ -45,8 +58,9 @@ class cUser extends CI_Controller {
   }
   //showing updated table load from model
   public function userlist(){
-         $aData = array();
+          $aData = array(
 
+          );
          $firstname_f = $this->input->get('fristname_f');       //get post data from view page
          $lastname_f = $this->input->get('lastname_f');
          $email_f = $this->input->get('email_f');
@@ -57,7 +71,8 @@ class cUser extends CI_Controller {
 
   public function save(){
       //receive parameter from view page
-      $privilegeID = $this->input->post('sPrivilegeID');
+      // $privilegeid = $this->input->post('sPrivilegeID');
+      $privilege = $this->input->post('sPrivilege');
       $firstname = $this->input->post('sFirstname');       //get post data from view page
       $lastname = $this->input->post('sLastname');
       $address = $this->input->post('sAddress');
@@ -67,7 +82,7 @@ class cUser extends CI_Controller {
       $tel = $this->input->post('sTel');
       $action_mode = $this->input->post('action_mode');
 
-      if ($action_mode == '1' && $privilegeID == '1') {
+      if ($action_mode == '1') {
         //save new user to register
         $data = array('CustomerFirstname' =>$firstname ,        //store data from view page as array
                       'CustomerLastname'=>$lastname,
@@ -75,7 +90,8 @@ class cUser extends CI_Controller {
                       'Username' => $username,
                       'Password' => $password,
                       'Email' => $email,
-                      'CustomerTel' => $tel
+                      'CustomerTel' => $tel,
+                      'PrivilegeID' => $privilege
                     );
          $res = $this->MUser->mSave($data);
          echo $res;
@@ -96,7 +112,8 @@ class cUser extends CI_Controller {
                         'Username' => $username,
                         'Password' => $password,
                         'Email' => $email,
-                        'CustomerTel' => $tel
+                        'CustomerTel' => $tel,
+                        'PrivilegeID' => $privilege
                     );
                     $res = $this->MUser->mUpdate($id,$data);      //result
                     echo $res;

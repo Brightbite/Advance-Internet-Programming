@@ -8,7 +8,9 @@
        }
 
        public function Login ($username,$password){
-           $SQL = "SELECT CustomerFirstname,CustomerLastname,Username,PrivilegeID FROM customer WHERE Username = '$username' AND Password = '$password'";
+           $SQL = "SELECT CS.CustomerFirstname, CS.CustomerLastname, CS.Username, CS.PrivilegeID
+                   FROM customer CS
+                   WHERE CS.Username = '$username' AND CS.Password = '$password'";
 
           //echo $SQL;
         //  $SQL = "SELECT firstname,lastname FROM member WHERE email = $email ";
@@ -22,5 +24,6 @@
             return 'empty';
           }
        }
+
 }
 ?>

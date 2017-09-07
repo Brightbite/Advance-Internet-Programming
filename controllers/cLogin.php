@@ -31,20 +31,23 @@ class cLogin extends CI_Controller {
   }
   public function signIn()
   {
-            $username      = $this->input->post('username');
-            $password   = $this->input->post('password');
+            $username   =     $this->input->post('username');
+            $password   =     $this->input->post('password');
 
             // echo $res;
             $pwEnc = base64_encode($password);
             $csinfo = $this->MLogin->Login($username,$pwEnc);
+
             if ($csinfo == 'empty') {
-               echo 'false';
+              echo 'false';
             }else{
-              echo 'true';
-              $cusdata = array('customerNameSess'  => $csinfo->CustomerFirstname,
-                                'customerLastSess'     => $csinfo->CustomerLastname,
-                                'PrivilegeID' => $csinfo->PrivilegeID,
-                                'usernameSess' =>  $csinfo->Username
+
+              echo $csinfo->PrivilegeID;
+              $cusdata = array( 'customerNameSess'  =>  $csinfo->CustomerFirstname,
+                                'customerLastSess' =>  $csinfo->CustomerLastname,
+                                'PrivilegeID'      =>  $csinfo->PrivilegeID,
+                                'usernameSess'     =>  $csinfo->Username,
+                                // 'descSess'         =>  $csinfo->PrivilegeDesc
                               );
 
                 $this->session->set_userdata($cusdata);

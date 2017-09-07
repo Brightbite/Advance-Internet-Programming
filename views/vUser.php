@@ -71,6 +71,19 @@
                                         eg. 0412 345 678.
                                     </small>
                                   </div>
+
+                                  <div class="col-md-6">
+                                    <label class="col-md-6 col-form-label">Privilege</label>
+                                    <!-- <input type="text" name="sPrivilege" id="sPrivilege" class="form-control" required placeholder="Privilege" maxlength="2"><br>
+                                    <?php echo $PrivilegeID?> -->
+                                    <!-- </?php echo $PrivDesc?> -->
+                                  <select class="form-control" id="sPrivilege">
+                                      <option>Privilege</option>
+                                      <?php foreach ($PrivList as $pvl) {?>
+                                        <option value="<?php echo $pvl->PrivilegeID;?>"><?php echo $pvl->PrivilegeDesc;?></option>
+                                      <?php } ?>
+                                  </select>
+                                  </div>
                                 </div>
                                 <input type="hidden" name="" id="UserID">
                                 <input type="hidden" name="" id="sPrivilegeID" value="1">
@@ -78,7 +91,7 @@
                                 <input type="hidden" name="" id="action_mode" value="1"><br>
                                 <div class="pull-right">
                                   <input type="button" value="Save" class="btn btn-success" id="btn-register">
-                                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                  <button type="button" class="btn btn-danger" data-dismiss="modal" id="obtcls">Close</button>
                                 </div>
                                 <br><hr>
                               </form>

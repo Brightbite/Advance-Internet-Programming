@@ -4,7 +4,7 @@
   <div class="row">
 
     <div class="col-lg-3">
-      <h1 class="my-4">My Account</h1>
+      <h1 class="my-4">My Order</h1>
     </div>
     <!-- /.col-lg-3 -->
 
@@ -13,7 +13,7 @@
       <div class="card mt-4">
         <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
         <div class="card-body">
-          <h3 class="card-title">Account Detail</h3>
+          <h3 class="card-title">My Order</h3>
 
         </div>
       </div>

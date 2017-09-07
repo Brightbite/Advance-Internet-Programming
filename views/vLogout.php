@@ -36,12 +36,7 @@
             </li>
             <li class="nav-item">
               <?php //echo $PrivilegeID;?>
-              <?php if (isset($custname)){ ?>
-                   <?php if ($custname == '') { ?>
-                             <a class="nav-link" href="#" data-toggle="modal" data-target="#sModal">Sign in</a>
-                    <?php } else{?><a  href="logout">Log out</a><?php } ?>
-
-               <?php } ?>
+              <a class="nav-link" href="#" data-toggle="modal" data-target="#sModal">Sign in</a>
 
             </li>
           </ul>
