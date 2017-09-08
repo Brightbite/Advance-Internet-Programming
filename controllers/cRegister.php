@@ -43,6 +43,7 @@ class cRegister extends CI_Controller {
            $res = $this->MRegister->mCreate($userdata);
            echo $res;
   }
+
 }
 
 ?>

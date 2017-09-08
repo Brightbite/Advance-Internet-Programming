@@ -16,11 +16,12 @@
 
             <div class="col-md-3">
                 <button type="button" name="button" class="btn btn-info " onclick="userlist()">Search</button>
-                <button type="button" name="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#userform" onclick="Addnewuser()">Register</button>
+                <button type="button" name="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#userform" onclick="Addnewuser()">Register</button><br>
             </div>
           </div>
-          <br>
+
           <div class="col-md-12 UserList" id="UserList">Load...</div>
+
            <!--  form Add User-->
            <div class="modal fade" id="userform" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog modal-lg" role="document">
@@ -86,7 +87,7 @@
                                   </div>
                                 </div>
                                 <input type="hidden" name="" id="UserID">
-                                <input type="hidden" name="" id="sPrivilegeID" value="1">
+                                <!-- <input type="hidden" name="" id="sPrivilegeID" value="1"> -->
                                 <!--  mode 1 = add 2=edit-->
                                 <input type="hidden" name="" id="action_mode" value="1"><br>
                                 <div class="pull-right">

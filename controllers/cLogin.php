@@ -41,12 +41,15 @@ class cLogin extends CI_Controller {
             if ($csinfo == 'empty') {
               echo 'false';
             }else{
-
               echo $csinfo->PrivilegeID;
+
               $cusdata = array( 'customerNameSess'  =>  $csinfo->CustomerFirstname,
                                 'customerLastSess' =>  $csinfo->CustomerLastname,
                                 'PrivilegeID'      =>  $csinfo->PrivilegeID,
                                 'usernameSess'     =>  $csinfo->Username,
+                                'csOderID'          =>  $csinfo->OrderID,
+                                'csOderNumber'      =>  $csinfo->OderNumber,
+                                'csID'              =>  $csinfo->customerID,
                                 // 'descSess'         =>  $csinfo->PrivilegeDesc
                               );
 

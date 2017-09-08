@@ -6,6 +6,7 @@
     <script type="text/javascript" src="<?php echo base_url('application/assets/js/'); ?>bootstrap.js"></script>
     <!-- <script type="text/javascript" src="</?php echo base_url('application/assets/RP/js/'); ?>bootstrap.min.js"></script> -->
     <script type="text/javascript" src="<?php echo base_url('application/assets/src/'); ?>juser.js"></script>
+    <script type="text/javascript" src="<?php echo base_url('application/assets/src/'); ?>jcart.js"></script>
     <script type="text/javascript" src="<?php echo base_url('application/assets/vendor/jquery/'); ?>jquery.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url('application/assets/vendor/popper/'); ?>popper.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url('application/assets/vendor/bootstrap/js/'); ?>bootstrap.js"></script>

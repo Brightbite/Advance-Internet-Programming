@@ -8,8 +8,8 @@
        }
 
        public function Login ($username,$password){
-           $SQL = "SELECT CS.CustomerFirstname, CS.CustomerLastname, CS.Username, CS.PrivilegeID
-                   FROM customer CS
+           $SQL = "SELECT CS.CustomerFirstname, CS.CustomerLastname, CS.Username, CS.PrivilegeID, CS.CustomerID, OD.OrderID, OD.OrderNumber
+                   FROM customer CS INNER JOIN order OD
                    WHERE CS.Username = '$username' AND CS.Password = '$password'";
 
           //echo $SQL;

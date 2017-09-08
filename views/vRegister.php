@@ -25,7 +25,7 @@
                   </small>
                 </div>
                 <div class="col-md-6">
-                  <input type="text" name="sPassword" id="sPassword" class="form-control" required placeholder="Password" maxlength="20" aria-describedby="passwordHelpInline">
+                  <input type="password" name="sPassword" id="sPassword" class="form-control" required placeholder="Password" maxlength="20" aria-describedby="passwordHelpInline">
                   <small id="passwordHelpInline" class="text-muted">
                     Maximum 20 characters long.
                   </small>
@@ -49,7 +49,7 @@
                 </div>
               </div>
               <input type="hidden" name="" id="UserID">
-              <input type="hidden" name="" id="sPrivilegeID" value="1">
+              <input type="hidden" name="" id="sPrivilege" value="1">
               <!--  mode 1 = add 2=edit-->
               <input type="hidden" name="" id="action_mode" value="1"><br>
               <input type="button" value="Register New Account" class="btn btn-primary btn-lg btn-block" id="btn-register2"><br><hr>

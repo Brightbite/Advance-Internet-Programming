@@ -24,6 +24,12 @@ class cHome extends CI_Controller {
         $custname = '';
     }
 
+    if ($this->session->has_userdata('customerLastSess')) {
+        $custlast = $this->session->userdata('customerLastSess');
+    }else {
+        $custlast = '';
+    }
+
 
 
     $header = array(
@@ -31,7 +37,8 @@ class cHome extends CI_Controller {
       'keywords' => 'shopping',
       'description' => 'this is web application for online retailer',
       'author' => 'Kunanon Pititheerachot #12634123 UTS',
-      'custname'=> $custname
+      'custname'=> $custname,
+      'custlast'=>$custlast
     );
 
     $index = array(

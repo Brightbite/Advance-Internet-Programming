@@ -65,7 +65,7 @@
        }
 
        public function mPrivilegeList(){
-               $SQL = "SELECT * FROM customer_privilege";
+             $SQL = "SELECT * FROM customer_privilege";
              $query = $this->db->query($SQL);
              if ($query->num_rows() > 0) {
                return $query->result();

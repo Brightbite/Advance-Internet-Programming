@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="<?php echo base_url('application/assets/css/'); ?>font-awesome.min.css">
     <link rel="stylesheet" href="<?php echo base_url('application/assets/css/'); ?>custom.css">
     <link rel="stylesheet" href="<?php echo base_url('application/assets/vendor/bootstrap/css/'); ?>bootstrap.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+
     <!-- <link rel="stylesheet" href="</?php echo base_url('application/assets/RP/css/'); ?>bootstrap.css"> -->
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -24,7 +26,13 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="account">My account
+              <!-- <a class="nav-link" href="account">My account -->
+                <?php if (isset($custname)){ ?>
+                     <?php if ($custname == '') { ?>
+                               <a class="nav-link" href="#" data-toggle="modal" data-target="#sModal">My account</a>
+                      <?php } else{?><a  class="nav-link" href="account">Hi! <?php echo "$custname ";?></a><?php } ?>
+
+                 <?php } ?>
                 <span class="sr-only">(current)</span>
               </a>
             </li>
@@ -32,14 +40,18 @@
               <a class="nav-link" href="order">Orders</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="cart">Cart</a>
+              <?php if (isset($custname)){ ?>
+                   <?php if ($custname == '') { ?>
+                             <a class="nav-link" href="#" data-toggle="modal" data-target="#sModal">Cart</a>
+                    <?php } else{?><a  class="nav-link" href="cart">Cart</a><?php } ?>
+               <?php } ?>
             </li>
             <li class="nav-item">
               <?php //echo $PrivilegeID;?>
               <?php if (isset($custname)){ ?>
                    <?php if ($custname == '') { ?>
                              <a class="nav-link" href="#" data-toggle="modal" data-target="#sModal">Sign in</a>
-                    <?php } else{?><a  href="logout">Log out</a><?php } ?>
+                    <?php } else{?><a  class="nav-link" href="logout">Sign out</a><?php } ?>
 
                <?php } ?>
 
@@ -65,7 +77,7 @@
             Username<br>
             <input type="text" name="username" id="username" class="form-control" required placeholder="username" maxlength="50"><br>
             Password<br>
-            <input type="text" name="password" id="password" class="form-control" required placeholder="Password" maxlength="20"><br>
+            <input type="password" name="password" id="password" class="form-control" required placeholder="Password" maxlength="20"><br>
             <button type="button" class="btn btn-primary btn-lg btn-block" id="btn-signIn">Sign In</button><br>
           </div>
         </form>

@@ -1,4 +1,3 @@
-    <?php echo 'cusname'.$custname;?>
     <!-- Page Content -->
     <div class="container">
 

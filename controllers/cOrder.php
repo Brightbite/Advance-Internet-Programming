@@ -11,20 +11,44 @@ class cOrder extends CI_Controller {
 
   public function index()
   {
+    if ($this->session->has_userdata('PrivilegeID')) {
+        $PrivilegeID = $this->session->userdata('PrivilegeID');
+    }else {
+        $PrivilegeID = '';
+    }
+
+    if ($this->session->has_userdata('customerNameSess')) {
+        $custname = $this->session->userdata('customerNameSess');
+    }else {
+        $custname = '';
+    }
+
+    if ($this->session->has_userdata('customerLastSess')) {
+        $custlast = $this->session->userdata('customerLastSess');
+    }else {
+        $custlast = '';
+    }
+
+
     $header = array(
-      'title' => 'Order',
-      'keywords' => 'shopping',
+      'title' => 'My Account',
+      'keywords' => 'account',
       'description' => 'this is web application for online retailer',
-      'author' => 'Kunanon Pititheerachot #12634123 UTS'
+      'author' => 'Kunanon Pititheerachot #12634123 UTS',
+      'custname'=> $custname,
+      'custlast'  => $custlast
+
     );
 
     $index = array(
-      'top' => 'order'
+      'top' => 'Home',
+      ''  => $custname,
+      ''  => $custlast
     );
 
     $data = array();
     $this->load->view('template/header',$header);
-    $this->load->view('vOrder',$index); //load view
+    $this->load->view('vCart',$index); //load view
     $this->load->view('template/footer');
 
   }
