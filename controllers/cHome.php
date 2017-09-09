@@ -7,7 +7,7 @@ class cHome extends CI_Controller {
           parent::__construct();
           $this->load->library('session');
           $this->load->helper('url');
-          // $this->load->model('mLogin','MLogin'); //load model first before view
+          $this->load->model('mProduct','MProduct'); //load model first before view
   }
 
   public function index()
@@ -41,8 +41,10 @@ class cHome extends CI_Controller {
       'custlast'=>$custlast
     );
 
+    // $pvlList = $this->MProduct->mProDetail();
     $index = array(
       'top' => 'Home',
+      // 'PrivList' => $pvlList
     );
 
     $data = array();

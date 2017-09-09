@@ -36,14 +36,14 @@
                 <span class="sr-only">(current)</span>
               </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="order">Orders</a>
-            </li>
+            </li> -->
             <li class="nav-item">
               <?php if (isset($custname)){ ?>
                    <?php if ($custname == '') { ?>
                              <a class="nav-link" href="#" data-toggle="modal" data-target="#sModal">Cart</a>
-                    <?php } else{?><a  class="nav-link" href="cart">Cart</a><?php } ?>
+                    <?php } else {?><a  class="nav-link" href="cart">Cart</a><?php } ?>
                <?php } ?>
             </li>
             <li class="nav-item">

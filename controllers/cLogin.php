@@ -45,11 +45,11 @@ class cLogin extends CI_Controller {
 
               $cusdata = array( 'customerNameSess'  =>  $csinfo->CustomerFirstname,
                                 'customerLastSess' =>  $csinfo->CustomerLastname,
-                                'PrivilegeID'      =>  $csinfo->PrivilegeID,
+                                'PrivilegeID'          =>  $csinfo->PrivilegeID,
                                 'usernameSess'     =>  $csinfo->Username,
-                                'csOderID'          =>  $csinfo->OrderID,
-                                'csOderNumber'      =>  $csinfo->OderNumber,
-                                'csID'              =>  $csinfo->customerID,
+                                // 'csOderID'          =>  $csinfo->OrderID,
+                                // 'csOderNumber'      =>  $csinfo->OderNumber,
+                                // 'csID'              =>  $csinfo->customerID,
                                 // 'descSess'         =>  $csinfo->PrivilegeDesc
                               );
 

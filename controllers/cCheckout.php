@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH' OR exit('No direct script access allowed'));
 
-class cCart extends CI_Controller {
+class cCheckout extends CI_Controller {
 
   function __construct(){
           parent::__construct();
@@ -58,37 +58,32 @@ class cCart extends CI_Controller {
 
     );
 
-    // $index = array(
-    //   'top' => 'Home',
-    //   ''  => $custname,
-    //   ''  => $custlast
-    // );
+
       // $productdata = array(
-      //             'id'      => 'sku_123ABC',
-      //             'qty'     => 1,
-      //             'price'   => 39.95,
-      //             'name'    => 'T-Shirt',
-      //             'options' => array('Size' => 'L', 'Color' => 'Red')
-      // );
-      //
-      // $this->cart->insert($productdata);
-
-    $data = array();
+    //   //             'id'      => 'sku_123ABC',
+    //   //             'qty'     => 1,
+    //   //             'price'   => 39.95,
+    //   //             'name'    => 'T-Shirt',
+    //   //             'options' => array('Size' => 'L', 'Color' => 'Red')
+    //   // );
+    //   //
+    //   // $this->cart->insert($productdata);
+    //
+    // $data = array();
     $this->load->view('template/header',$header);
-    // $this->load->view('vCart',$index); //load view
-    $cartData = array();
-    $cartData['cartUser'] = $this->MCart->mCartuser();
-    $this->load->view('vCart',$cartData);
+    // // $this->load->view('vCart',$index); //load view
+    // $cartData = array();
+    // $cartData['cartUser'] = $this->MCart->mCartuser();
+    $this->load->view('vCheckout');
     $this->load->view('template/footer');
-    // $pvlList = $this->MCart->mCartuser();
+    // // $pvlList = $this->MCart->mCartuser();
   }
 
-  public function usercart(){
-            $cartData = array();
-            $cartData['cartUser'] = $this->MCart->mCartuser();
-            $this->load->view('vCart',$cartData);
-
+  // public function usercart(){
+  //           $cartData = array();
+  //           $cartData['cartUser'] = $this->MCart->mCartuser();
+  //           $this->load->view('vCart',$cartData);
+  //
 
   }
-}
 ?>

@@ -4,8 +4,7 @@
   <div class="row">
 
     <div class="col-lg-3">
-      <h1 class="my-4">Account Sumary <br></h1>
-
+      <h1 class="my-4">Order Summary</h1>
     </div>
     <!-- /.col-lg-3 -->
 
@@ -14,14 +13,8 @@
       <div class="card mt-4">
         <!-- <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt=""> -->
         <div class="card-body">
-          <h3 class="card-title">Welcome, <br><hr><?php echo "$custname "." $custlast";?><br><br></h3>
-
-
-          <h4 class="card-title">Order<hr><br><br><br></h4>
-
-
-
-          <h4 class="card-title">Purchase history<hr><br><br><br></h4>
+          <h3 class="card-title">Order detail</h3>
+          <button type="button" name="button" class="btn btn-success pull-right">Confirm Payment</button><br>
         </div>
       </div>
       <!-- /.card -->

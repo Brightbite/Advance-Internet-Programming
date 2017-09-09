@@ -5,8 +5,9 @@ class cProduct extends CI_Controller {
 
   function __construct(){
           parent::__construct();
+          $this->load->library('session');
           $this->load->helper('url');
-          //$this->load->model('RP/mUser','MUser'); //load model first before view
+          $this->load->model('mProduct','MProduct'); //load model first before view
   }
 
   public function index()
@@ -18,16 +19,23 @@ class cProduct extends CI_Controller {
       'author' => 'Kunanon Pititheerachot #12634123 UTS'
     );
 
-    $index = array(
-      'top' => 'Product'
-    );
+    // $index = array(
+    //   'top' => 'Product'
+    // );
 
-    $data = array();
+    // $data = array();
     $this->load->view('template/header',$header);
-    $this->load->view('vProduct',$index); //load view
+    // $this->load->view('vProduct',$index); //load view
+    $ProductID = $this->input->get('prod_ID');
+    $arrayProduct = array();
+    $arrayProduct['ProductDetail'] = $this->MProduct->mProDetail($ProductID);
+    $this->load->view('vProduct',$arrayProduct);
+
+
+
     $this->load->view('template/footer');
 
+
   }
-  //showing updated table load from model
 }
 ?>
