@@ -14,6 +14,7 @@ $route['account']   = 'cMyaccount/index';
 $route['order']     = 'cOrder/index';
 $route['cart']      = 'cCart/index';
 $route['user_cart'] = 'cCart/usercart';
+$route['checkout']  = 'cCheckout/index';
 $route['user']      = 'cUser/index';
 $route['user_list'] = 'cUser/userlist';
 $route['save']      = 'cUser/save';
