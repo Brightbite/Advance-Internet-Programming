@@ -11,9 +11,20 @@ class cHome extends CI_Controller {
 
   public function index()
   {
+    $header = array(
+      'title' => 'Homepage',
+      'keywords' => 'shopping',
+      'description' => 'this is web application for online retailer',
+      'author' => 'Kunanon Pititheerachot #12634123 UTS'
+    );
+
+    $index = array(
+      'top' => 'Home'
+    );
+
     $data = array();
-    $this->load->view('RP/template/header');
-    $this->load->view('RP/vHome'); //load view
+    $this->load->view('RP/template/header',$header);
+    $this->load->view('RP/vHome',$index); //load view
     $this->load->view('RP/template/footer');
 
   }

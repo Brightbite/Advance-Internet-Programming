@@ -12,11 +12,19 @@ class cUser extends CI_Controller {
   public function index()
   {
     $header = array(
-      'title' => 'Homepage',
+      'title' => 'Userpage',
+      'keywords' => 'shopping',
+      'description' => 'Userpage',
+      'author' => 'Kunanon Pititheerachot #12634123 UTS'
     );
+    $index = array(
+      'top' => 'User list',
+    );
+
     $data = array();
-    $this->load->view('RP/template/header'); //header
-    $this->load->view('RP/vUser',$data); //load view
+
+    $this->load->view('RP/template/header',$header); //header
+    $this->load->view('RP/vUser',$index); //load view
     $this->load->view('RP/template/footer'); //footer
   }
   //showing updated table load from model
