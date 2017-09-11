@@ -1,9 +1,14 @@
-<<<<<<< HEAD
 /*.btn-success{
   background: #000000;
 }*/
-=======
-/*.btn-success{
-  background: #000000;
-}*/
->>>>>>> test commit
+button {
+    cursor: pointer;
+}
+
+input {
+  cursor: pointer;
+}
+
+.fb:hover{
+  opacity: 0.9;
+}
