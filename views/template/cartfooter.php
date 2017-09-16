@@ -1,8 +1,8 @@
 
 </body>
-<!-- Footer -->
 <br><br><br>
-<footer class="footer py-5 bg-dark">
+<!-- Footer -->
+<footer class="footer py-5 bg-dark ">
   <div class="container">
     <p class="text-muted m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
     <p class = "float-right"><a href="#" class="text-light"> <i class="fa fa-chevron-up text-light" aria-hidden="true"></i>Back to top</a></p>
@@ -11,8 +11,8 @@
 
     <!-- Javascript -->
     <script type="text/javascript" src="<?php echo base_url('application/assets/js/'); ?>bootstrap.js"></script>
-    <script type="text/javascript" src="<?php echo base_url('application/assets/src/'); ?>juser.js"></script>
     <!-- <script type="text/javascript" src="</?php echo base_url('application/assets/RP/js/'); ?>bootstrap.min.js"></script> -->
+    <script type="text/javascript" src="<?php echo base_url('application/assets/src/'); ?>jcart.js"></script>
     <script type="text/javascript" src="<?php echo base_url('application/assets/vendor/jquery/'); ?>jquery.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url('application/assets/vendor/popper/'); ?>popper.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url('application/assets/vendor/bootstrap/js/'); ?>bootstrap.js"></script>

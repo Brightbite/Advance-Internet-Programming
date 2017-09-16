@@ -8,17 +8,27 @@
        }
 
        public function mProDetail($ProdID){
-             $SQL = "SELECT * FROM product WHERE 1";
-             if ($ProdID !='') {
-                 $SQL.=" AND ProductID = '$ProdID'";
-             }
+             $SQL = "SELECT * FROM product WHERE ProductID = '$ProdID'";
+
 
              $query = $this->db->query($SQL);
              if ($query->num_rows() > 0) {
-               return $query->result();
+               return $query->row();
              }else{
                return 'empty';
              }
+       }
+
+       public function mProductByCat($CatalogID){
+
+               $SQL = "SELECT * FROM product WHERE CategoryID = '$CatalogID'";
+
+               $query = $this->db->query($SQL);
+               if ($query->num_rows() > 0) {
+                 return $query->result();
+               }else{
+                 return 'empty';
+               }
        }
 }
 
