@@ -12,6 +12,17 @@ class cMyaccount extends CI_Controller {
 
   public function index()
   {
+
+    $custAddr1  = $this->session->userdata('customerAddr1Sess');
+    $custAddr2  = $this->session->userdata('customerAddr2Sess');
+    $custCity   = $this->session->userdata('customerCitySess');
+    $custState  = $this->session->userdata('customerStateSess');
+    $custPostcode = $this->session->userdata('customerPostcodeSess');
+    $custCountry  = $this->session->userdata('customerCountrySess');
+    $custEmail = $this->session->userdata('customerEmailSess');
+    $custTel      = $this->session->userdata('customerTelSess');
+
+
     if ($this->session->has_userdata('PrivilegeID')) {
         $PrivilegeID = $this->session->userdata('PrivilegeID');
     }else {
@@ -30,6 +41,11 @@ class cMyaccount extends CI_Controller {
         $custlast = '';
     }
 
+    if ($this->session->has_userdata('PrivilegeID')) {
+        $PrivilegeID = $this->session->userdata('PrivilegeID');
+    }else {
+        $PrivilegeID = '';
+    }
 
     $header = array(
       'title' => 'My Account',
@@ -37,14 +53,24 @@ class cMyaccount extends CI_Controller {
       'description' => 'this is web application for online retailer',
       'author' => 'Kunanon Pititheerachot #12634123 UTS',
       'custname'=> $custname,
-      'custlast'  => $custlast
+      // 'custlast'  => $custlast,
+      'privid' => $PrivilegeID,
+
 
     );
 
     $index = array(
       'top' => 'Home',
-      ''  => $custname,
-      ''  => $custlast
+      'custname'  => $custname,
+      'custlast'  => $custlast,
+      'custAddr1' => $custAddr1,
+      'custAddr2' => $custAddr2,
+      'custCity'  => $custCity,
+      'custState' => $custState,
+      'custPostcode' => $custPostcode,
+      'custCountry' => $custCountry,
+      'custEmail' => $custEmail,
+      'custTel' => $custTel
     );
 
     $data = array();

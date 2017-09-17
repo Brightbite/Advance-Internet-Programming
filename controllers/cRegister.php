@@ -11,11 +11,26 @@ class cRegister extends CI_Controller {
 
   public function index()
   {
+    if ($this->session->has_userdata('customerNameSess')) {
+        $custname = $this->session->userdata('customerNameSess');
+    }else {
+        $custname = '';
+    }
+
+    if ($this->session->has_userdata('PrivilegeID')) {
+        $PrivilegeID = $this->session->userdata('PrivilegeID');
+    }else {
+        $PrivilegeID = '';
+    }
+
     $header = array(
       'title' => 'Register Page',
       'keywords' => 'shopping',
       'description' => 'Register',
-      'author' => 'Kunanon Pititheerachot #12634123 UTS'
+      'author' => 'Kunanon Pititheerachot #12634123 UTS',
+      'custname' => $custname,
+      'PrivilegeID'=> $PrivilegeID,
+      'privid' => $PrivilegeID
     );
     $index = array(
       'top' => 'Create Account',

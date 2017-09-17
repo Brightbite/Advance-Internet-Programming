@@ -1,24 +1,18 @@
 <?php
 defined('BASEPATH' OR exit('No direct script access allowed'));
 
-class cCatalog_Detail extends CI_Controller {
+class cCreditcard extends CI_Controller {
 
   function __construct(){
           parent::__construct();
+          $this->load->library('cart');
           $this->load->library('session');
+          // $this->load->library('paypalexpress');
           $this->load->helper('url');
-          $this->load->model('mProduct','MProduct'); //load model first before view
-          $this->load->model('mCatalog','MCatalog'); //load model first before view
   }
 
-  public function index($productID)
+  public function index()
   {
-    if ($this->session->has_userdata('PrivilegeID')) {
-        $PrivilegeID = $this->session->userdata('PrivilegeID');
-    }else {
-        $PrivilegeID = '';
-    }
-
     if ($this->session->has_userdata('customerNameSess')) {
         $custname = $this->session->userdata('customerNameSess');
     }else {
@@ -31,23 +25,36 @@ class cCatalog_Detail extends CI_Controller {
         $custlast = '';
     }
 
+    if ($this->session->has_userdata('PrivilegeID')) {
+        $PrivilegeID = $this->session->userdata('PrivilegeID');
+    }else {
+        $PrivilegeID = '';
+    }
+
+
     $header = array(
-      'title' => 'Product',
-      'keywords' => 'shopping',
+      'title' => 'My Account',
+      'keywords' => 'account',
       'description' => 'this is web application for online retailer',
       'author' => 'Kunanon Pititheerachot #12634123 UTS',
-      'custname' => $custname,
-      'PrivilegeID'=> $PrivilegeID,
+      'custname'=> $custname,
+      'custlast'  => $custlast,
       'privid' => $PrivilegeID
+
     );
 
-    $aCatalog = $this->MCatalog->mCatalogList();
-
     $this->load->view('template/header',$header);
-    $arrayProduct = array('Catalog'=>$aCatalog);
-    $arrayProduct['ProductDetail'] = $this->MProduct->mProDetail($productID);
-    $this->load->view('vCatalog_Detail',$arrayProduct);
+    // // $this->load->view('vCart',$index); //load view
+    // $cartData = array();
+    // $cartData['cartUser'] = $this->MCart->mCartuser();
+    $this->load->view('vCreditcard');
     $this->load->view('template/footer');
+    // // $pvlList = $this->MCart->mCartuser();
   }
+
+  public function shippingAddress(){
+
+  }
+
 }
 ?>

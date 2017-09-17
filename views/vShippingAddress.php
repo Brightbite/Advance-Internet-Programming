@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-          <h3 class="text-info"><i class="fa fa-truck fa-3x" aria-hidden="true"></i> Shipping Address</h3><hr>
+          <h3 class="text-dark"><i class="text-info fa fa-truck fa-3x" aria-hidden="true"></i> Shipping Address</h3><hr>
           <div class="modal-body text-secondary">
             <form method="post" id="formshipping"  enctype="multipart/form-data" action="checkout">
                 First name<br>
@@ -45,7 +45,7 @@
                   </div>
                 </div>
                 <br><hr>
-
+                <input type="hidden" name="custID" class="form-control" id="custID" value="<?=$custID?>">
           </div>
             <button type="button" class="btn btn-light pull-left" onclick="backtocart()"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Cart</button>
             <button type="submit" class="btn btn-primary pull-right" >Continue to Checkout <i class="fa fa-arrow-right" aria-hidden="true"></i></button>

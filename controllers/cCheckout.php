@@ -43,7 +43,7 @@ class cCheckout extends CI_Controller {
       'privid' => $PrivilegeID
 
     );
-
+    $shippingUserID = $this->input->post('custID');
     $shippingFirstname = $this->input->post('sFname');
     $shippingLastname = $this->input->post('sLname');
     $shippingAddr = $this->input->post('sAddr');
@@ -55,7 +55,8 @@ class cCheckout extends CI_Controller {
     $shippingEmail = $this->input->post('sEmails');
     $shippingTel = $this->input->post('sTels');
 
-    $address = array('shippingFirstname' => $shippingFirstname,
+    $address = array( 'shippingUserID' => $shippingUserID,
+                      'shippingFirstname' => $shippingFirstname,
                       'shippingLastname' => $shippingLastname,
                       'shippingAddr' => $shippingAddr,
                       'shippingAddr2' => $shippingAddr2,
@@ -67,6 +68,7 @@ class cCheckout extends CI_Controller {
                       'shippingTel' => $shippingTel
                       );
 
+  
     $this->session->set_userdata($address);
     $this->load->view('template/header',$header);
 
@@ -83,73 +85,7 @@ class cCheckout extends CI_Controller {
   //
   // }
 
-  public function saveorder($paymentType){
 
-        if ($this->session->has_userdata('customerIDSess')) {
-            $custID = $this->session->userdata('customerIDSess');
-        }else {
-            $custID = '';
-        }
-
-        if ($this->session->has_userdata('shippingFirstname')) {
-            $shipFirstName = $this->session->userdata('shippingFirstname');
-        }else {
-            $shipFirstName = '';
-        }
-
-          $olastOrder =  $this->MOrder->mgetOrderID();
-          $tlastOrder = $olastOrder->OrderID;
-          date_default_timezone_set("Australia/Sydney");
-          //echo $tlastOrder;
-          $cDate = date('d');
-          $cMonth = date('m');
-          $cYear = date('Y');
-          $cTime = date('H:i:s');
-          if ($tlastOrder == 'empty') {
-              $nOrder = $cDate.$cMonth.$cYear.'-1';
-          }else{
-
-              $aLastOrder = explode("-",$tlastOrder);
-              echo $aLastOrder[1];
-              $nNext = $aLastOrder[1] + 1;
-              $nOrder = $aLastOrder[0].'-'.$nNext;
-          }
-
-          $OrderDate = $cYear.'-'.$cMonth.'-'.$cDate.' '.$cTime;
-
-          //save order
-          $OrderData = array('OrderID' => $nOrder,
-                             'CustomerID' => $custID,
-                             'OrderTotal' => $this->cart->total(),
-                             'PaymentType' => $paymentType,
-                             'ShippingName' => $shipFirstName,
-                             'OrderDate' => $OrderDate
-         );
-         $this->MOrder->msaveOrder($OrderData);
-
-          if ($cart = $this->cart->contents()){
-              foreach ($cart as $item){
-                       $order_detail = array(
-                       'OrderID' => $nOrder,
-                       'ProductID' => $item['id'],
-                       'Quantity' => $item['qty'],
-                       'Price' => $item['price']
-                       );
-
-                       echo var_dump($order_detail);
-
-                       // Insert product imformation with order detail, store in cart also store in database.
-
-                      $this->MOrder->msaveOrderDetail($order_detail);
-             }
-
-             $this->cart->destroy();
-          }
-
-          redirect('home');
-
-
-  }
 
 }
 ?>

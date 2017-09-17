@@ -23,7 +23,11 @@
           return 'empty';
         }
   }
-  
+
+  public function mSavepayment($DataPayment){
+    $this->db->insert('payment',$DataPayment);
+  }
+
   public function msaveOrder($OrderData){
       $this->db->insert('orders',$OrderData);
   }

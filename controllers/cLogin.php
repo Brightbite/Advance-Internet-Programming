@@ -25,7 +25,7 @@ class cLogin extends CI_Controller {
 
     $data = array();
     $this->load->view('template/header',$header);
-    $this->load->view('vHome',$index); //load view
+    $this->load->view('vLogscreen',$index); //load view
     $this->load->view('template/footer');
 
   }
@@ -43,14 +43,19 @@ class cLogin extends CI_Controller {
             }else{
               echo $csinfo->PrivilegeID;
 
-              $cusdata = array( 'customerNameSess'  =>  $csinfo->CustomerFirstname,
-                                'customerLastSess' =>  $csinfo->CustomerLastname,
-                                'PrivilegeID'          =>  $csinfo->PrivilegeID,
-                                'usernameSess'     =>  $csinfo->Username,
-                                // 'csOderID'          =>  $csinfo->OrderID,
-                                // 'csOderNumber'      =>  $csinfo->OderNumber,
-                                // 'csID'              =>  $csinfo->customerID,
-                                // 'descSess'         =>  $csinfo->PrivilegeDesc
+              $cusdata = array( 'customerIDSess'   =>   $csinfo->CustomerID,
+                                'customerNameSess' =>   $csinfo->CustomerFirstname,
+                                'customerLastSess' =>   $csinfo->CustomerLastname,
+                                'PrivilegeID'      =>   $csinfo->PrivilegeID,
+                                'usernameSess'     =>   $csinfo->Username,
+                                'customerAddr1Sess'=>   $csinfo->CustomerAddr1,
+                                'customerAddr2Sess'=>   $csinfo->CustomerAddr2,
+                                'customerCitySess' =>   $csinfo->City,
+                                'customerStateSess'=>   $csinfo->State,
+                                'customerPostcodeSess'=>  $csinfo->Postcode,
+                                'customerCountrySess' => $csinfo->Country,
+                                'customerTelSess'  =>   $csinfo->CustomerTel,
+                                'customerEmailSess'=>   $csinfo->Email
                               );
 
                 $this->session->set_userdata($cusdata);

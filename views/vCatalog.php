@@ -1,10 +1,8 @@
 <div class="container">
 
   <div class="row">
-
     <div class="col-lg-3">
-
-      <h1 class="my-4"><?php echo $top;?></h1>
+      <h1 class="my-4 text-info"><?php echo $top;?></h1>
       <div class="list-group">
         <?php if(is_array($Catalog) == true){ ?>
         <?php foreach ($Catalog as  $catalog) {   $catalog->CategoryID; ?>
@@ -13,12 +11,9 @@
       <?php }else{ ?>
          <a href="" class="list-group-item">All Catalog</a>
       <?php } ?>
-
       </div>
-
-
     </div>
-
+    
       <div class="col-lg-9">
         <br><br>
         <div class="row">

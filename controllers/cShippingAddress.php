@@ -13,7 +13,7 @@ class cShippingAddress extends CI_Controller {
 
   public function index()
   {
-
+        $custID     = $this->session->userdata('customerIDSess');
         $custAddr1  = $this->session->userdata('customerAddr1Sess');
         $custAddr2  = $this->session->userdata('customerAddr2Sess');
         $custCity   = $this->session->userdata('customerCitySess');
@@ -55,6 +55,7 @@ class cShippingAddress extends CI_Controller {
 
     $index = array(
       'top' => 'Home',
+      'custID'    => $custID,
       'custname'  => $custname,
       'custlast'  => $custlast,
       'custAddr1' => $custAddr1,

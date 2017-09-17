@@ -9,6 +9,7 @@ class cCart extends CI_Controller {
           $this->load->library('session');
           $this->load->helper('url');
           $this->load->model('mCart','MCart'); //load model first before view
+          $this->load->helper('form');
   }
 
   public function index()
@@ -31,16 +32,7 @@ class cCart extends CI_Controller {
         $custlast = '';
     }
 
-    if ($this->session->has_userdata('csOderID')) {
-        $custOdId= $this->session->userdata('csOderID');
-    }else {
-        $custOdId = '';
-    }
-    if ($this->session->has_userdata('csOderNumber')) {
-        $custOdNum = $this->session->userdata('csOderNumber');
-    }else {
-        $custOdNum = '';
-    }
+
     if ($this->session->has_userdata('csID')) {
         $custID = $this->session->userdata('csID');
     }else {
@@ -49,12 +41,13 @@ class cCart extends CI_Controller {
 
 
     $header = array(
-      'title' => 'My Account',
+      'title' => 'Shopping Cart',
       'keywords' => 'account',
       'description' => 'this is web application for online retailer',
       'author' => 'Kunanon Pititheerachot #12634123 UTS',
       'custname'=> $custname,
-      'custlast'  => $custlast
+      'custlast'  => $custlast,
+      'privid' => $PrivilegeID
 
     );
 
@@ -79,7 +72,7 @@ class cCart extends CI_Controller {
     $cartData = array();
     $cartData['cartUser'] = $this->MCart->mCartuser();
     $this->load->view('vCart',$cartData);
-    $this->load->view('template/footer');
+    $this->load->view('template/cartfooter');
     // $pvlList = $this->MCart->mCartuser();
   }
 
@@ -87,8 +80,58 @@ class cCart extends CI_Controller {
             $cartData = array();
             $cartData['cartUser'] = $this->MCart->mCartuser();
             $this->load->view('vCart',$cartData);
+  }
+
+  public function addtocart(){
+
+        $ProdID = $this->input->post('prodID');
+        $ProdName = $this->input->post('prodName');
+        $ProdPrice = $this->input->post('prodPrice');
+        $ProdQty = $this->input->post('qty');
+        $ProdPic = $this->input->post('prodPic');
+        $data = array(
+        'id'      => $ProdID,
+        'qty'     => $ProdQty,
+        'price'   => $ProdPrice,
+        'name'    => $ProdName,
+        'image' => $ProdPic
+        );
+
+        $this->cart->insert($data);
+        redirect('cart');
+        //$this->index();
+  }
+
+  public function updatecart(){
+         $i =1;
+          foreach ($this->cart->contents() as $item) {
+                   $cart_up_data[] = array(
+                   'rowid' => $item['rowid'],
+                   'qty' => $this->input->post('qty'.$i)
+                   );
+                   $i++;
+           }
+
+          $this->cart->update($cart_up_data);
+          redirect('cart');
+          // $this->index();
+
+  }
+
+  public function removeitem($rowid){
+         $data = array(
+                  'rowid' =>$rowid ,
+                  'qty'   => 0
+               );
 
 
+           $this->cart->update($data);
+           redirect('cart');
+  }
+
+  public function remove_allitem(){
+            $this->cart->destroy();
+            redirect('cart');
   }
 }
 ?>

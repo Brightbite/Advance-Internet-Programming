@@ -1,19 +1,37 @@
 <!-- <body> -->
     <div class="container">
-      <h1 class="my-4"><?php echo $top; ?></h1>
-
+      <h1 class="my-4  text-info"><?php echo $top;?></h1>
         <div class="row">
-          <div class="col-md-12">
-            <h3 class="my-4"><?php echo $topic;?></h3>
+          <div class="col-md-12 text-secondary">
             <hr>
-
             <form method="post" id="formadduser"  enctype="multipart/form-data">
               First name:<br>
               <input type="text" name="sFirstname" id="sFirstname" class="form-control" required autocomplete="false" placeholder="Firstname" maxlength="20"><br>
               Last name:<br>
               <input type="text" name="sLastname" id="sLastname" class="form-control" required placeholder = "Lastname" maxlength="20"><br>
-              Address:<br>
-              <input type="text" name="sAddress" id="sAddress" class="form-control" required  placeholder="Street / City / Country" maxlength="100"><br>
+              Address1:<br>
+              <input type="text" name="sAdd1" id="sAddress1" class="form-control" required  placeholder="Address Line 1" maxlength="100"><br>
+              Address Line 2<br>
+              <input type="text" name="sAddr2" id="sAddress2" class="form-control" required  placeholder="Address Line 2" maxlength="100"><br>
+              <div class="form-group row">
+                <label class="col-md-12 col-form-label">City</label>
+                <div class="col-md-12">
+                  <input type="text" name="sCity" id="sCity" class="form-control" required  placeholder="City" maxlength="100"><br>
+                </div>
+                <label class="col-md-6 col-form-label">State</label>
+                <label class="col-md-6 col-form-label">Postcode</label>
+                <div class="col-md-6">
+                  <input type="text" name="sState" id="sState" class="form-control" required placeholder="State" maxlength="10" >
+                </div>
+                <div class="col-md-6">
+                  <input type="text" name="sPostcode" id="sPostcode" class="form-control" required placeholder="Postcode" maxlength="10">
+                </div>
+
+                <label class="col-md-12 col-form-label">Country</label>
+                <div class="col-md-12">
+                  <input type="text" name="sCountry" id="sCountry" class="form-control" required placeholder="Country" maxlength="20">
+                </div>
+              </div>
 
               <div class="form-group row">
                 <label class="col-md-6 col-form-label">Username</label>

@@ -1,17 +1,17 @@
 <?php
 defined('BASEPATH' OR exit('No direct script access allowed'));
 
-class cCatalog_Detail extends CI_Controller {
+class cCatalog extends CI_Controller {
 
   function __construct(){
           parent::__construct();
           $this->load->library('session');
           $this->load->helper('url');
-          $this->load->model('mProduct','MProduct'); //load model first before view
           $this->load->model('mCatalog','MCatalog'); //load model first before view
+
   }
 
-  public function index($productID)
+  public function index()
   {
     if ($this->session->has_userdata('PrivilegeID')) {
         $PrivilegeID = $this->session->userdata('PrivilegeID');
@@ -31,23 +31,35 @@ class cCatalog_Detail extends CI_Controller {
         $custlast = '';
     }
 
+
+
     $header = array(
-      'title' => 'Product',
+      'title' => 'Catalog',
       'keywords' => 'shopping',
       'description' => 'this is web application for online retailer',
       'author' => 'Kunanon Pititheerachot #12634123 UTS',
-      'custname' => $custname,
-      'PrivilegeID'=> $PrivilegeID,
-      'privid' => $PrivilegeID
+      'custname'=> $custname,
+      'custlast'=>$custlast
     );
 
     $aCatalog = $this->MCatalog->mCatalogList();
 
+    $index = array(
+      'top' => 'Catalog',
+      'Catalog' => $aCatalog
+    );
+
+
+
+    $data = array();
     $this->load->view('template/header',$header);
-    $arrayProduct = array('Catalog'=>$aCatalog);
-    $arrayProduct['ProductDetail'] = $this->MProduct->mProDetail($productID);
-    $this->load->view('vCatalog_Detail',$arrayProduct);
+    $this->load->view('vCatalog',$index); //load view
     $this->load->view('template/footer');
+
   }
+  // public function login(){
+  //
+  // }
+
 }
 ?>

@@ -25,12 +25,6 @@ class cUser extends CI_Controller {
           $PrivilegeID = '';
       }
 
-      // if ($this->session->has_userdata('descSess')) {
-      //     $PrivDesc = $this->session->userdata('descSess');
-      // }else {
-      //     $PrivDesc = '';
-      // }
-
        if (isset($PrivilegeID)){
          if ($PrivilegeID == ''){
             echo "<script>   alert('You are not allowed !'); window.location = 'home'; </script>";
@@ -48,7 +42,8 @@ class cUser extends CI_Controller {
         'description' => 'Userpage',
         'author' => 'Kunanon Pititheerachot #12634123 UTS',
         'custname' => $custname,
-        'PrivilegeID'=> $PrivilegeID
+        'PrivilegeID'=> $PrivilegeID,
+        'privid' => $PrivilegeID
       );
 
       $pvlList = $this->MUser->mPrivilegeList();
@@ -68,7 +63,7 @@ class cUser extends CI_Controller {
   //showing updated table load from model
   public function userlist(){
           $aData = array(
-
+            
           );
          $firstname_f = $this->input->get('fristname_f');       //get post data from view page
          $lastname_f = $this->input->get('lastname_f');
@@ -84,7 +79,12 @@ class cUser extends CI_Controller {
       $privilege = $this->input->post('sPrivilege');
       $firstname = $this->input->post('sFirstname');       //get post data from view page
       $lastname = $this->input->post('sLastname');
-      $address = $this->input->post('sAddress');
+      $address1 = $this->input->post('sAddress1');
+      $address2 = $this->input->post('sAddress2');
+      $city = $this->input->post('sCity');
+      $state = $this->input->post('sState');
+      $postcode = $this->input->post('sPostcode');
+      $country = $this->input->post('sCountry');
       $username = $this->input->post('sUsername');
       $password = $this->input->post('sPassword');
       $email = $this->input->post('sEmail');
@@ -102,7 +102,12 @@ class cUser extends CI_Controller {
         //save new user to register
         $data = array('CustomerFirstname' =>$firstname ,        //store data from view page as array
                       'CustomerLastname'=>$lastname,
-                      'CustomerAddr' => $address,
+                      'CustomerAddr1' => $address1,
+                      'CustomerAddr2' => $address2,
+                      'City' => $city,
+                      'State' => $state,
+                      'Postcode' => $postcode,
+                      'Country' => $country,
                       'Username' => $username,
                       'Password' => $pwEnc,
                       'Email' => $email,
@@ -124,7 +129,12 @@ class cUser extends CI_Controller {
         $data = array(
                         'CustomerFirstname' =>$firstname ,        //store data from view page as array
                         'CustomerLastname'=>$lastname,
-                        'CustomerAddr' => $address,
+                        'CustomerAddr1' => $address1,
+                        'CustomerAddr2' => $address2,
+                        'City' => $city,
+                        'State' => $state,
+                        'Postcode' => $postcode,
+                        'Country' => $country,
                         'Username' => $username,
                         'Password' => $pwEnc,
                         'Email' => $email,
@@ -140,7 +150,12 @@ class cUser extends CI_Controller {
       $privilegeid = $this->input->post('sPrivilegeID');
       $firstname = $this->input->post('sFirstname');       //get post data from view page
       $lastname = $this->input->post('sLastname');
-      $address = $this->input->post('sAddress');
+      $address1 = $this->input->post('sAddress1');
+      $address2 = $this->input->post('sAddress2');
+      $city = $this->input->post('sCity');
+      $state = $this->input->post('sState');
+      $postcode = $this->input->post('sPostcode');
+      $country = $this->input->post('sCountry');
       $username = $this->input->post('sUsername');
       $password = $this->input->post('sPassword');
       $email = $this->input->post('sEmail');
@@ -158,7 +173,12 @@ class cUser extends CI_Controller {
         //save new user to register
         $data = array('CustomerFirstname' =>$firstname ,        //store data from view page as array
                       'CustomerLastname'=>$lastname,
-                      'CustomerAddr' => $address,
+                      'CustomerAddr1' => $address1,
+                      'CustomerAddr2' => $address2,
+                      'City' => $city,
+                      'State' => $state,
+                      'Postcode' => $postcode,
+                      'Country' => $country,
                       'Username' => $username,
                       'Password' => $pwEnc,
                       'Email' => $email,
@@ -180,7 +200,12 @@ class cUser extends CI_Controller {
         $data = array(
                         'CustomerFirstname' =>$firstname ,        //store data from view page as array
                         'CustomerLastname'=>$lastname,
-                        'CustomerAddr' => $address,
+                        'CustomerAddr1' => $address1,
+                        'CustomerAddr2' => $address2,
+                        'City' => $city,
+                        'State' => $state,
+                        'Postcode' => $postcode,
+                        'Country' => $country,
                         'Username' => $username,
                         'Password' => $pwEnc,
                         'Email' => $email,

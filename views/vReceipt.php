@@ -2,11 +2,11 @@
   <div class="row">
     <div class="col-md-12">
       <!-- col-md-12 -->
-      <h3 class="text-dark"><i class="text-info fa fa-shopping-basket fa-3x" aria-hidden="true"></i> Checkout</h3><hr>
+      <h3 class="text-dark"><i class="text-info fa fa-check-circle-o fa-3x" aria-hidden="true"></i> Receipt</h3><hr>
     </div>
 
     <div class="col-md-6 text-secondary">
-      <h5 class="text-secondary"><i class="text-dark fa fa-truck" aria-hidden="true"></i> Delivery to</h5><hr>
+      <h5 class="text-secondary"><i class="text-info fa fa-truck" aria-hidden="true"></i> Delivery to</h5><hr>
         Firstname:       <?php echo $shippingFirstname;?><br>
         Lastname:        <?php echo $shippingLastname;?><br>
         Address Line 1:  <?php echo $shippingAddr;?><br>
@@ -17,43 +17,19 @@
         Country:         <?php echo $shippingCountry;?><br>
         Email:           <?php echo $shippingEmail;?><br>
         Contact Number:  <?php echo $shippingTel;?><br>
-        <input type="hidden" id="payment_method" value="1">
+        <!-- <input type="text" id="payment_method" value="1"> -->
       </div>
     <div class="col-lg-6 text-secondary">
-      <h5 class="text-dark"><i class="text-danger fa fa-credit-card-alt" aria-hidden="true"></i> Payment Method</h5><hr>
-      <div class="custom-controls-stacked">
-        <small class="text-muted">
-          Choose your payment method.
-        </small><br>
-        <label class="custom-control custom-radio">
-          <input name="payMethod" type="radio" class="custom-control-input" value="" checked onclick="select_credit()">
-          <span class="custom-control-indicator"></span>
-          <span class="custom-control-description">
-            <i class="text-info fa fa-cc-visa fa-2x" aria-hidden="true"></i>
-            <i class="text-success fa fa-cc-mastercard fa-2x" aria-hidden="true"></i>
-            <i class="text-primary fa fa-cc-amex fa-2x" aria-hidden="true"></i>
-            <i class="text-warning fa fa-cc-discover fa-2x" aria-hidden="true"></i><br>
-            <small class="text-muted">
-              Credit or debit card.
-            </small>
-          </span>
-        </label><br>
-        <label class="custom-control custom-radio">
-          <input name="payMethod" type="radio" class="custom-control-input" value="" onclick="select_paypal()">
-          <span class="custom-control-indicator"></span>
-          <span class="custom-control-description">
-            <i class="text-primary fa fa-cc-paypal fa-2x" aria-hidden="true"></i><br>
-            <small class="text-muted">
-              Paypal.
-            </small>
-          </span>
-
-        </label>
-        <input type="hidden" name="" id="payMethod" value="credit">
-      </div>
+      <h5 class="text-dark"><i class="text-info fa fa-credit-card-alt" aria-hidden="true"></i> Payment Method</h5><hr>
+      <?php if (isset($paymentType)){ ?>
+           <?php if ($paymentType == '1') { ?>
+                  Payment Type: Credit Card
+            <?php } else{?>Payment Type: Paypal<?php } ?>
+       <?php } ?>
     </div>
+
     <div class="col-lg-12 text-secondary"><hr>
-      <h5 class="text-secondary"><i class="text-dark fa fa-opencart" aria-hidden="true"></i> Item Summary</h5><hr>
+      <h5 class="text-secondary"><i class="text-info fa fa-opencart" aria-hidden="true"></i> Item Summary</h5><hr>
       <table cellpadding="6" cellspacing="1" style="width:100%" border="0">
       <tr>
            <th class="text-secondary">Product ID</th>
@@ -68,7 +44,7 @@
            <?php echo form_hidden('rowid'.$i, $items['rowid']); ?>
            <tr>
               <td class="text-info"># <?php echo $items['id'];?></td>
-              <td><img src="<?php echo $items['image'];?>" style="height:50px; width:50px"></td>
+              <td></?php echo $items['image'];?></td>
                    <td class="text-dark"><h6>
                            <?php echo $items['name']; ?>
                            <?php if ($this->cart->has_options($items['rowid']) == TRUE): ?>
@@ -93,8 +69,8 @@
       </table>
     </div>
     <div class="col-lg-12 text-secondary"><hr>
-      <button type="button" class="btn btn-light pull-left" onclick="backtoship()"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Shipping Address</button>
-      <button type="button" class="btn btn-primary pull-right" onclick="payment()">Confirm and Pay <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+      <button type="button" class="btn btn-dark pull-left" onclick="email()"><i class="fa fa-share" aria-hidden="true"></i> Email the receipt</button>
+      <button type="button" class="btn btn-primary pull-right" onclick="backtoshopping()"> Back to Shopping <i class="fa fa-reply" aria-hidden="true"></i></button>
     </div>
     <!-- /.col-lg-9 -->
   </div>
@@ -102,25 +78,25 @@
 <!-- /.container -->
 
 <script type="text/javascript">
-        function backtoship(){
-            window.location = 'shipping';
+        function backtoshopping(){
+            window.location = 'home';
         }
-
-        function select_paypal(){
-            $('#payment_method').val(2);
-        }
-
-        function select_credit(){
-            $('#payment_method').val(1);
-        }
-
-        function payment(){
-            if ($('#payment_method').val()==1){
-               window.location = 'credit';
-            }else{
-               window.location = 'cpaypal';
-            }
-
-        }
+        //
+        // function select_paypal(){
+        //     $('#payment_method').val(2);
+        // }
+        //
+        // function select_credit(){
+        //     $('#payment_method').val(1);
+        // }
+        // //
+        // // function payment(){
+        // //     if ($('#payment_method').val()==1){
+        // //         window.location = 'credit';
+        // //     }else{
+        // //        window.location = 'cpaypal';
+        // //     }
+        // //
+        // // }
 
 </script>

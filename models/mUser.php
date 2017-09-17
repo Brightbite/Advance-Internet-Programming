@@ -11,13 +11,13 @@
               //SQL Statement
               $SQL = "SELECT * FROM customer WHERE 1 ";
               if ($fname !='') {
-                  $SQL.=" AND Firstname LIKE '%$fname%'";
+                  $SQL.=" AND CustomerFirstname LIKE '%$fname%'";
               }
               if ($lname !='') {
-                  $SQL.=" AND Lastname LIKE '%$lname%'";
+                  $SQL.=" AND customerLastname  LIKE '%$lname%'";
               }
               if ($email !=''){
-                $SQL.=" AND email LIKE '%$email%'";
+                  $SQL.=" AND Email     LIKE '%$email%'";
               }
               // echo $SQL;
               $query = $this->db->query($SQL);

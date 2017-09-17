@@ -8,9 +8,9 @@
        }
 
        public function Login ($username,$password){
-           $SQL = "SELECT CS.CustomerFirstname, CS.CustomerLastname, CS.Username, CS.PrivilegeID, CS.CustomerID
-                   FROM customer CS
-                   WHERE CS.Username = '$username' AND CS.Password = '$password'";
+           $SQL = "SELECT *
+                   FROM customer
+                   WHERE Username = '$username' AND Password = '$password'";
 
           //echo $SQL;
         //  $SQL = "SELECT firstname,lastname FROM member WHERE email = $email ";
