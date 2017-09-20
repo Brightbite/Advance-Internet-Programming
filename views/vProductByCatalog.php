@@ -11,7 +11,9 @@
       <div class="list-group">
             <?php if(is_array($Catalog) == true){ ?>
             <?php foreach ($Catalog as  $catalog) {   $catalog->CategoryID; ?>
-              <a href="<?php echo base_url();?>/product_by_catalog/<?php echo $catalog->CategoryID;?>/<?php echo $catalog->CategoryName;?>" class="bg-dark text-light list-group-item "><?php echo $catalog->CategoryName;?></a>
+              <a href="<?php echo base_url();?>/product_by_catalog/<?php echo $catalog->CategoryID;?>/<?php echo $catalog->CategoryName;?>"
+                class="bg-dark text-light list-group-item list-group-item-action"><?php echo $catalog->CategoryName;?>
+              </a>
             <?php } //end foreach ?>
           <?php }else{ ?>
              <a href="" class="bg-dark text-light list-group-item">All Catalog</a>
@@ -47,9 +49,38 @@
             <div class="card-body text-info">
               <h5>AUD <i class="fa fa-usd" aria-hidden="true"></i> <?php echo $productPrice ?>.00</h5>
 
-              <p class="text-secondary"><?php echo mb_substr($productDesc,0,150,'utf-8');?>...</p>
+              <p class="text-secondary"><?php echo mb_substr($productDesc,0,150,'utf-8');?>...</p><br>
+              <small>
+                <a class="text-muted pull-right" href="<?php echo base_url()?>catalog_detail/<?=$productID?>">more details...<input type="hidden" name="" value="<?php echo $productID;?>"></a>
+              </small>
             <!-- card body -->
             </div>
+            <div class="card-footer">
+
+              <form class="" action="<?php echo base_url()?>/addtocart" method="post">
+                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                  <div class="btn-group mr-1" role="group" aria-label="First group" style="width:50%">
+                    <!-- <span class="input-group-btn">
+                      <button type="button" class="btn btn-outline-dark"  id="bnt1"> - </button>
+                    </span> -->
+                    <input type="text" class="form-control" name="qty" id="qty" value="1" style="display:none">
+                    <input type="text" name="prodID" value="<?php echo $productID;?>" style="display:none">
+                    <input type="text" name="prodName" value="<?php echo $productName;?>" style="display:none">
+                    <input type="text" name="prodPrice" value="<?php echo $productPrice;?>" style="display:none">
+                    <input type="text" name="prodPic" value="<?php echo $productPicture;?>" style="display:none">
+                    <input type="text" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" style="display:none">
+                    <!-- <span class="input-group-btn">
+                      <button type="button" class="btn btn-outline-dark" id="bnt2"> + </button>
+                    </span> -->
+                  </div>
+                  <div class="btn-group" role="group" aria-label="Second group">
+                    <button  type="submit"  class=" btn-sm btn btn-dark pull-right"><i class="fa fa-cart-plus" aria-hidden="true"> Add to Cart</i></button>
+                  </div>
+                </div><!-- /input-group -->
+                </form>
+              <small class="text-muted"></small>
+            </div>
+
             <!-- content -->
           </div>
         </div>

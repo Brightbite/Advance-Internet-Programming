@@ -6,7 +6,7 @@
     </div>
 
     <div class="col-md-6 text-secondary">
-      <h5 class="text-secondary"><i class="text-info fa fa-truck" aria-hidden="true"></i> Delivery to</h5><hr>
+      <h5 class="text-secondary"><i class="text-info fa fa-truck" aria-hidden="true"></i> Shipping Address Summary</h5><hr>
         Firstname:       <?php echo $shippingFirstname;?><br>
         Lastname:        <?php echo $shippingLastname;?><br>
         Address Line 1:  <?php echo $shippingAddr;?><br>
@@ -20,65 +20,56 @@
         <!-- <input type="text" id="payment_method" value="1"> -->
       </div>
     <div class="col-lg-6 text-secondary">
-      <h5 class="text-dark"><i class="text-info fa fa-credit-card-alt" aria-hidden="true"></i> Payment Method</h5><hr>
+
+
+      <h5 class="text-secondary"><i class="text-info fa fa-credit-card-alt" aria-hidden="true"> Payment Summary</i> - Payment ID# <?php echo $lastPayment->PaymentID;?></h5><hr>
       <?php if (isset($paymentType)){ ?>
            <?php if ($paymentType == '1') { ?>
-                  Payment Type: Credit Card
-            <?php } else{?>Payment Type: Paypal<?php } ?>
+                  <img src="<?php echo base_url('application/assets/img/payment-methods-icons/60x40png/'); ?>visa.png" alt="">
+                  <img src="<?php echo base_url('application/assets/img/payment-methods-icons/60x40png/'); ?>mastercard.png" alt="">
+                  <img src="<?php echo base_url('application/assets/img/payment-methods-icons/60x40png/'); ?>american-express.png" alt="">
+                  <img src="<?php echo base_url('application/assets/img/payment-methods-icons/60x40png/'); ?>discover.png" alt=""><br><br>
+                  Name on card:       <?php echo $lastPayment->CardName;?><br>
+                  Card Number:        <?php echo $lastPayment->CardNumber;?><br>
+                  Card Expire:  <?php echo $lastPayment->CardExpire;?><br>
+            <?php } else {?><img src="<?php echo base_url('application/assets/img/payment-methods-icons/60x40png/'); ?>paypal.png" alt=""><br><?php } ?>
        <?php } ?>
-    </div>
 
+    </div>
     <div class="col-lg-12 text-secondary"><hr>
-      <h5 class="text-secondary"><i class="text-info fa fa-opencart" aria-hidden="true"></i> Item Summary</h5><hr>
+      <h5 class="text-secondary"><i class="text-info fa fa-opencart" aria-hidden="true"> Item Summary</i> - OrderID# <?php echo $lastPayment->OrderID;?></h5><hr>
       <table cellpadding="6" cellspacing="1" style="width:100%" border="0">
       <tr>
            <th class="text-secondary">Product ID</th>
            <th class="text-secondary">Picture</th>
-           <th class="text-secondary">Item Description</th>
+           <th class="text-secondary">Description</th>
            <th class="text-secondary">QTY</th>
            <th class="text-secondary" style="text-align:right">Item Price</th>
-           <th class="text-secondary" style="text-align:right">Sub-Total</th>
       </tr>
-      <?php $i = 1; ?>
-      <?php foreach ($this->cart->contents() as $items): ?>
-           <?php echo form_hidden('rowid'.$i, $items['rowid']); ?>
+      <?php foreach ($lastOrder as $showOrder) { ?>
            <tr>
-              <td class="text-info"># <?php echo $items['id'];?></td>
-              <td></?php echo $items['image'];?></td>
-                   <td class="text-dark"><h6>
-                           <?php echo $items['name']; ?>
-                           <?php if ($this->cart->has_options($items['rowid']) == TRUE): ?>
-                                   <p>
-                                           <?php foreach ($this->cart->product_options($items['rowid']) as $option_name => $option_value): ?>
-                                                   <strong><?php echo $option_name; ?>:</strong> <?php echo $option_value; ?><br />
-                                           <?php endforeach; ?>
-                                   </p>
-                           <?php endif; ?>
-                   </td></h6>
-                   <td><?php echo form_input(array('name' =>'qty'.$i, 'value' => $items['qty'], 'maxlength' => '3', 'size' => '3')); ?></td>
-                   <td style="text-align:right"><?php echo $this->cart->format_number($items['price']); ?></td>
-                   <td style="text-align:right"><i class="fa fa-usd text-success"></i><?php echo $this->cart->format_number($items['subtotal']); ?></td>
+                    <td class="text-success">#<?php echo $showOrder->ProductID;?></td>
+                    <td><img style="height:50px; width:50px" src="<?=$showOrder->ProductImage;?>" alt=""></td>
+                    <td class="text-dark"><?php echo $showOrder->ProductName;?></td>
+                    <td class="text-dark"><?php echo $showOrder->Quantity;?></td>
+                    <td style="text-align:right"><?php echo $showOrder->Price;?></td>
+
            </tr>
-      <?php $i++; ?>
-      <?php endforeach; ?>
-      <tr>
-           <td colspan="3"> </td>
-           <td class="pull-right text-dark"><strong>Total</strong></td>
-           <td class="" style="text-align:right"><i class="fa fa-usd text-success"></i> <?php echo $this->cart->format_number($this->cart->total()); ?></td>
-      </tr>
+      <?php } ?>
       </table>
+
     </div>
     <div class="col-lg-12 text-secondary"><hr>
       <button type="button" class="btn btn-dark pull-left" onclick="email()"><i class="fa fa-share" aria-hidden="true"></i> Email the receipt</button>
-      <button type="button" class="btn btn-primary pull-right" onclick="backtoshopping()"> Back to Shopping <i class="fa fa-reply" aria-hidden="true"></i></button>
+      <a href="<?php echo base_url();?>home" class="btn btn-info pull-right" role="button">Back to shopping</a>
     </div>
     <!-- /.col-lg-9 -->
   </div>
 </div>
 <!-- /.container -->
 
-<script type="text/javascript">
-        function backtoshopping(){
+<!-- <script type="text/javascript">
+        function back(){
             window.location = 'home';
         }
         //
@@ -99,4 +90,4 @@
         // //
         // // }
 
-</script>
+</script> -->

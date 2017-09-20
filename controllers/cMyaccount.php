@@ -7,7 +7,7 @@ class cMyaccount extends CI_Controller {
           parent::__construct();
           $this->load->library('session');
           $this->load->helper('url');
-          // $this->load->model('mLogin','MLogin'); //load model first before view
+          $this->load->model('mOrder','MOrder'); //load model first before view
   }
 
   public function index()
@@ -21,7 +21,7 @@ class cMyaccount extends CI_Controller {
     $custCountry  = $this->session->userdata('customerCountrySess');
     $custEmail = $this->session->userdata('customerEmailSess');
     $custTel      = $this->session->userdata('customerTelSess');
-
+    $CustomerID = $this->session->userdata('customerIDSess');
 
     if ($this->session->has_userdata('PrivilegeID')) {
         $PrivilegeID = $this->session->userdata('PrivilegeID');
@@ -41,11 +41,7 @@ class cMyaccount extends CI_Controller {
         $custlast = '';
     }
 
-    if ($this->session->has_userdata('PrivilegeID')) {
-        $PrivilegeID = $this->session->userdata('PrivilegeID');
-    }else {
-        $PrivilegeID = '';
-    }
+    $orderHistory = $this->MOrder->mgetHistory($CustomerID);
 
     $header = array(
       'title' => 'My Account',
@@ -70,7 +66,8 @@ class cMyaccount extends CI_Controller {
       'custPostcode' => $custPostcode,
       'custCountry' => $custCountry,
       'custEmail' => $custEmail,
-      'custTel' => $custTel
+      'custTel' => $custTel,
+      'orderHistory' => $orderHistory
     );
 
     $data = array();

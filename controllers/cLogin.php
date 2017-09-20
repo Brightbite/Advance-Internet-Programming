@@ -31,9 +31,13 @@ class cLogin extends CI_Controller {
   }
   public function signIn()
   {
+          $csrf = array(
+               'name' => $this->security->get_csrf_token_name(),
+               'hash' => $this->security->get_csrf_hash()
+           );
+
             $username   =     $this->input->post('username');
             $password   =     $this->input->post('password');
-
             // echo $res;
             $pwEnc = base64_encode($password);
             $csinfo = $this->MLogin->Login($username,$pwEnc);
@@ -55,10 +59,12 @@ class cLogin extends CI_Controller {
                                 'customerPostcodeSess'=>  $csinfo->Postcode,
                                 'customerCountrySess' => $csinfo->Country,
                                 'customerTelSess'  =>   $csinfo->CustomerTel,
-                                'customerEmailSess'=>   $csinfo->Email
+                                'customerEmailSess'=>   $csinfo->Email,
+                                'csrf' => $csrf
                               );
 
                 $this->session->set_userdata($cusdata);
+                redirect('#',refresh);
             }
 
 

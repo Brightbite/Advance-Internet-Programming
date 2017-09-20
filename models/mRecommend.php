@@ -66,5 +66,34 @@
          }
        }
 
+       public function mRecImage($groupRecommend){
+         if (isset($groupRecommend)){
+           if ($groupRecommend != ''){
+             $groupRecommend = $groupRecommend;
+           }else{
+             $groupRecommend = '';
+           }
+         }
+         $SQL = "SELECT
+         product.ProductID,
+         product.ProductName,
+         product.ProductDesc,
+         product.CategoryID,
+         product.Picture,
+         product.Price
+         FROM
+         product";
+         if ($groupRecommend != '') {
+            $SQL.=" WHERE CategoryID IN($groupRecommend) ";
+         }
+         $SQL.=" ORDER BY RAND() LIMIT 1";
+         $query = $this->db->query($SQL);
+         if ($query->num_rows() > 0) {
+           return $query->row();
+         }else{
+           return 'empty';
+         }
+       }
+
 }
 ?>

@@ -14,6 +14,7 @@ class cCart extends CI_Controller {
 
   public function index()
   {
+
     if ($this->session->has_userdata('PrivilegeID')) {
         $PrivilegeID = $this->session->userdata('PrivilegeID');
     }else {
@@ -39,6 +40,11 @@ class cCart extends CI_Controller {
         $custID = '';
     }
 
+    $csrf = array(
+         'name' => $this->security->get_csrf_token_name(),
+         'hash' => $this->security->get_csrf_hash()
+        //  'csrf' => $csrf
+     );
 
     $header = array(
       'title' => 'Shopping Cart',
@@ -47,7 +53,8 @@ class cCart extends CI_Controller {
       'author' => 'Kunanon Pititheerachot #12634123 UTS',
       'custname'=> $custname,
       'custlast'  => $custlast,
-      'privid' => $PrivilegeID
+      'privid' => $PrivilegeID,
+      'csrf' => $csrf
 
     );
 

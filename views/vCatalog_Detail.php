@@ -38,12 +38,13 @@
                         <input type="text" name="prodName" value="<?php echo $ProductDetail->ProductName;?>" style="display:none">
                         <input type="text" name="prodPrice" value="<?php echo $ProductDetail->Price;?>" style="display:none">
                         <input type="text" name="prodPic" value="<?php echo $ProductDetail->Picture;?>" style="display:none">
+                        <input type="text" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" style="display:none">
                         <span class="input-group-btn">
                           <button type="button" class="btn btn-outline-dark" id="bnt2"> + </button>
                         </span>
                       </div>
                       <div class="btn-group" role="group" aria-label="Second group">
-                          <button  type="submit" class="btn btn-dark">Add To Cart</button>
+                          <button  type="submit"  class="btn btn-dark pull-right"><i class="fa fa-cart-plus" aria-hidden="true"> Add to Cart</i></button>
                       </div>
                     </div><!-- /input-group -->
                     </form>

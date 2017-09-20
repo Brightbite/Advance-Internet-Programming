@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="app">
-  <header>
+  <header class="py-5 bg-image-full">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><?php echo $title; ?></title>
@@ -10,17 +10,24 @@
     <meta name="author" content="<?php echo $author; ?>">
     <!-- <link rel="stylesheet" href="<?php echo base_url('application/assets/css/'); ?>shop-homepage.css">
     <link rel="stylesheet" href="<?php echo base_url('application/assets/css/'); ?>shop-item.css"> -->
+    <link rel="stylesheet" href="<?php echo base_url('application/assets/css/'); ?>half-slider.css">
+    <link rel="stylesheet" href="<?php echo base_url('application/assets/css/'); ?>font-awesome.css">
     <link rel="stylesheet" href="<?php echo base_url('application/assets/css/'); ?>font-awesome.min.css">
     <link rel="stylesheet" href="<?php echo base_url('application/assets/css/'); ?>custom.css">
     <link rel="stylesheet" href="<?php echo base_url('application/assets/css/'); ?>bootstrap.css">
+    <link rel="stylesheet" href="<?php echo base_url('application/assets/css/'); ?>bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo base_url('application/assets/css/'); ?>bootstrap-grid.css">
+    <link rel="stylesheet" href="<?php echo base_url('application/assets/css/'); ?>bootstrap-grid.min.css">
+    <link rel="stylesheet" href="<?php echo base_url('application/assets/css/'); ?>bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="<?php echo base_url('application/assets/css/'); ?>bootstrap-reboot.css">
     <script type="text/javascript" src="<?php echo base_url('application/assets/js/'); ?>jquery.js"></script>
     <!-- <link rel="stylesheet" href="</?php echo base_url('application/assets/vendor/bootstrap/css/'); ?>bootstrap.css"> -->
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
     <!-- <link rel="stylesheet" href="</?php echo base_url('application/assets/RP/css/'); ?>bootstrap.css"> -->
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <div class="container">
+    <nav class="navbar navbar-expand-md navbar-dark  fixed-top bg-dark">
+      <!-- <div class="container"> -->
         <a class="navbar-brand" href="<?php echo base_url();?>home">CindyBite Shop</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -64,11 +71,12 @@
             </li>
           </ul>
         </div>
-      </div>
+      <!-- </div> container -->
     </nav>
-  </header>
-  <body><br><br><br>
 
+
+  </header>
+  <body>
     <!-- Modal -->
     <div class="modal fade" id="sModal" tabindex="-1" role="dialog" aria-labelledby="sModalLabel" ng-controller="loginController">
       <div class="modal-dialog" role="document">
@@ -78,13 +86,16 @@
             <h4 class="modal-title" id="sModalLabel">Sign in</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           </div>
-          <form id="formsignin"  enctype="multipart/form-data">
+          <form method="post" id="formsignin"  enctype="multipart/form-data" action="login">
           <div class="modal-body">
             Username<br>
             <input type="text" name="username" id="username" class="form-control" required placeholder="username" maxlength="50"><br>
             Password<br>
             <input type="password" name="password" id="password" class="form-control" required placeholder="Password" maxlength="20"><br>
-            <button type="button" class="btn btn-primary btn-lg btn-block" id="btn-signIn">Sign In</button><br>
+            <input type="text" name="<?=$csrf['name'];?>"  value="<?=$csrf['hash'];?>" style="display:none">
+              <button type="submit" class="btn btn-primary btn-lg btn-block" name="signIn">Sign In</button><br>
+            <!-- <button type="submit" class="btn btn-primary btn-lg btn-block" id="btn-signIn">Sign In</button><br> -->
+            <!-- <button type="button" class="btn btn-primary btn-lg btn-block" id="btn-signIn">Sign In</button><br> -->
           </div>
         </form>
           <div class="modal-footer">

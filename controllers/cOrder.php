@@ -64,11 +64,17 @@ class cOrder extends CI_Controller {
             $custID = '';
         }
 
-        if ($this->session->has_userdata('shippingFirstname')) {
-            $shipFirstName = $this->session->userdata('shippingFirstname');
-        }else {
-            $shipFirstName = '';
-        }
+        $shipFirstName = $this->session->userdata('shippingFirstname');
+        $shippingLastname = $this->session->userdata('shippingLastname');
+        $shippingAddr = $this->session->userdata('shippingAddr');
+        $shippingAddr2 = $this->session->userdata('shippingAddr2');
+        $shippingCity = $this->session->userdata('shippingCity');
+        $shippingState = $this->session->userdata('shippingState');
+        $shippingPostcode = $this->session->userdata('shippingPostcode');
+        $shippingCountry = $this->session->userdata('shippingCountry');
+        $shippingEmail = $this->session->userdata('shippingEmail');
+        $shippingTel = $this->session->userdata('shippingTel');
+
 
 
           $olastOrder =  $this->MOrder->mgetOrderID();
@@ -94,11 +100,20 @@ class cOrder extends CI_Controller {
           //save order
           $OrderData = array('OrderID' => $nOrder,
                              'CustomerID' => $custID,
-                             'PaymentID' => $custID,
+                             'OrderQTY' => $this->cart->total_items(),
                              'OrderTotal' => $this->cart->total(),
                              'PaymentType' => $paymentType,
-                             'ShippingName' => $shipFirstName,
-                             'OrderDate' => $OrderDate
+                             'OrderDate' => $OrderDate,
+                             'ShippingFirstName' => $shipFirstName,
+                             'ShippingLastName' => $shippingLastname,
+                             'ShippingAddress1' => $shippingAddr,
+                             'ShippingAddress2' => $shippingAddr2,
+                             'ShippingCity' => $shippingCity,
+                             'ShippingState' => $shippingState,
+                             'ShippingPostcode' => $shippingPostcode,
+                             'ShippingCountry' => $shippingCountry,
+                             'ShippingEmail' => $shippingEmail,
+                             'ShippingTel' => $shippingTel
          );
          $this->MOrder->msaveOrder($OrderData);
 
@@ -107,12 +122,12 @@ class cOrder extends CI_Controller {
                        $order_detail = array(
                        'OrderID' => $nOrder,
                        'ProductID' => $item['id'],
+                       'ProductImage' => $item['image'],
+                       'ProductName' => $item['name'],
                        'Quantity' => $item['qty'],
                        'Price' => $item['price']
                        );
-
                       //  echo var_dump($order_detail);
-
                        // Insert product imformation with order detail, store in cart also store in database.
 
                       $this->MOrder->msaveOrderDetail($order_detail);
@@ -136,9 +151,13 @@ class cOrder extends CI_Controller {
                               'CardVerify' => $cVerify
         );
 
+
         $this->MOrder->mSavepayment($DataPayment);
-         $this->cart->destroy();
-          // redirect('receipt/1');
+
+        $summOrder = array('LastOrder' => $nOrder);
+        $this->session->set_userdata($summOrder);
+        $this->cart->destroy();
+        redirect('receipt/1');
   }
 
   public function saveorder2($paymentType){
@@ -182,7 +201,6 @@ class cOrder extends CI_Controller {
           //save order
           $OrderData = array('OrderID' => $nOrder,
                              'CustomerID' => $custID,
-                             'PaymentID' => $custID,
                              'OrderTotal' => $this->cart->total(),
                              'PaymentType' => $paymentType,
                              'ShippingName' => $shipFirstName,
@@ -195,6 +213,8 @@ class cOrder extends CI_Controller {
                        $order_detail = array(
                        'OrderID' => $nOrder,
                        'ProductID' => $item['id'],
+                       'ProductImage' => $item['image'],
+                       'ProductName' => $item['name'],
                        'Quantity' => $item['qty'],
                        'Price' => $item['price']
                        );
@@ -208,7 +228,7 @@ class cOrder extends CI_Controller {
 
           }
           // $cName = $this->input->post('cName');
-        
+
           $DataPayment = array('OrderID' =>  $nOrder,
                               'PaymentType' => '2',
                               'PaymentAmount' => $this->cart->total(),
@@ -218,6 +238,10 @@ class cOrder extends CI_Controller {
                               'CardVerify' => '-'
         );
         $this->MOrder->mSavepayment($DataPayment);
+        
+        $summOrder = array('LastOrder' => $nOrder);
+        $this->session->set_userdata($summOrder);
+
         $this->cart->destroy();
           redirect('receipt/2');
 

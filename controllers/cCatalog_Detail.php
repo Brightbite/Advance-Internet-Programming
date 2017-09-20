@@ -30,6 +30,10 @@ class cCatalog_Detail extends CI_Controller {
     }else {
         $custlast = '';
     }
+       $csrf = array(
+            'name' => $this->security->get_csrf_token_name(),
+            'hash' => $this->security->get_csrf_hash()
+        );
 
     $header = array(
       'title' => 'Product',
@@ -38,7 +42,9 @@ class cCatalog_Detail extends CI_Controller {
       'author' => 'Kunanon Pititheerachot #12634123 UTS',
       'custname' => $custname,
       'PrivilegeID'=> $PrivilegeID,
-      'privid' => $PrivilegeID
+      'privid' => $PrivilegeID,
+      'csrf' => $csrf
+
     );
 
     $aCatalog = $this->MCatalog->mCatalogList();

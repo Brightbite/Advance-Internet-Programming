@@ -3,7 +3,7 @@
 <!-- Footer -->
 <br><br><br>
 <footer class="footer py-5 bg-dark">
-  <div class="container">
+    <div class="container">
     <p class="text-muted m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
     <p class = "float-right"><a href="#" class="text-light"> <i class="fa fa-chevron-up text-light" aria-hidden="true"></i>Back to top</a></p>
   </div>

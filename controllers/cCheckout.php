@@ -32,6 +32,11 @@ class cCheckout extends CI_Controller {
         $PrivilegeID = '';
     }
 
+    $csrf = array(
+         'name' => $this->security->get_csrf_token_name(),
+         'hash' => $this->security->get_csrf_hash()
+        //  'csrf' => $csrf
+     );
 
     $header = array(
       'title' => 'Checkout',
@@ -40,8 +45,8 @@ class cCheckout extends CI_Controller {
       'author' => 'Kunanon Pititheerachot #12634123 UTS',
       'custname'=> $custname,
       'custlast'  => $custlast,
-      'privid' => $PrivilegeID
-
+      'privid' => $PrivilegeID,
+      'csrf' => $csrf
     );
     $shippingUserID = $this->input->post('custID');
     $shippingFirstname = $this->input->post('sFname');
@@ -65,11 +70,11 @@ class cCheckout extends CI_Controller {
                       'shippingPostcode' => $shippingPostcode,
                       'shippingCountry' => $shippingCountry,
                       'shippingEmail' => $shippingEmail,
-                      'shippingTel' => $shippingTel
+                      'shippingTel' => $shippingTel,
                       );
 
-  
-    $this->session->set_userdata($address);
+
+    $this->session->set_userdata($address); //store shipping details to session
     $this->load->view('template/header',$header);
 
     $this->load->view('vCheckout',$address);

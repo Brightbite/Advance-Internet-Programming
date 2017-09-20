@@ -33,6 +33,11 @@ class cPayment extends CI_Controller {
         $PrivilegeID = '';
     }
 
+    $csrf = array(
+         'name' => $this->security->get_csrf_token_name(),
+         'hash' => $this->security->get_csrf_hash()
+        //  'csrf' => $csrf
+     );
 
     $header = array(
       'title' => 'My Account',
@@ -41,7 +46,8 @@ class cPayment extends CI_Controller {
       'author' => 'Kunanon Pititheerachot #12634123 UTS',
       'custname'=> $custname,
       'custlast'  => $custlast,
-      'privid' => $PrivilegeID
+      'privid' => $PrivilegeID,
+      'csrf' => $csrf
 
     );
 
@@ -56,6 +62,7 @@ class cPayment extends CI_Controller {
 
 
   public function paymentCreditcard(){
+
     if ($this->session->has_userdata('customerNameSess')) {
         $custname = $this->session->userdata('customerNameSess');
     }else {
@@ -75,7 +82,13 @@ class cPayment extends CI_Controller {
     }
     $custID    = $this->session->userdata('customerIDSess');
 
-    $aData = array('custID'    => $custID);
+    $aData = array('custID'    => $custID, );
+
+    $csrf = array(
+         'name' => $this->security->get_csrf_token_name(),
+         'hash' => $this->security->get_csrf_hash()
+        //  'csrf' => $csrf
+     );
 
     $header = array(
       'title' => 'My Account',
@@ -84,7 +97,8 @@ class cPayment extends CI_Controller {
       'author' => 'Kunanon Pititheerachot #12634123 UTS',
       'custname'=> $custname,
       'custlast'  => $custlast,
-      'privid' => $PrivilegeID
+      'privid' => $PrivilegeID,
+      'csrf' => $csrf
 
     );
 
@@ -115,8 +129,6 @@ class cPayment extends CI_Controller {
         $PrivilegeID = '';
     }
     $custID    = $this->session->userdata('customerIDSess');
-
-
     $shippingUserID     = $this->session->userdata('shippingUserID');
     $shippingFirstname  = $this->session->userdata('shippingFirstname');
     $shippingLastname   = $this->session->userdata('shippingLastname');
@@ -128,12 +140,16 @@ class cPayment extends CI_Controller {
     $shippingCountry  = $this->session->userdata('shippingCountry');
     $shippingEmail = $this->session->userdata('shippingEmail');
     $shippingTel      = $this->session->userdata('shippingTel');
+    $LastOrderID      = $this->session->userdata('LastOrder');
 
     $cAmount = $this->input->post('cAmount');
     $cName = $this->input->post('cName');
     $cNum  = $this->input->post('cNum');
     $cName = $this->input->post('cName');
     $cName = $this->input->post('cName');
+
+    $lastOrder =  $this->MOrder->mgetLastOrder($LastOrderID);
+    $lastPayment =  $this->MOrder->mgetLastPayment($LastOrderID);
 
     $address = array( 'shippingUserID' => $shippingUserID,
                       'shippingFirstname' => $shippingFirstname,
@@ -146,9 +162,17 @@ class cPayment extends CI_Controller {
                       'shippingCountry' => $shippingCountry,
                       'shippingEmail' => $shippingEmail,
                       'shippingTel' => $shippingTel,
-                      'paymentType' => $paymentType
+                      'paymentType' => $paymentType,
+                      'lastOrder' =>  $lastOrder,
+                      'lastPayment' => $lastPayment
                       );
     // $aData = array('custID'    => $custID);
+    $csrf = array(
+         'name' => $this->security->get_csrf_token_name(),
+         'hash' => $this->security->get_csrf_hash()
+        //  'csrf' => $csrf
+     );
+
     $header = array(
       'title' => 'My Account',
       'keywords' => 'account',
@@ -157,6 +181,7 @@ class cPayment extends CI_Controller {
       'custname'=> $custname,
       'custlast'  => $custlast,
       'privid' => $PrivilegeID,
+      'csrf' => $csrf
     );
 
 

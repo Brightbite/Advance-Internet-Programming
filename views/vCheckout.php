@@ -29,10 +29,10 @@
           <input name="payMethod" type="radio" class="custom-control-input" value="" checked onclick="select_credit()">
           <span class="custom-control-indicator"></span>
           <span class="custom-control-description">
-            <i class="text-info fa fa-cc-visa fa-2x" aria-hidden="true"></i>
-            <i class="text-success fa fa-cc-mastercard fa-2x" aria-hidden="true"></i>
-            <i class="text-primary fa fa-cc-amex fa-2x" aria-hidden="true"></i>
-            <i class="text-warning fa fa-cc-discover fa-2x" aria-hidden="true"></i><br>
+            <img src="<?php echo base_url('application/assets/img/payment-methods-icons/60x40png/'); ?>visa.png" alt="">
+            <img src="<?php echo base_url('application/assets/img/payment-methods-icons/60x40png/'); ?>mastercard.png" alt="">
+            <img src="<?php echo base_url('application/assets/img/payment-methods-icons/60x40png/'); ?>american-express.png" alt="">
+            <img src="<?php echo base_url('application/assets/img/payment-methods-icons/60x40png/'); ?>discover.png" alt=""><br>
             <small class="text-muted">
               Credit or debit card.
             </small>
@@ -42,7 +42,7 @@
           <input name="payMethod" type="radio" class="custom-control-input" value="" onclick="select_paypal()">
           <span class="custom-control-indicator"></span>
           <span class="custom-control-description">
-            <i class="text-primary fa fa-cc-paypal fa-2x" aria-hidden="true"></i><br>
+            <img src="<?php echo base_url('application/assets/img/payment-methods-icons/60x40png/'); ?>paypal.png" alt=""><br>
             <small class="text-muted">
               Paypal.
             </small>

@@ -6,7 +6,10 @@
           <div class="text-secondary">
 
             <form method="post" id="formcredit"  enctype="multipart/form-data" action="saveorder1/1">
-
+              <img src="<?php echo base_url('application/assets/img/payment-methods-icons/60x40png/'); ?>visa.png" alt="">
+              <img src="<?php echo base_url('application/assets/img/payment-methods-icons/60x40png/'); ?>mastercard.png" alt="">
+              <img src="<?php echo base_url('application/assets/img/payment-methods-icons/60x40png/'); ?>american-express.png" alt="">
+              <img src="<?php echo base_url('application/assets/img/payment-methods-icons/60x40png/'); ?>discover.png" alt=""><br><br>
               <!-- <fieldset> -->
                 <div class="form-group row">
                  <label for="example-date-input" class="col-2 col-form-label">Amount $</label>
@@ -34,7 +37,7 @@
                 <label for="example-date-input" class="col-2 col-form-label">Epiry Date</label>
                   <div class="col-3">
                     <!-- <input class="form-control" type="date" value="" id="cEpire"> -->
-                    <select multiple class="form-control" name="cExpireM" id="cEpireM" >
+                    <select class="form-control" name="cExpireM" id="cEpireM" >
                       <option value="01">January</option>
                       <option value="02">Febuary</option>
                       <option value="03">March</option>
@@ -50,7 +53,7 @@
                     </select>
                     </div>
                     <div class="col-2">
-                      <select multiple class="form-control" name="cExpireY" id="cEpireY">
+                      <select class="form-control" name="cExpireY" id="cEpireY" >
                         <option value="2017">2017</option>
                         <option value="2018">2018</option>
                         <option value="2019">2019</option>
@@ -63,13 +66,14 @@
                 <div class="form-group row">
                  <label for="example-date-input" class="col-2 col-form-label">Verification code</label>
                  <div class="col-5">
-                    <input class="form-control" type="text" name="cVerify" id="cVerify" value="" >
+                    <input class="form-control" type="text" name="cVerify" id="cVerify" value="" maxlength="3">
                  </div>
                 </div>
                 <br><hr>
                 <input type="hidden" name="custID" class="form-control" id="custID" value="<?=$custID?>">
+                <input type="text" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" style="display:none">
           </div>
-            <button type="button" class="btn btn-light pull-left" onclick="backtocechkout()"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Cart</button>
+            <button type="button" class="btn btn-light pull-left" onclick="backtocechkout()"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Checkout</button>
             <button type="submit" class="btn btn-primary pull-right" >Confirm Payment <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
             </form>
     </div>

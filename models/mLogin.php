@@ -8,9 +8,9 @@
        }
 
        public function Login ($username,$password){
-           $SQL = "SELECT *
+           $SQL = 'SELECT *
                    FROM customer
-                   WHERE Username = '$username' AND Password = '$password'";
+                   WHERE Username = '.$this->db->escape($username). 'AND Password =' .$this->db->escape($password);
 
           //echo $SQL;
         //  $SQL = "SELECT firstname,lastname FROM member WHERE email = $email ";

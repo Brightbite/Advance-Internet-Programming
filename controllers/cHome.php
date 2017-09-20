@@ -6,6 +6,7 @@ class cHome extends CI_Controller {
   function __construct(){
           parent::__construct();
           $this->load->library('session');
+          $this->load->library('cart');
           $this->load->helper('url');
           $this->load->model('mProduct','MProduct'); //load model first before view
           $this->load->model('mCatalog','MCatalog'); //load model first before view
@@ -43,6 +44,19 @@ class cHome extends CI_Controller {
         $custID = '';
     }
 
+    $csrf = array(
+         'name' => $this->security->get_csrf_token_name(),
+         'hash' => $this->security->get_csrf_hash()
+        //  'csrf' => $csrf
+     );
+
+    // $csrf = array(
+    //         'name' => $this->security->get_csrf_token_name(),
+    //         'hash' => $this->security->get_csrf_hash()
+    // );
+
+    // echo $this->security->get_csrf_token_name(); // for the name
+    // echo $this->security->get_csrf_hash();  // for the value
 
     //Product Recommend
     $oGroupRecommend = $this->MRecommend->getGruopRecommend($custID);
@@ -61,8 +75,11 @@ class cHome extends CI_Controller {
         $groupRecommend = 'ALL';
     }
 
+
     $productRecommend = $this->MRecommend->mRecommendation($groupRecommend);
     // productRecommend
+    $productRecImage= $this->MRecommend->mRecImage($groupRecommend);
+
 
     $header = array(
       'title' => 'Homepage',
@@ -71,7 +88,8 @@ class cHome extends CI_Controller {
       'author' => 'Kunanon Pititheerachot #12634123 UTS',
       'custname'=> $custname,
       'custlast'=>$custlast,
-      'privid' => $PrivilegeID
+      'privid' => $PrivilegeID,
+      'csrf' => $csrf
     );
 
     // $pvlList = $this->MProduct->mProDetail();
@@ -80,7 +98,9 @@ class cHome extends CI_Controller {
     $index = array(
       'top' => 'Home',
       'Catalog' => $aCatalog,
-      'productRecommend' => $productRecommend
+      'productRecommend' => $productRecommend,
+      'productRecImage' => $productRecImage,
+      'csrf' => $csrf
     );
 
 

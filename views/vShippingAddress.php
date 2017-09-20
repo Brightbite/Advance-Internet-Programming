@@ -46,6 +46,7 @@
                 </div>
                 <br><hr>
                 <input type="hidden" name="custID" class="form-control" id="custID" value="<?=$custID?>">
+                <input type="text" name="<?=$csrf['name'];?>" id="token" value="<?=$csrf['hash'];?>" style="display:none">
           </div>
             <button type="button" class="btn btn-light pull-left" onclick="backtocart()"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Cart</button>
             <button type="submit" class="btn btn-primary pull-right" >Continue to Checkout <i class="fa fa-arrow-right" aria-hidden="true"></i></button>

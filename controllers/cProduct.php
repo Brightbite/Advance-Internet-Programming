@@ -6,9 +6,11 @@ class cProduct extends CI_Controller {
   function __construct(){
           parent::__construct();
           $this->load->library('session');
+          $this->load->library('cart');
           $this->load->helper('url');
           $this->load->model('mProduct','MProduct'); //load model first before view
           $this->load->model('mCatalog','MCatalog'); //load model first before view
+          $this->load->model('mRecommend','MRecommend');
   }
 
   public function index()
@@ -59,6 +61,38 @@ class cProduct extends CI_Controller {
           }else {
               $custlast = '';
           }
+          $csrf = array(
+               'name' => $this->security->get_csrf_token_name(),
+               'hash' => $this->security->get_csrf_hash()
+              //  'csrf' => $csrf
+           );
+
+           if ($this->session->has_userdata('customerIDSess')) {
+               $custID = $this->session->userdata('customerIDSess');
+           }else {
+               $custID = '';
+           }
+
+                $oGroupRecommend = $this->MRecommend->getGruopRecommend($custID);
+                if (is_array($oGroupRecommend)){
+                    $i = 0;
+                    $arrayGroup = array();
+                    foreach ($oGroupRecommend as $group ) {
+                          $arrayGroup[$i]  = $group->CategoryID;
+                          $i++;
+                    }
+
+                    $tgroupRecommend = implode("','", $arrayGroup);
+                    $groupRecommend = "'".$tgroupRecommend."'";
+
+                }else{
+                  $groupRecommend = 'ALL';
+                }
+
+
+                $productRecImage= $this->MRecommend->mRecImage($groupRecommend);
+
+
 
           $header = array(
             'title' => $CatalogName,
@@ -67,7 +101,8 @@ class cProduct extends CI_Controller {
             'author' => 'Kunanon Pititheerachot #12634123 UTS',
             'custname' => $custname,
             'PrivilegeID'=> $PrivilegeID,
-            'privid' => $PrivilegeID
+            'privid' => $PrivilegeID,
+            'csrf' => $csrf
           );
 
          $products = $this->MProduct->mProductByCat($CatalogID);
@@ -76,7 +111,9 @@ class cProduct extends CI_Controller {
          $this->load->view('vProductByCatalog',array('products'=>$products,
                                                      'top'=>'Category',
                                                      'TitleGroup'=>$CatalogName,
-                                                      'Catalog'=>$aCatalog)
+                                                      'Catalog'=>$aCatalog,
+                                                     'csrf' => $csrf,
+                                                     'productRecImage' => $productRecImage,)
                                                    );
 
         $this->load->view('template/footer');

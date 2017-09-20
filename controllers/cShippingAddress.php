@@ -23,6 +23,11 @@ class cShippingAddress extends CI_Controller {
         $custEmail = $this->session->userdata('customerEmailSess');
         $custTel      = $this->session->userdata('customerTelSess');
 
+        $csrf = array(
+                'name' => $this->security->get_csrf_token_name(),
+                'hash' => $this->security->get_csrf_hash()
+        );
+
     if ($this->session->has_userdata('customerNameSess')) {
         $custname = $this->session->userdata('customerNameSess');
     }else {
@@ -41,6 +46,11 @@ class cShippingAddress extends CI_Controller {
         $PrivilegeID = '';
     }
 
+    $csrf = array(
+         'name' => $this->security->get_csrf_token_name(),
+         'hash' => $this->security->get_csrf_hash()
+        //  'csrf' => $csrf
+     );
 
     $header = array(
       'title' => 'Shipping',
@@ -49,7 +59,8 @@ class cShippingAddress extends CI_Controller {
       'author' => 'Kunanon Pititheerachot #12634123 UTS',
       'custname'=> $custname,
       'custlast'  => $custlast,
-      'privid' => $PrivilegeID
+      'privid' => $PrivilegeID,
+      'csrf' => $csrf
 
     );
 
@@ -65,7 +76,8 @@ class cShippingAddress extends CI_Controller {
       'custPostcode' => $custPostcode,
       'custCountry' => $custCountry,
       'custEmail' => $custEmail,
-      'custTel' => $custTel
+      'custTel' => $custTel,
+      'csrf' => $csrf
     );
 
     $this->load->view('template/header',$header);

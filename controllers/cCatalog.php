@@ -8,6 +8,7 @@ class cCatalog extends CI_Controller {
           $this->load->library('session');
           $this->load->helper('url');
           $this->load->model('mCatalog','MCatalog'); //load model first before view
+          
 
   }
 
@@ -32,6 +33,12 @@ class cCatalog extends CI_Controller {
     }
 
 
+    $csrf = array(
+         'name' => $this->security->get_csrf_token_name(),
+         'hash' => $this->security->get_csrf_hash()
+        //  'csrf' => $csrf
+     );
+
 
     $header = array(
       'title' => 'Catalog',
@@ -39,14 +46,16 @@ class cCatalog extends CI_Controller {
       'description' => 'this is web application for online retailer',
       'author' => 'Kunanon Pititheerachot #12634123 UTS',
       'custname'=> $custname,
-      'custlast'=>$custlast
+      'custlast'=>$custlast,
+      'csrf' => $csrf
     );
 
     $aCatalog = $this->MCatalog->mCatalogList();
 
     $index = array(
       'top' => 'Catalog',
-      'Catalog' => $aCatalog
+      'Catalog' => $aCatalog,
+
     );
 
 
