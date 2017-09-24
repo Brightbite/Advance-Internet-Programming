@@ -1,5 +1,77 @@
 # Advance-Internet-Programming Project Spring 2017
-- 12634123
+- Kunanon Pititheerachot 12634123
+
+# Project files
+```
+API/
+api.php
+
+assets/
+src
+css
+js
+
+Config/
+routes.php
+
+Controllers
+cUser.php
+cApi.php	
+cCart.php
+cCatalog.php	
+cCatalogMenu.php	
+cCatalog_Detail.php
+cCheckout.php	
+cCreditcard.php	
+cHome.php	
+cLogin.php	
+cLogout.php	
+cMyaccount.php	
+cOrder.php	
+cPayment.php	
+cProduct.php	
+cRecommend.php	
+cRegister.php	
+cShippingAddress.php	
+cUser.php	
+paypal.php
+
+
+Models/
+mUser.php
+mCart.php	
+mCatalog.php	
+mLogin.php	
+mOrder.php	
+mProduct.php	
+mRecommend.php	
+mRegister.php	
+mmenu.php
+
+
+Views/
+template/header,footer,cartfooter	
+mywelcome_msg.php	
+vApiForm.php	
+vCart.php	
+vCatalog.php	
+vCatalog_Detail.php
+vCheckout.php
+vCreditcard.php	
+vHome.php	
+vLogout.php	
+vMyaccount.php	
+vOrder.php	
+vProduct.php	
+vProductByCatalog.php	
+vReceipt.php	
+vRecommend.php	
+vRegister.php	
+vShippingAddress.php	
+vUser.php	
+vUserList.php
+
+```
 
 # Assessment Item
 
@@ -78,26 +150,6 @@ Assessment Criteria
 This assessment is worth 40% of your final grade. You will be receiving feedback and guidance throughout the semester. Preparation activities and in-class activities for Assessment 1 will be related to this Assessment and will, at many times, directly incorporate work that you have produced as part of this assessment. The final submission of your project will be assessed according to the following 
 
 
-# Project files
-```
-
-assets/
-storing css,js,json
-
-Config/
-routes.php
-
-Controllers
-cUser.php
-
-Models/
-mUser.php
-
-Views/
-vUser.php
-vUserList.php
-
-```
 
 # Key Principles
 
