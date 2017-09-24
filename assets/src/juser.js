@@ -1,5 +1,4 @@
 $(document).ready(function(){
-  console.log('document load done.');
   userlist();
 
 
@@ -45,32 +44,18 @@ $(document).ready(function(){
 
       });
   }
-//
-// function Cart(){
-//
-//         $.ajax({
-//           url:'cart',                                       //route
-//           data:{},
-//           method:"GET"
-//         })
-//         .done(function(cResult) {
-//
-//              $('#UserCart').html(cResult);
-//
-//         })
-//         .fail(function(jqXHR, textStatus){
-//
-//             alert('Error:'+ jqXHR +' '+ textStatus);
-//
-//         });
-//   }
 
 //Edit user popup
-function EditLine(UserID,Fristname,Lastname,Address,Username,Password,Email,Tel,Privilege){
+function EditLine(UserID,Firstname,Lastname,Addr1,Addr2,City,State,Postcode,Country,Username,Password,Email,Tel,Privilege){
      $('#myModalLabel').text('EDIT USER');
-     $('#sFirstname').val(Fristname);
+     $('#sFirstname').val(Firstname);
      $('#sLastname').val(Lastname);
-     $('#sAddress').val(Address);
+     $('#sAddress1').val(Addr1);
+     $('#sAddress2').val(Addr2);
+     $('#sCity').val(City);
+     $('#sState').val(State);
+     $('#sPostcode').val(Postcode);
+     $('#sCountry').val(Country);
      $('#sUsername').val(Username);
      $('#sPassword').val(Password);
      $('#sEmail').val(Email);
@@ -82,35 +67,46 @@ function EditLine(UserID,Fristname,Lastname,Address,Username,Password,Email,Tel,
 }
 
 function SignIn(){
-    var username = $('#username').val();
-    var password = $('#password').val();
-    console.log('validated '+ username + password);
+    // var username = $('#username').val();
+    // var password = $('#password').val();
+    // var csrf_test_name = $('#csrf_test_name').val();
+    // alert(csrf_test_name);
+    // console.log(csrf_test_name);
+    // var tokenhash = <?php echo json_encode($csrf['hash']); ?>;
+    // var tokenname = <?php echo json_encode($csrf['name']); ?>;
+    //console.log('validated '+ username + password);
          $.ajax({
            url:'login',
-           data:{username:username,password:password},
+           data:$('#formsignin').serialize(),
            method:"POST"
          })
          .done(function(data){
-           console.log(data);
+          //   alert('res'+data);
+          //  console.log(data);
            if (data.trim() == 'false'){
-
               alert('!username or pw incorect');
            }else {
              switch (data.trim()) {
                 case '':
-                         window.location='home';
+                        //  window.location='account';
+                         location.reload();
                 break;
 
                 case '1':
-                         window.location='home';
+                        //  window.location='account';
+                         location.reload();
                 break;
 
                 case '2':
-                          window.location='user';
+                          // window.location='#';
+                          // redirect('#','refresh');
+                          location.reload();
                 break;
 
                 case '3':
-                         window.location='user';
+                        // window.location='#';
+                        location.reload();
+                        // redirect('');
                 break;
              }
            }
@@ -118,6 +114,8 @@ function SignIn(){
            $('#sModal').modal('hide');
            $('body').removeClass('modal-open');
            $('.modal-backdrop').remove();
+           location.reload();
+
          })
          .fail(function(jqXHR, textStatus){
              alert('Error:'+ jqXHR +' '+ textStatus);
@@ -158,9 +156,28 @@ function register(){
               $('#sLastname').focus();
             }
 
-     else if ($('#sAddress').val().length == 0) {
-              $('#sAddress').focus();
+     else if ($('#sAddress1').val().length == 0) {
+              $('#sAddress1').focus();
             }
+    else if ($('#sAddress2').val().length == 0) {
+             $('#sAddress2').focus();
+            }
+
+     else if ($('#sCity').val().length == 0) {
+              $('#sCity').focus();
+              }
+
+     else if ($('#sState').val().length == 0) {
+              $('#sState').focus();
+              }
+
+     else if ($('#sPostcode').val().length == 0) {
+              $('#sPostcode').focus();
+              }
+
+      else if ($('#sCountry').val().length == 0) {
+              $('#sCountry').focus();
+              }
 
      else if ($('#sUsername').val().length == 0) {
               $('#sUsername').focus();
@@ -178,23 +195,40 @@ function register(){
               $('#sTel').focus();
 
       }else{
-            console.log('validate done');                      //validate process
             var UserID = $('#UserID').val();
             var sFirstname = $('#sFirstname').val();
             var sLastname = $('#sLastname').val();
-            var sAddress = $('#sAddress').val();
+            var sAddress1 = $('#sAddress1').val();
+            var sAddress2 = $('#sAddress2').val();
+            var sCity = $('#sCity').val();
+            var sState = $('#sState').val();
+            var sPostcode = $('#sPostcode').val();
+            var sCountry = $('#sCountry').val();
             var sUsername = $('#sUsername').val();
             var sPassword = $('#sPassword').val();
             var sEmail = $('#sEmail').val();
             var sTel = $('#sTel').val();
             var sPrivilege = $('#sPrivilege').val();
             var action_mode = $('#action_mode').val();
-            console.log(action_mode);                          //check mode 1 add or 2 edit
-            console.log('firstname: ' + sFirstname + ' lastname: ' + sLastname + ' username: ' + sUsername + ' password: ' +  sPassword + ' Email: '+ sEmail + ' Tel: ' + sTel + sPrivilege);                     //check dob and gender parameter
+
             $.ajax({
               url:'save',
-              data:{UserID:UserID,sPrivilege:sPrivilege,sFirstname:sFirstname,sLastname:sLastname,sAddress:sAddress,sUsername:sUsername,sPassword:sPassword,sEmail:sEmail,sTel:sTel,action_mode:action_mode},
-              method:"post"
+              data:{UserID:UserID,
+                sPrivilege:sPrivilege,
+                sFirstname:sFirstname,
+                sLastname:sLastname,
+                sAddress1:sAddress1,
+                sAddress2:sAddress2,
+                sCity:sCity,
+                sState:sState,
+                sPostcode:sPostcode,
+                sCountry:sCountry,
+                sUsername:sUsername,
+                sPassword:sPassword,
+                sEmail:sEmail,
+                sTel:sTel,
+                action_mode:action_mode},
+              method:"POST"
             })
             .done(function(tResult) {
                   console.log('done');                        //check processing
@@ -204,7 +238,12 @@ function register(){
                     // clear form
                     $('#sFirstname').val('');
                     $('#sLastname').val('');
-                    $('#sAddress').val('');
+                    $('#sAddress1').val('');
+                    $('#sAddress2').val('');
+                    $('#sCity').val('');
+                    $('#sState').val('');
+                    $('#sPostcode').val('');
+                    $('#sCountry').val('');
                     $('#sUsername').val('');
                     $('#sPassword').val('');
                     $('#sEmail').val('');
@@ -257,57 +296,102 @@ function register2(){
      else if ($('#sLastname').val().length == 0) {
               $('#sLastname').focus();
             }
+            else if ($('#sAddress1').val().length == 0) {
+                     $('#sAddress1').focus();
+                   }
+            else if ($('#sAddress2').val().length == 0) {
+                    $('#sAddress2').focus();
+                   }
 
-     else if ($('#sAddress').val().length == 0) {
-              $('#sAddress').focus();
-            }
+            else if ($('#sCity').val().length == 0) {
+                     $('#sCity').focus();
+                     }
 
-     else if ($('#sUsername').val().length == 0) {
-              $('#sUsername').focus();
-            }
+            else if ($('#sState').val().length == 0) {
+                     $('#sState').focus();
+                     }
 
-     else if ($('#sPassword').val().length == 0){
-              $('#sPassword').focus();
-            }
+            else if ($('#sPostcode').val().length == 0) {
+                     $('#sPostcode').focus();
+                     }
 
-     else if ($('#sEmail').val().length == 0) {
-              $('#sEmail').focus();
-            }
+             else if ($('#sCountry').val().length == 0) {
+                     $('#sCountry').focus();
+                     }
 
-     else if ($('#sTel').val().length == 0){
-              $('#sTel').focus();
+            else if ($('#sUsername').val().length == 0) {
+                     $('#sUsername').focus();
+                   }
 
-    }else{
-      console.log('validate done');                      //validate process
-      var UserID = $('#UserID').val();
-      var sFirstname = $('#sFirstname').val();
-      var sLastname = $('#sLastname').val();
-      var sAddress = $('#sAddress').val();
-      var sUsername = $('#sUsername').val();
-      var sPassword = $('#sPassword').val();
-      var sEmail = $('#sEmail').val();
-      var sTel = $('#sTel').val();
-      var sPrivilege = $('#sPrivilege').val();
-      var action_mode = $('#action_mode').val();
-      console.log(action_mode);                          //check mode 1 add or 2 edit
-      console.log('firstname: ' + sFirstname + ' lastname: ' + sLastname + ' username: ' + sUsername + ' password: ' +  sPassword + ' Email: '+ sEmail + ' Tel: ' + sTel );                     //check dob and gender parameter
-      $.ajax({
-        url:'save',
-        data:{UserID:UserID,sPrivilege:sPrivilege,sFirstname:sFirstname,sLastname:sLastname,sAddress:sAddress,sUsername:sUsername,sPassword:sPassword,sEmail:sEmail,sTel:sTel,action_mode:action_mode},
-        method:"post"
-      })
-      .done(function(tResult) {
-        console.log('done');                        //check processing
-        if (tResult == 'error') {
-        }else{
-            // clear form
-          $('#sFirstname').val('');
-          $('#sLastname').val('');
-          $('#sAddress').val('');
-          $('#sPassword').val('');
-          $('#sEmail').val('');
-          $('#sTel').val('');
-          $('#action_mode').val(1);
+            else if ($('#sPassword').val().length == 0){
+                     $('#sPassword').focus();
+                   }
+
+            else if ($('#sEmail').val().length == 0) {
+                     $('#sEmail').focus();
+                   }
+
+            else if ($('#sTel').val().length == 0){
+                     $('#sTel').focus();
+
+             }else{
+                   console.log('validate done');                      //validate process
+                   var UserID = $('#UserID').val();
+                   var sFirstname = $('#sFirstname').val();
+                   var sLastname = $('#sLastname').val();
+                   var sAddress1 = $('#sAddress1').val();
+                   var sAddress2 = $('#sAddress2').val();
+                   var sCity = $('#sCity').val();
+                   var sState = $('#sState').val();
+                   var sPostcode = $('#sPostcode').val();
+                   var sCountry = $('#sCountry').val();
+                   var sUsername = $('#sUsername').val();
+                   var sPassword = $('#sPassword').val();
+                   var sEmail = $('#sEmail').val();
+                   var sTel = $('#sTel').val();
+                   var sPrivilege = $('#sPrivilege').val();
+                   var action_mode = $('#action_mode').val();
+                   console.log(action_mode);                          //check mode 1 add or 2 edit
+                   console.log('firstname: ' + sFirstname + ' lastname: ' + sLastname + ' username: ' + sUsername + ' password: ' +  sPassword + ' Email: '+ sEmail + ' Tel: ' + sTel + sPrivilege);                     //check dob and gender parameter
+                   $.ajax({
+                     url:'save',
+                     data:{UserID:UserID,
+                       sPrivilege:sPrivilege,
+                       sFirstname:sFirstname,
+                       sLastname:sLastname,
+                       sAddress1:sAddress1,
+                       sAddress2:sAddress2,
+                       sCity:sCity,
+                       sState:sState,
+                       sPostcode:sPostcode,
+                       sCountry:sCountry,
+                       sUsername:sUsername,
+                       sPassword:sPassword,
+                       sEmail:sEmail,
+                       sTel:sTel,
+                       action_mode:action_mode},
+                     method:"post"
+                   })
+                   .done(function(tResult) {
+                         console.log('done');                        //check processing
+                         if (tResult == 'error') {
+                             alert('!Cannot to save.');
+                         }else{
+                           // clear form
+                           $('#sFirstname').val('');
+                           $('#sLastname').val('');
+                           $('#sAddress1').val('');
+                           $('#sAddress2').val('');
+                           $('#sCity').val('');
+                           $('#sState').val('');
+                           $('#sPostcode').val('');
+                           $('#sCountry').val('');
+                           $('#sUsername').val('');
+                           $('#sPassword').val('');
+                           $('#sEmail').val('');
+                           $('#sTel').val('');
+                           $('#sPrivilege').val();
+                           $('#action_mode').val(1);
           // close popup form
           $('#userform').modal('hide');
           $('body').removeClass('modal-open');
