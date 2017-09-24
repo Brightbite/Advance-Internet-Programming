@@ -86,16 +86,16 @@
             <h4 class="modal-title" id="sModalLabel">Sign in</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           </div>
-          <form method="post" id="formsignin"  enctype="multipart/form-data" action="login">
+          <form method="post" id="formsignin"  enctype="multipart/form-data">
           <div class="modal-body">
             Username<br>
             <input type="text" name="username" id="username" class="form-control" required placeholder="username" maxlength="50"><br>
             Password<br>
             <input type="password" name="password" id="password" class="form-control" required placeholder="Password" maxlength="20"><br>
-            <input type="text" name="<?=$csrf['name'];?>"  value="<?=$csrf['hash'];?>" style="display:none">
-              <button type="submit" class="btn btn-primary btn-lg btn-block" name="signIn">Sign In</button><br>
+            <input type="hidden" name="<?=$csrf['name'];?>" id="csrf_test_name"  value="<?=$csrf['hash'];?>">
+              <!-- <button type="submit" class="btn btn-primary btn-lg btn-block" name="signIn">Sign In</button><br> -->
             <!-- <button type="submit" class="btn btn-primary btn-lg btn-block" id="btn-signIn">Sign In</button><br> -->
-            <!-- <button type="button" class="btn btn-primary btn-lg btn-block" id="btn-signIn">Sign In</button><br> -->
+            <button type="submit" class="btn btn-primary btn-lg btn-block" id="btn-signIn">Sign In</button><br>
           </div>
         </form>
           <div class="modal-footer">

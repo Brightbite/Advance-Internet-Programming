@@ -53,7 +53,7 @@ class paypal extends CI_Controller {
 			 else {
 			    // Do your stuff with success result.
 			    // print_r($result);
-          redirect('saveorder2/2');
+          redirect('saveorder2');
 			 }
 	     }
 	}

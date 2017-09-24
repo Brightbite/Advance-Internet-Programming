@@ -1,6 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+
+//API
+$route['api/create']      = "cApi/createForm";
+$route['api/delete/(:any)']   = "cApi/delete/$1";
+$route['api/read']            = "cApi/customerRead";
+
 // Homepage
 $route['default_controller'] = 'cHome/index';
 $route['home']      = 'cHome/index';

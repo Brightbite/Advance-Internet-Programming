@@ -63,7 +63,7 @@ class cUser extends CI_Controller {
   //showing updated table load from model
   public function userlist(){
           $aData = array(
-            
+
           );
          $firstname_f = $this->input->get('fristname_f');       //get post data from view page
          $lastname_f = $this->input->get('lastname_f');
@@ -95,7 +95,9 @@ class cUser extends CI_Controller {
       // $password   =     $this->input->post('password');
 
       // echo $res;
-      $pwEnc = base64_encode($password);
+        $pwEnc = md5($password);
+      // $pwEnc = base64_encode($password);
+      // $pwEnc = $this->encryption->encrypt($password);
       // $csinfo = $this->MLogin->Login($username,$pwEnc);
 
       if ($action_mode == '1') {

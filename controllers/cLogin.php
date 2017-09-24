@@ -8,6 +8,7 @@ class cLogin extends CI_Controller {
           $this->load->library('session');
           $this->load->helper('url');
           $this->load->model('mLogin','MLogin'); //load model first before view
+          // $this->load->library('encryption');
   }
 
   public function index()
@@ -31,17 +32,29 @@ class cLogin extends CI_Controller {
   }
   public function signIn()
   {
-          $csrf = array(
-               'name' => $this->security->get_csrf_token_name(),
-               'hash' => $this->security->get_csrf_hash()
-           );
 
+          //  echo $this->security->get_csrf_hash();
+          //  echo 'and';/
+           //echo $this->input->post('csrf_val');
+           $csrf = array(
+                'name' => $this->security->get_csrf_token_name(),
+                'hash' => $this->security->get_csrf_hash()
+               //  'csrf' => $csrf
+            );
+          //
             $username   =     $this->input->post('username');
             $password   =     $this->input->post('password');
-            // echo $res;
-            $pwEnc = base64_encode($password);
-            $csinfo = $this->MLogin->Login($username,$pwEnc);
+          //   // echo $res;
 
+
+            // $pwE = $this->encrypt->encode($password)
+            $pwE = md5($password);
+            
+            // $pwE nc = base64_encode($password);
+
+            // $csinfo = $this->MLogin->Login($username,$pwEnc);
+            $csinfo = $this->MLogin->Login($username,$pwE);
+            // echo $password   =     $this->input->post('password');
             if ($csinfo == 'empty') {
               echo 'false';
             }else{
@@ -64,7 +77,7 @@ class cLogin extends CI_Controller {
                               );
 
                 $this->session->set_userdata($cusdata);
-                redirect('#',refresh);
+          //       redirect('#',refresh);
             }
 
 

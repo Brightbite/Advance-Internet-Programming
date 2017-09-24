@@ -7,6 +7,17 @@
            parent::__construct();
        }
 
+       function update_counter($arrayProduct) {
+        // return current article views
+            $this->db->where('CategoryID', urldecode($arrayProduct));
+            $this->db->select('Visited_Times');
+            $count = $this->db->get('history')->row();
+        // then increase by one
+            $this->db->where('CategoryID', urldecode($arrayProduct));
+            $this->db->set('Visited_Times', ($count->Visited_Times + 1));
+            $this->db->update('history');
+        }
+
        public function getGruopRecommend($CustomerID=''){
 
                if (isset($CustomerID)){
