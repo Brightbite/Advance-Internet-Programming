@@ -2,7 +2,7 @@
 - 12634123
 
 # Assessment Item
-```
+
 You will work in groups of up to three developers to design and develop a web application. Using a web development technology of your
 choice (subject to conditions that will be explained in Week 2), you will develop a website with a range of sophisticated functionality
 that includes secure login and the ability to manage data and an administrative roles. The assignment and final demonstrations are due
@@ -76,7 +76,7 @@ Before you demonstrate your system, you should thoroughly test your system:
 Assessment Criteria
 
 This assessment is worth 40% of your final grade. You will be receiving feedback and guidance throughout the semester. Preparation activities and in-class activities for Assessment 1 will be related to this Assessment and will, at many times, directly incorporate work that you have produced as part of this assessment. The final submission of your project will be assessed according to the following 
-```
+
 
 # Project files
 ```
