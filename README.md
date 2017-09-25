@@ -1,5 +1,5 @@
 # Advance-Internet-Programming Project Spring 2017
-- Kunanon Pititheerachot 12634123
+- Kunanon Pititheerachot 12634123 - Retail App
 
 # Project files
 ```
