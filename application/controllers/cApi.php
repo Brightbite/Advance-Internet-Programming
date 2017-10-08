@@ -1,5 +1,4 @@
-<?php
-defined('BASEPATH' OR exit('No direct script access allowed'));
+<?php defined('BASEPATH' OR exit('No direct script access allowed'));
 
 class cApi extends CI_Controller {
 
@@ -66,8 +65,5 @@ class cApi extends CI_Controller {
     }
   }
 }
-
-
-
 
 ?>
