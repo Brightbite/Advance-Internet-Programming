@@ -34,21 +34,6 @@
 
     <div class="container">
       <div class="row">
-        <!-- /.col-lg-3 -->
-        <div class="col-lg-3">
-          <!-- <h1 class="my-4 text-info"><?php echo $top;?></h1> -->
-          <!-- Catalog -->
-          <!-- <div class="list-group">
-                <?php if(is_array($Catalog) == true){ ?>
-                <?php foreach ($Catalog as  $catalog) {   $catalog->CategoryID; ?>
-                  <a href="<?php echo base_url();?>product_by_catalog/<?php echo $catalog->CategoryID;?>/<?php echo $catalog->CategoryName;?>" class="bg-dark text-light list-group-item"><?php echo $catalog->CategoryName;?></a>
-                <?php } //end foreach ?>
-              <?php }else{ ?>
-                 <a href="" class="bg-dark text-light list-group-item">All Catalog</a>
-              <?php } ?>
-          </div> -->
-          <!-- Catalog -->
-        </div>
         <div class="col-lg-12">
 
           <div align="center"><br><hr><h5>Recommendation</h5><hr><br></div>
@@ -80,18 +65,12 @@
                   <form class="" action="<?php echo base_url()?>/addtocart" method="post">
                     <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                       <div class="btn-group mr-1" role="group" aria-label="First group" style="width:60%">
-                        <!-- <span class="input-group-btn">
-                          <button type="button" class="btn btn-outline-dark"  id="bnt1"> - </button>
-                        </span> -->
                         <input type="text" class="form-control" name="qty" id="qty" value="1" style="display:none">
                         <input type="text" name="prodID" value="<?php echo $prodRec->ProductID;?>" style="display:none">
                         <input type="text" name="prodName" value="<?php echo $prodRec->ProductName;?>" style="display:none">
                         <input type="text" name="prodPrice" value="<?php echo $prodRec->Price;?>" style="display:none">
                         <input type="text" name="prodPic" value="<?php echo $prodRec->Picture;?>" style="display:none">
                         <input type="text" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" style="display:none">
-                        <!-- <span class="input-group-btn">
-                          <button type="button" class="btn btn-outline-dark" id="bnt2"> + </button>
-                        </span> -->
                       </div>
                       <div class="btn-group" role="group" aria-label="Second group">
                         <button  type="submit"  class=" btn-sm btn btn-dark pull-right"><i class="fa fa-cart-plus" aria-hidden="true"> Add to Cart</i></button>
@@ -123,7 +102,6 @@
                  }
             });
             $('#bnt2').click(function(){
-                //alert('bnt2');
                  var qty = parseInt($('#qty').val());
 
                      var cqty  = qty + 1;

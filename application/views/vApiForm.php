@@ -4,7 +4,7 @@
               <div class="row">
                 <div class="col-md-12 text-secondary">
                   <hr>
-                  <form method="post"  enctype="multipart/form-data" action="http://aipretail.azurewebsites.net/API/api.php/create">
+                  <form method="post"  enctype="multipart/form-data" action="https://kunanonapi.000webhostapp.com/create">
                     First name:<br>
                     <input type="text" name="customerFirstname"  class="form-control"   autocomplete="false" placeholder="Firstname" maxlength="20"><br>
                     Last name:<br>
@@ -29,15 +29,11 @@
                     <label class="col-md-6 col-form-label">Username</label><br>
                       <input type="text" name="customerUsername" class="form-control"   placeholder="Username" maxlength="20" aria-describedby="usernameHelpInline"><br>
 
-
                     <label class="col-md-6 col-form-label">Password</label><br>
                       <input type="password" name="customerPassword"  class="form-control"   placeholder="Password" maxlength="20" aria-describedby="passwordHelpInline"><br>
 
-
-
                     <label class="col-md-6 col-form-label">Email</label><br>
                       <input type="text" name="customerEmail" class="form-control"   placeholder="Example@email.com" maxlength="50" aria-describedby="emailHelpInline"><br>
-
 
                     <label class="col-md-6 col-form-label">Contact Number</label><br>
                       <input type="text" name="customerTel"  class="form-control"   placeholder="Contact number" maxlength="20" aria-describedby="telHelpInline"><br>

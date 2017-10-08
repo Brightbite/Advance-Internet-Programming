@@ -51,14 +51,6 @@
                                                   '<?php echo $history->PaymentTypeDesc;?>',
                                                   )">More Info</button></td>
                    </tr>
-                   <!-- <td><button type="button" name="button" data-toggle="detailModal" data-target="#userform" class="btn btn-primary pull-right" onclick="ShowDetail('<?php echo $history->OrderDate;?>')">Edit</button></td> -->
-<!-- <a class="nav-link" href="<?php echo base_url();?>#" data-toggle="modal" data-target="#sModal"><i class="fa fa-sign-in" aria-hidden="true"></i> Sign in</a> -->
-                   <!-- <div class="collapse" id="collapseExample">
-                     <div class="card card-block">
-                       <?php echo $history->ProductName;?>
-                    </div>
-                   </div> -->
-
               <?php } ?>
               </table>
 

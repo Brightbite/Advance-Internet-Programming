@@ -72,7 +72,6 @@
               <!--  mode 1 = add 2=edit-->
               <input type="hidden" name="action_mode" id="action_mode" value="1"><br>
               <button type="submit" class="btn btn-primary btn-lg btn-block" id="btn-register2">Register</button><br>
-              <!-- <input type="submit"  value="Register New Account" class="btn btn-primary btn-lg btn-block" id="btn-register2"><br><hr> -->
             </form>
           </div>
         </div>

@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
-
-$config['base_url'] = 'http://aipretail.azurewebsites.net/';
+$config['base_url'] = 'http://localhost/deploy/Advance-Internet-Programming/';
+// $config['base_url'] = 'http://aipretail.azurewebsites.net/';
 $config['index_page'] = '';
 $config['uri_protocol']	= 'AUTO';
 $config['url_suffix'] = '';

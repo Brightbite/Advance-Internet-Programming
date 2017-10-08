@@ -42,7 +42,6 @@
                 <?php if ($items == '') { ?>
                  <?php } else{?><td class="text-success right"><?php echo form_submit('','Update your Cart','class="btn btn-info"');?></td><?php } ?>
             <?php } ?>
-
       </tr>
       <tr>
            <td colspan="3"> </td>
@@ -61,10 +60,8 @@
                <?php } ?>
              <?php }else{?><button type="button" class="pull-right btn btn-primary" onclick="back()"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Shopping</button><?php }?>
     </div>
-    <!-- /.col-lg-9 -->
   </div>
 </div>
-<!-- /.container -->
 
 <script type="text/javascript">
           function back(){

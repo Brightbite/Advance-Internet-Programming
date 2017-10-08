@@ -17,7 +17,6 @@
         Country:         <?php echo $shippingCountry;?><br>
         Email:           <?php echo $shippingEmail;?><br>
         Contact Number:  <?php echo $shippingTel;?><br>
-        <!-- <input type="text" id="payment_method" value="1"> -->
       </div>
     <div class="col-lg-6 text-secondary">
 
@@ -53,7 +52,6 @@
                     <td class="text-dark"><?php echo $showOrder->ProductName;?></td>
                     <td class="text-dark"><?php echo $showOrder->Quantity;?></td>
                     <td style="text-align:right"><?php echo $showOrder->Price;?></td>
-
            </tr>
       <?php } ?>
       </table>
@@ -67,27 +65,3 @@
   </div>
 </div>
 <!-- /.container -->
-
-<!-- <script type="text/javascript">
-        function back(){
-            window.location = 'home';
-        }
-        //
-        // function select_paypal(){
-        //     $('#payment_method').val(2);
-        // }
-        //
-        // function select_credit(){
-        //     $('#payment_method').val(1);
-        // }
-        // //
-        // // function payment(){
-        // //     if ($('#payment_method').val()==1){
-        // //         window.location = 'credit';
-        // //     }else{
-        // //        window.location = 'cpaypal';
-        // //     }
-        // //
-        // // }
-
-</script> -->
