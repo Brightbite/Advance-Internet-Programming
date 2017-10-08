@@ -8,8 +8,8 @@ class cHome extends CI_Controller {
           $this->load->library('session');
           $this->load->library('cart');
           $this->load->helper('url');
-          $this->load->model('mProduct','MProduct'); //load model first before view
-          $this->load->model('mCatalog','MCatalog'); //load model first before view
+          $this->load->model('mProduct','MProduct');
+          $this->load->model('mCatalog','MCatalog');
           $this->load->model('mRecommend','MRecommend');
   }
 
@@ -47,39 +47,9 @@ class cHome extends CI_Controller {
     $csrf = array(
          'name' => $this->security->get_csrf_token_name(),
          'hash' => $this->security->get_csrf_hash()
-        //  'csrf' => $csrf
      );
-
-    // $csrf = array(
-    //         'name' => $this->security->get_csrf_token_name(),
-    //         'hash' => $this->security->get_csrf_hash()
-    // );
-
-    // echo $this->security->get_csrf_token_name(); // for the name
-    // echo $this->security->get_csrf_hash();  // for the value
-
-    //Product Recommend
-    // $oGroupRecommend = $this->MRecommend->getGruopRecommend();
-    // if (is_array($oGroupRecommend)){
-    //     $i = 0;
-    //     $arrayGroup = array();
-    //     foreach ($oGroupRecommend as $group ) {
-    //           $arrayGroup[$i]  = $group->CategoryID;
-    //           $i++;
-    //     }
-    //
-    //     $tgroupRecommend = implode("','", $arrayGroup);
-    //     $groupRecommend = "'".$tgroupRecommend."'";
-    //
-    // }else{
-        // $groupRecommend = 'ALL';
-    // }
-
-
     $productRecommend = $this->MRecommend->mRecommendation();
-    // productRecommend
     $productRecImage= $this->MRecommend->mRecImage();
-
 
     $header = array(
       'title' => 'Homepage',
@@ -92,7 +62,6 @@ class cHome extends CI_Controller {
       'csrf' => $csrf
     );
 
-    // $pvlList = $this->MProduct->mProDetail();
     $aCatalog = $this->MCatalog->mCatalogList();
 
     $index = array(
@@ -106,13 +75,8 @@ class cHome extends CI_Controller {
 
     $data = array();
     $this->load->view('template/header',$header);
-    $this->load->view('vHome',$index); //load view
+    $this->load->view('vHome',$index);
     $this->load->view('template/footer');
-
   }
-  // public function login(){
-  //
-  // }
-
 }
 ?>

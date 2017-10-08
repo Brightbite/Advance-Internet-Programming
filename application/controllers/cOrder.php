@@ -8,7 +8,6 @@ class cOrder extends CI_Controller {
           $this->load->helper('url');
           $this->load->library('cart');
           $this->load->library('session');
-          // $this->load->library('paypalexpress');
           $this->load->model('mOrder','MOrder');
   }
 
@@ -51,7 +50,7 @@ class cOrder extends CI_Controller {
 
     $data = array();
     $this->load->view('template/header',$header);
-    $this->load->view('vCart',$index); //load view
+    $this->load->view('vCart',$index);
     $this->load->view('template/footer');
 
   }
@@ -75,12 +74,9 @@ class cOrder extends CI_Controller {
         $shippingEmail = $this->session->userdata('shippingEmail');
         $shippingTel = $this->session->userdata('shippingTel');
 
-
-
           $olastOrder =  $this->MOrder->mgetOrderID();
           $tlastOrder = $olastOrder->OrderID;
           date_default_timezone_set("Australia/Sydney");
-          //echo $tlastOrder;
           $cDate = date('d');
           $cMonth = date('m');
           $cYear = date('Y');
@@ -127,9 +123,6 @@ class cOrder extends CI_Controller {
                        'Quantity' => $item['qty'],
                        'Price' => $item['price']
                        );
-                      //  echo var_dump($order_detail);
-                       // Insert product imformation with order detail, store in cart also store in database.
-
                       $this->MOrder->msaveOrderDetail($order_detail);
              }
 
@@ -151,9 +144,7 @@ class cOrder extends CI_Controller {
                               'CardVerify' => $cVerify
         );
 
-
         $this->MOrder->mSavepayment($DataPayment);
-
         $summOrder = array('LastOrder' => $nOrder);
         $this->session->set_userdata($summOrder);
         $this->cart->destroy();
@@ -184,7 +175,6 @@ class cOrder extends CI_Controller {
           $olastOrder =  $this->MOrder->mgetOrderID();
           $tlastOrder = $olastOrder->OrderID;
           date_default_timezone_set("Australia/Sydney");
-          //echo $tlastOrder;
           $cDate = date('d');
           $cMonth = date('m');
           $cYear = date('Y');
@@ -196,7 +186,6 @@ class cOrder extends CI_Controller {
               $aLastOrder = explode("-",$tlastOrder);
               echo $aLastOrder[1];
               $nNext = $aLastOrder[1] + 1;
-              // $nOrder = $aLastOrder[0].'-'.$nNext;
               $nOrder = $cDate.$cMonth.$cYear.'-'.$nNext;
           }
 
@@ -233,16 +222,9 @@ class cOrder extends CI_Controller {
                        'Quantity' => $item['qty'],
                        'Price' => $item['price']
                        );
-
-                      //  echo var_dump($order_detail);
-
-                       // Insert product imformation with order detail, store in cart also store in database.
-
                       $this->MOrder->msaveOrderDetail($order_detail);
              }
-
           }
-          // $cName = $this->input->post('cName');
 
           $DataPayment = array('OrderID' =>  $nOrder,
                               'PaymentType' => '2',
@@ -252,16 +234,12 @@ class cOrder extends CI_Controller {
                               'CardExpire' => '-',
                               'CardVerify' => '-'
         );
-        $this->MOrder->mSavepayment($DataPayment);
 
+        $this->MOrder->mSavepayment($DataPayment);
         $summOrder = array('LastOrder' => $nOrder);
         $this->session->set_userdata($summOrder);
-
         $this->cart->destroy();
           redirect('receipt/2');
-
-
   }
-
 }
 ?>

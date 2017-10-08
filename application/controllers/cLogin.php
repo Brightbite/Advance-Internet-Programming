@@ -7,8 +7,7 @@ class cLogin extends CI_Controller {
           parent::__construct();
           $this->load->library('session');
           $this->load->helper('url');
-          $this->load->model('mLogin','MLogin'); //load model first before view
-          // $this->load->library('encryption');
+          $this->load->model('mLogin','MLogin');
   }
 
   public function index()
@@ -26,35 +25,23 @@ class cLogin extends CI_Controller {
 
     $data = array();
     $this->load->view('template/header',$header);
-    $this->load->view('vLogscreen',$index); //load view
+    $this->load->view('vLogscreen',$index);
     $this->load->view('template/footer');
 
   }
   public function signIn()
   {
-
-          //  echo $this->security->get_csrf_hash();
-          //  echo 'and';/
-           //echo $this->input->post('csrf_val');
            $csrf = array(
                 'name' => $this->security->get_csrf_token_name(),
                 'hash' => $this->security->get_csrf_hash()
-               //  'csrf' => $csrf
             );
-          //
+
             $username   =     $this->input->post('username');
             $password   =     $this->input->post('password');
-          //   // echo $res;
 
-
-            // $pwE = $this->encrypt->encode($password)
             $pwE = md5($password);
-            
-            // $pwE nc = base64_encode($password);
 
-            // $csinfo = $this->MLogin->Login($username,$pwEnc);
             $csinfo = $this->MLogin->Login($username,$pwE);
-            // echo $password   =     $this->input->post('password');
             if ($csinfo == 'empty') {
               echo 'false';
             }else{
@@ -77,31 +64,7 @@ class cLogin extends CI_Controller {
                               );
 
                 $this->session->set_userdata($cusdata);
-          //       redirect('#',refresh);
             }
-
-
-       //
-      //  echo  $this->log_info();
   }
-  public function log_info(){
-          return $this->session->userdata('username_sess');
-  }
-
-
-    // public function validate(){
-      // $this->load->helper(array('form', 'url'));
-      // $this->load->library('form_validation');
-      //
-      // if ($this->form_validation->run() == FALSE)
-      // {
-      //         $this->load->view('myform');
-      // }
-      // else
-      // {
-      //         $this->load->view('formsuccess');
-      // }
-    // }
-
 }
 ?>

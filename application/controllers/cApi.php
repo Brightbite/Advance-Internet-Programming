@@ -16,15 +16,13 @@ class cApi extends CI_Controller {
   }
 
   public function delete($customerID){
-    Redirect("http://aipretail.azurewebsites.net/API/delete?CustID=$customerID");
+    Redirect("https://kunanonapi.000webhostapp.com/delete?CustID=$customerID");
   }
 
   public function customerRead(){
     $data ="";
     $data_string = json_encode($data);
-    // $API = "/Api/Register/Admin/BusinessList";
-    $CallAPI = 'http://aipretail.azurewebsites.net/API/read';
-    //echo $CallAPI;
+    $CallAPI = 'https://kunanonapi.000webhostapp.com/read';
     $ch = curl_init($CallAPI);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
@@ -35,14 +33,8 @@ class cApi extends CI_Controller {
     );
     curl_setopt($ch, CURLOPT_TIMEOUT, 60);
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 60);
-
-    //execute post
     $result = curl_exec($ch);
-    //echo $result;
-    //close connection
     curl_close($ch);
-
-    //echo $result;
     $json=json_decode($result,true);
     $nRows = count($json);
 

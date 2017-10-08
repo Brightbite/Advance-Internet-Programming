@@ -33,7 +33,6 @@ class cCart extends CI_Controller {
         $custlast = '';
     }
 
-
     if ($this->session->has_userdata('csID')) {
         $custID = $this->session->userdata('csID');
     }else {
@@ -43,7 +42,6 @@ class cCart extends CI_Controller {
     $csrf = array(
          'name' => $this->security->get_csrf_token_name(),
          'hash' => $this->security->get_csrf_hash()
-        //  'csrf' => $csrf
      );
 
     $header = array(
@@ -58,29 +56,12 @@ class cCart extends CI_Controller {
 
     );
 
-    // $index = array(
-    //   'top' => 'Home',
-    //   ''  => $custname,
-    //   ''  => $custlast
-    // );
-      // $productdata = array(
-      //             'id'      => 'sku_123ABC',
-      //             'qty'     => 1,
-      //             'price'   => 39.95,
-      //             'name'    => 'T-Shirt',
-      //             'options' => array('Size' => 'L', 'Color' => 'Red')
-      // );
-      //
-      // $this->cart->insert($productdata);
-
     $data = array();
     $this->load->view('template/header',$header);
-    // $this->load->view('vCart',$index); //load view
     $cartData = array();
     $cartData['cartUser'] = $this->MCart->mCartuser();
     $this->load->view('vCart',$cartData);
     $this->load->view('template/cartfooter');
-    // $pvlList = $this->MCart->mCartuser();
   }
 
   public function usercart(){
@@ -106,7 +87,6 @@ class cCart extends CI_Controller {
 
         $this->cart->insert($data);
         redirect('cart');
-        //$this->index();
   }
 
   public function updatecart(){
@@ -121,7 +101,6 @@ class cCart extends CI_Controller {
 
           $this->cart->update($cart_up_data);
           redirect('cart');
-          // $this->index();
 
   }
 
@@ -130,7 +109,6 @@ class cCart extends CI_Controller {
                   'rowid' =>$rowid ,
                   'qty'   => 0
                );
-
 
            $this->cart->update($data);
            redirect('cart');

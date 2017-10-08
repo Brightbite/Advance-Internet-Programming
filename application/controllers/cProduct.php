@@ -8,8 +8,8 @@ class cProduct extends CI_Controller {
           $this->load->library('session');
           $this->load->library('cart');
           $this->load->helper('url');
-          $this->load->model('mProduct','MProduct'); //load model first before view
-          $this->load->model('mCatalog','MCatalog'); //load model first before view
+          $this->load->model('mProduct','MProduct');
+          $this->load->model('mCatalog','MCatalog');
           $this->load->model('mRecommend','MRecommend');
   }
 
@@ -22,24 +22,12 @@ class cProduct extends CI_Controller {
       'author' => 'Kunanon Pititheerachot #12634123 UTS'
     );
 
-    // $index = array(
-    //   'top' => 'Product'
-    // );
-
-    // $data = array();
     $this->load->view('template/header',$header);
-    // $this->load->view('vProduct',$index); //load view
     $ProductID = $this->input->get('prod_ID');
     $arrayProduct = array();
     $arrayProduct['ProductDetail'] = $this->MProduct->mProDetail($ProductID);
     $this->load->view('vProduct',$arrayProduct);
-
-
-
-
     $this->load->view('template/footer');
-
-
   }
 
   public function ProductByCatalog($CatalogID,$CatalogName){
@@ -64,7 +52,7 @@ class cProduct extends CI_Controller {
           $csrf = array(
                'name' => $this->security->get_csrf_token_name(),
                'hash' => $this->security->get_csrf_hash()
-              //  'csrf' => $csrf
+
            );
 
            if ($this->session->has_userdata('customerIDSess')) {
@@ -72,27 +60,6 @@ class cProduct extends CI_Controller {
            }else {
                $custID = '';
            }
-
-                // $oGroupRecommend = $this->MRecommend->getGruopRecommend($custID);
-                // if (is_array($oGroupRecommend)){
-                //     $i = 0;
-                //     $arrayGroup = array();
-                //     foreach ($oGroupRecommend as $group ) {
-                //           $arrayGroup[$i]  = $group->CategoryID;
-                //           $i++;
-                //     }
-                //
-                //     $tgroupRecommend = implode("','", $arrayGroup);
-                //     $groupRecommend = "'".$tgroupRecommend."'";
-                //
-                // }else{
-                //   $groupRecommend = 'ALL';
-                // }
-
-
-                // $productRecImage= $this->MRecommend->mRecImage($groupRecommend);
-
-
 
           $header = array(
             'title' => $CatalogName,

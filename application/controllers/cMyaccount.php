@@ -7,12 +7,10 @@ class cMyaccount extends CI_Controller {
           parent::__construct();
           $this->load->library('session');
           $this->load->helper('url');
-          $this->load->model('mOrder','MOrder'); //load model first before view
+          $this->load->model('mOrder','MOrder');
   }
 
-  public function index()
-  {
-
+  public function index(){
     $custAddr1  = $this->session->userdata('customerAddr1Sess');
     $custAddr2  = $this->session->userdata('customerAddr2Sess');
     $custCity   = $this->session->userdata('customerCitySess');
@@ -49,10 +47,7 @@ class cMyaccount extends CI_Controller {
       'description' => 'this is web application for online retailer',
       'author' => 'Kunanon Pititheerachot #12634123 UTS',
       'custname'=> $custname,
-      // 'custlast'  => $custlast,
       'privid' => $PrivilegeID,
-
-
     );
 
     $index = array(
@@ -72,13 +67,8 @@ class cMyaccount extends CI_Controller {
 
     $data = array();
     $this->load->view('template/header',$header);
-    $this->load->view('vMyaccount',$index); //load view
+    $this->load->view('vMyaccount',$index);
     $this->load->view('template/footer');
-
   }
-  // public function login(){
-  //
-  // }
-
 }
 ?>

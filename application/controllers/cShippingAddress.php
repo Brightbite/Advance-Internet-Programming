@@ -8,7 +8,7 @@ class cShippingAddress extends CI_Controller {
           $this->load->library('cart');
           $this->load->library('session');
           $this->load->helper('url');
-          $this->load->model('mCart','MCart'); //load model first before view
+          $this->load->model('mCart','MCart');
   }
 
   public function index()
@@ -84,10 +84,5 @@ class cShippingAddress extends CI_Controller {
     $this->load->view('vShippingAddress',$index);
     $this->load->view('template/footer');
   }
-
-  public function shippingAddress(){
-
-  }
-
 }
 ?>

@@ -9,8 +9,6 @@ class cPayment extends CI_Controller {
           $this->load->library('session');
           $this->load->model('mOrder','MOrder');
           $this->load->helper('url');
-          // // $this->load->library('paypalexpress');
-          // $this->load->helper('url');
   }
 
   public function index()
@@ -36,7 +34,7 @@ class cPayment extends CI_Controller {
     $csrf = array(
          'name' => $this->security->get_csrf_token_name(),
          'hash' => $this->security->get_csrf_hash()
-        //  'csrf' => $csrf
+
      );
 
     $header = array(
@@ -52,12 +50,8 @@ class cPayment extends CI_Controller {
     );
 
     $this->load->view('template/header',$header);
-    // // $this->load->view('vCart',$index); //load view
-    // $cartData = array();
-    // $cartData['cartUser'] = $this->MCart->mCartuser();
     $this->load->view('vPayment');
     $this->load->view('template/footer');
-    // // $pvlList = $this->MCart->mCartuser();
   }
 
 
@@ -87,7 +81,6 @@ class cPayment extends CI_Controller {
     $csrf = array(
          'name' => $this->security->get_csrf_token_name(),
          'hash' => $this->security->get_csrf_hash()
-        //  'csrf' => $csrf
      );
 
     $header = array(
@@ -99,7 +92,6 @@ class cPayment extends CI_Controller {
       'custlast'  => $custlast,
       'privid' => $PrivilegeID,
       'csrf' => $csrf
-
     );
 
 
@@ -166,11 +158,9 @@ class cPayment extends CI_Controller {
                       'lastOrder' =>  $lastOrder,
                       'lastPayment' => $lastPayment
                       );
-    // $aData = array('custID'    => $custID);
     $csrf = array(
          'name' => $this->security->get_csrf_token_name(),
          'hash' => $this->security->get_csrf_hash()
-        //  'csrf' => $csrf
      );
 
     $header = array(
@@ -192,16 +182,6 @@ class cPayment extends CI_Controller {
 
 
   public function paymentPaypal(){
-    // $header = array(
-    //   'title' => 'My Account',
-    //   'keywords' => 'account',
-    //   'description' => 'this is web application for online retailer',
-    //   'author' => 'Kunanon Pititheerachot #12634123 UTS',
-      // 'custname'=> $custname,
-      // 'custlast'  => $custlast,
-      // 'privid' => $PrivilegeID
-
-    // );
     if ($this->session->has_userdata('customerNameSess')) {
         $custname = $this->session->userdata('customerNameSess');
     }else {
@@ -249,17 +229,11 @@ class cPayment extends CI_Controller {
       }
       else {
          // Do your stuff with success result.
-         //print_r($result);
 
          redirect('saveorder2/2');
       }
       }
-    // $this->load->view('template/header',$header);
-    // // // $this->load->view('vCart',$index); //load view
-    // // $cartData = array();
-    // // $cartData['cartUser'] = $this->MCart->mCartuser();
-    // $this->load->view('vPaypal');
-    // $this->load->view('template/footer');
+
   }
 
 

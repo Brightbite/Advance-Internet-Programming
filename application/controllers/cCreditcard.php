@@ -7,7 +7,6 @@ class cCreditcard extends CI_Controller {
           parent::__construct();
           $this->load->library('cart');
           $this->load->library('session');
-          // $this->load->library('paypalexpress');
           $this->load->helper('url');
   }
 
@@ -44,17 +43,8 @@ class cCreditcard extends CI_Controller {
     );
 
     $this->load->view('template/header',$header);
-    // // $this->load->view('vCart',$index); //load view
-    // $cartData = array();
-    // $cartData['cartUser'] = $this->MCart->mCartuser();
     $this->load->view('vCreditcard');
     $this->load->view('template/footer');
-    // // $pvlList = $this->MCart->mCartuser();
   }
-
-  public function shippingAddress(){
-
-  }
-
 }
 ?>

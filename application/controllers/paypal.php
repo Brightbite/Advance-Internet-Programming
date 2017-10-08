@@ -1,10 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 class paypal extends CI_Controller {
 
-    /**
-     * Index Page for this controller.
-     */
-
     public function __construct() {
 	     parent::__construct();
     }
@@ -51,8 +47,6 @@ class paypal extends CI_Controller {
 			   redirect('myview');
 			 }
 			 else {
-			    // Do your stuff with success result.
-			    // print_r($result);
           redirect('saveorder2');
 			 }
 	     }

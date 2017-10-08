@@ -7,9 +7,7 @@ class cCatalog extends CI_Controller {
           parent::__construct();
           $this->load->library('session');
           $this->load->helper('url');
-          $this->load->model('mCatalog','MCatalog'); //load model first before view
-          
-
+          $this->load->model('mCatalog','MCatalog');
   }
 
   public function index()
@@ -32,13 +30,10 @@ class cCatalog extends CI_Controller {
         $custlast = '';
     }
 
-
     $csrf = array(
          'name' => $this->security->get_csrf_token_name(),
          'hash' => $this->security->get_csrf_hash()
-        //  'csrf' => $csrf
      );
-
 
     $header = array(
       'title' => 'Catalog',
@@ -55,20 +50,13 @@ class cCatalog extends CI_Controller {
     $index = array(
       'top' => 'Catalog',
       'Catalog' => $aCatalog,
-
     );
-
-
 
     $data = array();
     $this->load->view('template/header',$header);
-    $this->load->view('vCatalog',$index); //load view
+    $this->load->view('vCatalog',$index);
     $this->load->view('template/footer');
 
   }
-  // public function login(){
-  //
-  // }
-
 }
 ?>

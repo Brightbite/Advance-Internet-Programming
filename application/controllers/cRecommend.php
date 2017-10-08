@@ -5,15 +5,11 @@ class cRecommend extends CI_Controller {
 
   function __construct(){
           parent::__construct();
-          // $this->load->library('cart');
            $this->load->library('session');
-          // $this->load->helper('url');
-           $this->load->model('mRecommend','MRecommend'); //load model first before view
-          // $this->load->helper('form');
+           $this->load->model('mRecommend','MRecommend');
   }
 
   public function index(){
-    // $this->load->view('tempalte/header');
 
         if ($this->session->has_userdata('customerIDSess')) {
             $custID = $this->session->userdata('customerIDSess');
@@ -46,7 +42,6 @@ class cRecommend extends CI_Controller {
     echo "</pre>";
 
     $this->load->view('vRecommend',$productRecommend);
-    // $this->load->view('vRecommend');
   }
 }
 ?>

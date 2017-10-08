@@ -7,7 +7,6 @@ class cCheckout extends CI_Controller {
           parent::__construct();
           $this->load->library('cart');
           $this->load->library('session');
-          // $this->load->library('paypalexpress');
           $this->load->model('mOrder','MOrder');
           $this->load->helper('url');
   }
@@ -35,7 +34,6 @@ class cCheckout extends CI_Controller {
     $csrf = array(
          'name' => $this->security->get_csrf_token_name(),
          'hash' => $this->security->get_csrf_hash()
-        //  'csrf' => $csrf
      );
 
     $header = array(
@@ -73,24 +71,10 @@ class cCheckout extends CI_Controller {
                       'shippingTel' => $shippingTel,
                       );
 
-
     $this->session->set_userdata($address); //store shipping details to session
     $this->load->view('template/header',$header);
-
     $this->load->view('vCheckout',$address);
     $this->load->view('template/cartfooter');
-
   }
-
-  // public function saveorder($paymentType){
-  //
-  //
-  //   echo $this->session->userdata('shippingFirstname');
-  //
-  //
-  // }
-
-
-
 }
 ?>
