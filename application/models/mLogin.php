@@ -11,12 +11,7 @@
            $SQL = 'SELECT *
                    FROM customer
                    WHERE Username = '.$this->db->escape($username). 'AND Password =' .$this->db->escape($password);
-
-          //echo $SQL;
-        //  $SQL = "SELECT firstname,lastname FROM member WHERE email = $email ";
-        // //  if ($email == $loginData){
-        // //    $SQL.=" AND email = '$email'";
-        // //  }
+                   
          $query = $this->db->query($SQL);
           if ($query->num_rows() > 0) {
             return $query->row();

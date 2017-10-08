@@ -13,8 +13,6 @@ $route['home']                = 'cHome/index';
 
 // Account Signing & Signout
 $route['register']  = 'cRegister/index';
-$route['create']    = 'cRegister/createUser';
-$route['logscreen'] = 'cLogin/index';
 $route['login']     = 'cLogin/signIn';
 $route['logout']    = 'cLogout/index';
 $route['account']   = 'cMyaccount/index';

@@ -6,9 +6,8 @@
        {
            parent::__construct();
        }
-       //updated list
+
        public function mUserList($fname, $lname, $email){
-              //SQL Statement
               $SQL = "SELECT * FROM customer WHERE 1 ";
               if ($fname !='') {
                   $SQL.=" AND CustomerFirstname LIKE '%$fname%'";
@@ -19,7 +18,6 @@
               if ($email !=''){
                   $SQL.=" AND Email     LIKE '%$email%'";
               }
-              // echo $SQL;
               $query = $this->db->query($SQL);
               if ($query->num_rows() > 0) {
                 return $query->result();
@@ -27,26 +25,17 @@
                 return 'empty';
               }
        }
-       //Add function
        public  function mSave($data){
-              if ($this->db->insert('customer',$data)) { //INSERT .... INTO register
+              if ($this->db->insert('customer',$data)) {
                 return 'success';
               }else{
                 return 'error';
               }
        }
 
-       public  function mSaveP($data2){
-              if ($this->db->insert('customer_privilege',$data2)) { //INSERT .... INTO register
-                return 'success';
-              }else{
-                return 'error';
-              }
-       }
 
-       //Delete function
        public function mRemove($data){
-            if ($this->db->delete('customer',$data)) { // DELETE FROM register ....
+            if ($this->db->delete('customer',$data)) { 
               return 'delete success';
             }else{
               return 'error';
@@ -54,10 +43,9 @@
 
        }
 
-      //Update function
        public function mUpdate($email,$data){
-            $this->db->where('Email',$email); // WHERE id = ' ';
-            if ($this->db->update('customer',$data)) { // UPDATE SET ...
+            $this->db->where('Email',$email);
+            if ($this->db->update('customer',$data)) {
               return "success";
             }else{
               return 'error';

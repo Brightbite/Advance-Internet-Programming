@@ -48,20 +48,6 @@ class cRegister extends CI_Controller {
     $this->load->view('template/footer');
   }
 
-  public function createUser(){
-      $email = $this->input->post('email');
-      $password = $this->input->post('password');
-      $firstname = $this->input->post('firstname');
-      $lastname = $this->input->post('lastname');
-      $userdata = array('email' => $email,
-                        'password' => $password,
-                        'firstname' =>$firstname ,
-                        'lastname' => $lastname
-                      );
-           $res = $this->MRegister->mCreate($userdata);
-           echo $res;
-  }
-
 }
 
 ?>

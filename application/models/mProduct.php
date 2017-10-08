@@ -10,7 +10,6 @@
        public function mProDetail($ProdID){
              $SQL = "SELECT * FROM product WHERE ProductID = '$ProdID'";
 
-
              $query = $this->db->query($SQL);
              if ($query->num_rows() > 0) {
                return $query->row();

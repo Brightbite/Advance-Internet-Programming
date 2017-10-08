@@ -35,10 +35,6 @@
   public function msaveOrderDetail($OrderData){
       $this->db->insert('order_detail',$OrderData);
   }
-      // SELECT * FROM ORDER_DETAIL_TABLE ORD
-      // LEFT JOIN PRODUCT_TABLE PDT
-      // ON ORD.PRODUCT_ID_COULUMN = PDT.PRODUCT_ID_COULUMN
-      // WHERE ORD.ORDER_ID_COLUMN = 'LAST_ORDER_ID'
 
   public function mgetLastOrder($LastOrderID){
     $SQL = "SELECT ORD.OrderID,
@@ -54,7 +50,7 @@
             FROM order_detail ORD
             INNER JOIN payment PAY
             ON ORD.OrderID = PAY.OrderID
-            WHERE ORD.OrderID = '$LastOrderID'            ";
+            WHERE ORD.OrderID = '$LastOrderID'";
 
         $query = $this->db->query($SQL);
         if ($query->num_rows() > 0) {
