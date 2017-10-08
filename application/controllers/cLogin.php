@@ -10,25 +10,9 @@ class cLogin extends CI_Controller {
           $this->load->model('mLogin','MLogin');
   }
 
-  public function index()
-  {
-    $header = array(
-      'title' => 'Login',
-      'keywords' => 'shopping',
-      'description' => 'this is web application for online retailer',
-      'author' => 'Kunanon Pititheerachot #12634123 UTS'
-    );
-
-    $index = array(
-      'top' => 'Home'
-    );
-
-    $data = array();
-    $this->load->view('template/header',$header);
-    $this->load->view('vLogscreen',$index);
-    $this->load->view('template/footer');
-
+  public function index(){
   }
+  
   public function signIn()
   {
            $csrf = array(
