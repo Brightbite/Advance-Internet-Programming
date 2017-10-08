@@ -1,5 +1,4 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 $autoload['packages'] = array();
 $autoload['libraries'] = array('database','session','cart','encryption');
 $autoload['drivers'] = array();

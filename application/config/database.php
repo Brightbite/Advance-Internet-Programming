@@ -1,9 +1,9 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 $active_group = 'default';
 $query_builder = TRUE;
 
+//azure(clearDB) database
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'au-cdbr-azure-southeast-a.cloudapp.net',
@@ -25,3 +25,4 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+?>

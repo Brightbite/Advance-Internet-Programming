@@ -101,3 +101,4 @@ $foreign_characters = array(
 	'/Я/' => 'Ya',
 	'/я/' => 'ya'
 );
+?>
