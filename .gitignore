@@ -1,3 +1,4 @@
 /deploy.php
 /deploy_backup.php
 /API/
+/application/config/database.php
