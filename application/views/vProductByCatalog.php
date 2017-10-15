@@ -15,9 +15,8 @@
              <a href="" class="bg-dark text-light list-group-item">All Catalog</a>
           <?php } ?>
       </div>
-      <!-- Catalog -->
     </div>
-    <!-- /.col-lg-3 -->
+
     <div class="col-lg-9">
       <div align="center"><br><hr><h5><?php echo $TitleGroup; ?></h5><hr><br></div>
       <div class="row">
@@ -63,7 +62,7 @@
                   <div class="btn-group" role="group" aria-label="Second group">
                     <button  type="submit"  class=" btn-sm btn btn-dark pull-right"><i class="fa fa-cart-plus" aria-hidden="true"> Add to Cart</i></button>
                   </div>
-                </div><!-- /input-group -->
+                </div>
                 </form>
               <small class="text-muted"></small>
             </div>

@@ -6,6 +6,7 @@ class cApi extends CI_Controller {
           parent::__construct();
   }
 
+//register API
   public function createForm(){
     $csrf = array(
          'name' => $this->security->get_csrf_token_name(),
@@ -15,10 +16,12 @@ class cApi extends CI_Controller {
     $this->load->view('vApiForm');
   }
 
+//delete user API using userID
   public function delete($customerID){
     Redirect("https://kunanonapi.000webhostapp.com/delete?CustID=$customerID");
   }
 
+//show userlist API
   public function customerRead(){
     $data ="";
     $data_string = json_encode($data);

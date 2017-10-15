@@ -11,6 +11,7 @@ class cMyaccount extends CI_Controller {
   }
 
   public function index(){
+    //call user information from session
     $custAddr1  = $this->session->userdata('customerAddr1Sess');
     $custAddr2  = $this->session->userdata('customerAddr2Sess');
     $custCity   = $this->session->userdata('customerCitySess');
@@ -39,6 +40,7 @@ class cMyaccount extends CI_Controller {
         $custlast = '';
     }
 
+    //get purchase history from database
     $orderHistory = $this->MOrder->mgetHistory($CustomerID);
 
     $header = array(

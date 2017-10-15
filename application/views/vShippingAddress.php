@@ -13,7 +13,6 @@
                 <input type="text" name="sAddr" id="sAddr" class="form-control" required  placeholder="Address Line 1" value="<?=$custAddr1?>" maxlength="100"><br>
                 Address Line 2<br>
                 <input type="text" name="sAddr2" id="sAddr2" class="form-control" required  placeholder="Address Line 2" value="<?=$custAddr2?>" maxlength="100"><br>
-
                 <div class="form-group row">
                   <label class="col-md-12 col-form-label">City</label>
                   <div class="col-md-12">
@@ -27,13 +26,11 @@
                   <div class="col-md-6">
                     <input type="text" name="sPostcode" id="sPostcodes" class="form-control" required placeholder="Postcode" value="<?=$custPostcode?>" maxlength="10">
                   </div>
-
                   <label class="col-md-12 col-form-label">Country</label>
                   <div class="col-md-12">
                     <input type="text" name="sCountry" id="sCountrys" class="form-control" required placeholder="Country" value="<?=$custCountry?>" maxlength="20">
                   </div>
                 </div>
-
                 <div class="form-group row">
                   <label class="col-md-6 col-form-label">Email</label>
                   <label class="col-md-6 col-form-label">Contact Number</label>
@@ -52,11 +49,10 @@
             <button type="submit" class="btn btn-primary pull-right" >Continue to Checkout <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
             </form>
     </div>
-    <!-- /.col-lg-9 -->
   </div>
 </div>
-<!-- /.container -->
 
+<!-- button javascript -->
 <script type="text/javascript">
         function backtocart(){
           window.location = "cart";

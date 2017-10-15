@@ -12,6 +12,7 @@ class cLogout extends CI_Controller {
 
   public function index()
   {
+    //destory current user session
     $this->session->sess_destroy();
     $this->session->unset_userdata('customerNameSess');
     echo "<script> window.location = 'home';</script>";

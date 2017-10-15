@@ -12,29 +12,28 @@ class cUser extends CI_Controller {
 
   public function index()
   {
-
+    //call user login user's name session
       if ($this->session->has_userdata('customerNameSess')) {
           $custname = $this->session->userdata('customerNameSess');
       }else {
           $custname = '';
       }
-
+      //priviledge from session
       if ($this->session->has_userdata('PrivilegeID')) {
           $PrivilegeID = $this->session->userdata('PrivilegeID');
       }else {
           $PrivilegeID = '';
       }
-
+      //priviledge checking for admin page
        if (isset($PrivilegeID)){
          if ($PrivilegeID == ''){
             echo "<script>   alert('You are not allowed !'); window.location = 'home'; </script>";
          }else if ($PrivilegeID == '1'){
            echo "<script>   alert('You are not allowed !'); window.location = 'home'; </script>";
          }else{
-
          }
        }
-
+       //check csrf token
        $csrf = array(
             'name' => $this->security->get_csrf_token_name(),
             'hash' => $this->security->get_csrf_hash()
@@ -63,24 +62,25 @@ class cUser extends CI_Controller {
       $this->load->view('template/header',$header);
       $this->load->view('vUser',$index);
       $this->load->view('template/footer');
-
-
   }
+
+//show userlist in user page
   public function userlist(){
     if ($this->session->has_userdata('PrivilegeID')) {
         $PrivilegeID = $this->session->userdata('PrivilegeID');
     }else {
         $PrivilegeID = '';
     }
+    //priviledge checking for accessing to admin page
     if (isset($PrivilegeID)){
       if ($PrivilegeID == ''){
          echo "<script>   alert('You are not allowed !'); window.location = 'home'; </script>";
       }else if ($PrivilegeID == '1'){
         echo "<script>   alert('You are not allowed !'); window.location = 'home'; </script>";
       }else{
-
       }
     }
+    //csrf token
     $csrf = array(
          'name' => $this->security->get_csrf_token_name(),
          'hash' => $this->security->get_csrf_hash()
@@ -88,14 +88,17 @@ class cUser extends CI_Controller {
           $aData = array(
             'csrf' => $csrf
           );
+    //get input from search box vUser
          $firstname_f = $this->input->get('fristname_f');
          $lastname_f = $this->input->get('lastname_f');
          $email_f = $this->input->get('email_f');
 
          $aData['aUser'] = $this->MUser->mUserList($firstname_f ,$lastname_f ,$email_f);
+
          $this->load->view('vUserList',$aData);
   }
 
+//vUser register
   public function save(){
       $csrf = array(
            'name' => $this->security->get_csrf_token_name(),
@@ -116,7 +119,7 @@ class cUser extends CI_Controller {
       $tel = $this->input->post('sTel');
       $action_mode = $this->input->post('action_mode');
       $pwEnc = md5($password);
-
+      //register new account
       if ($action_mode == '1') {
         $data = array('CustomerFirstname' =>$firstname ,
                       'CustomerLastname'=>$lastname,
@@ -133,7 +136,7 @@ class cUser extends CI_Controller {
                       'PrivilegeID' => $privilege
                     );
          $res = $this->MUser->mSave($data);
-
+      //edit exist user
       }else{
         $id = $this->input->post('UserID');
         $data = array(
@@ -151,11 +154,12 @@ class cUser extends CI_Controller {
                         'CustomerTel' => $tel,
                         'PrivilegeID' => $privilege
                     );
-                    $res = $this->MUser->mUpdate($id,$data);
+                    $res = $this->MUser->mEdit($id,$data);
                     echo $res;
       }
   }
-  
+
+//delete user
   public function remove(){
       $id = $this->input->get('UserID');
       $data = array('CustomerID' => $id);
@@ -163,6 +167,7 @@ class cUser extends CI_Controller {
       echo $res;
   }
 
+//reset password
   public function update(){
       $email = $this->input->post('sEmail');
       $password = $this->input->post('sPassword');
@@ -171,7 +176,6 @@ class cUser extends CI_Controller {
       $res = $this->MUser->mUpdate($email,$data);
       echo $res;
   }
-
-
+  
 }
 ?>

@@ -61,7 +61,5 @@
       <button type="button" class="btn btn-dark pull-left" onclick="email()"><i class="fa fa-share" aria-hidden="true"></i> Email the receipt</button>
       <a href="<?php echo base_url();?>home" class="btn btn-info pull-right" role="button">Back to shopping</a>
     </div>
-    <!-- /.col-lg-9 -->
   </div>
 </div>
-<!-- /.container -->

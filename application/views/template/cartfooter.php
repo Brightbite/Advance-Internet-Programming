@@ -1,4 +1,3 @@
-
 </body>
 <br><br><br>
 <!-- Footer -->
@@ -8,7 +7,6 @@
     <p class = "float-right"><a href="#" class="text-light"> <i class="fa fa-chevron-up text-light" aria-hidden="true"></i>Back to top</a></p>
   </div>
 </footer>
-
     <!-- Javascript -->
     <script type="text/javascript" src="<?php echo base_url('application/assets/js/'); ?>bootstrap.js"></script>
     <script type="text/javascript" src="<?php echo base_url('application/assets/src/'); ?>jcart.js"></script>

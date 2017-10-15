@@ -74,8 +74,8 @@ class cPayment extends CI_Controller {
     }else {
         $PrivilegeID = '';
     }
-    $custID    = $this->session->userdata('customerIDSess');
 
+    $custID    = $this->session->userdata('customerIDSess');
     $aData = array('custID'    => $custID, );
 
     $csrf = array(
@@ -93,8 +93,6 @@ class cPayment extends CI_Controller {
       'privid' => $PrivilegeID,
       'csrf' => $csrf
     );
-
-
 
     $this->load->view('template/header',$header);
     $this->load->view('vCreditcard',$aData);
@@ -120,6 +118,7 @@ class cPayment extends CI_Controller {
     }else {
         $PrivilegeID = '';
     }
+
     $custID    = $this->session->userdata('customerIDSess');
     $shippingUserID     = $this->session->userdata('shippingUserID');
     $shippingFirstname  = $this->session->userdata('shippingFirstname');
@@ -133,13 +132,11 @@ class cPayment extends CI_Controller {
     $shippingEmail = $this->session->userdata('shippingEmail');
     $shippingTel      = $this->session->userdata('shippingTel');
     $LastOrderID      = $this->session->userdata('LastOrder');
-
     $cAmount = $this->input->post('cAmount');
     $cName = $this->input->post('cName');
     $cNum  = $this->input->post('cNum');
     $cName = $this->input->post('cName');
     $cName = $this->input->post('cName');
-
     $lastOrder =  $this->MOrder->mgetLastOrder($LastOrderID);
     $lastPayment =  $this->MOrder->mgetLastPayment($LastOrderID);
 
@@ -174,7 +171,6 @@ class cPayment extends CI_Controller {
       'csrf' => $csrf
     );
 
-
     $this->load->view('template/header',$header);
     $this->load->view('vReceipt',$address);
     $this->load->view('template/cartfooter');
@@ -198,8 +194,7 @@ class cPayment extends CI_Controller {
               );
     $this->load->library('paypalexpress', $settings);
     if(!isset($_GET['token'])) {
-
-          // Setting up your intial variable to send payment process.
+        // Setting up your intial variable to send payment process.
         $url = dirname('http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].$_SERVER['REQUEST_URI']);
         $personName  = $this->session->userdata($custname);
         $L_NAME0   = $this->session->userdata($custname);
@@ -211,32 +206,26 @@ class cPayment extends CI_Controller {
         $itemamt = $L_QTY0*$L_AMT0;
         $amt = $this->cart->total();
         $nvpstr = "&L_NAME0=".$L_NAME0."&L_AMT0=".$L_AMT0."&L_QTY0=".$L_QTY0."&AMT=".(string)$amt."&ITEMAMT=".(string)$itemamt."&L_NUMBER0=1000&L_DESC0=Size: 8.8-oz&ReturnUrl=".$returnURL."&CANCELURL=".$cancelURL ."&CURRENCYCODE=".$settings['currency']."&PAYMENTACTION=".$settings['payment_type'];
-           // calling initial api.
-       $initresult = $this->paypalexpress->process_payment($nvpstr);
-       if(isset($initresult) && $initresult['ACK'] == 'Failure') {
-         // redirect to view with error message.
-         $this->session->set_flashdata('error_message', 'Please check your details and try again');
-         redirect('myview1');
-       }
+        // calling initial api.
+        $initresult = $this->paypalexpress->process_payment($nvpstr);
+        if(isset($initresult) && $initresult['ACK'] == 'Failure') {
+          // redirect to view with error message.
+          $this->session->set_flashdata('error_message', 'Please check your details and try again');
+          redirect('myview1');
         }
-    else {
+    }else{
       $token = urlencode($_GET['token']);
       $result = $this->paypalexpress->make_payment($token);
       if(isset($result) && $result['ACK'] == 'Failure') {
         // redirect to view with error message.
         $this->session->set_flashdata('error_message', 'Please check your details and try again');
         redirect('myview');
-      }
-      else {
+      }else{
          // Do your stuff with success result.
-
          redirect('saveorder2/2');
-      }
-      }
-
-  }
-
-
+       }
+    }
+  } //end of paymentPaypal function
 
 }
 ?>

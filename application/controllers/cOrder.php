@@ -54,7 +54,7 @@ class cOrder extends CI_Controller {
     $this->load->view('template/footer');
 
   }
-
+//credit card payment method
   public function saveorder1($paymentType){
 
         if ($this->session->has_userdata('customerIDSess')) {
@@ -74,17 +74,19 @@ class cOrder extends CI_Controller {
         $shippingEmail = $this->session->userdata('shippingEmail');
         $shippingTel = $this->session->userdata('shippingTel');
 
+        //check last order number
           $olastOrder =  $this->MOrder->mgetOrderID();
-          $tlastOrder = $olastOrder->OrderID;
+          $tlastOrder = $olastOrder->OrderID; //get orderID from last order
           date_default_timezone_set("Australia/Sydney");
+          //setting time format
           $cDate = date('d');
           $cMonth = date('m');
           $cYear = date('Y');
           $cTime = date('H:i:s');
+          //check if user has any purchase history if not create new one
           if ($tlastOrder == 'empty') {
               $nOrder = $cDate.$cMonth.$cYear.'-1';
           }else{
-
               $aLastOrder = explode("-",$tlastOrder);
               echo $aLastOrder[1];
               $nNext = $aLastOrder[1] + 1;
@@ -127,6 +129,7 @@ class cOrder extends CI_Controller {
              }
 
           }
+          //card information
           $cAmount = $this->input->post('cAmount');
           $cName = $this->input->post('cName');
           $cNum  = $this->input->post('cNum');
@@ -151,8 +154,8 @@ class cOrder extends CI_Controller {
         redirect('receipt/1');
   }
 
+//paypal payment method
   public function saveorder2($paymentType){
-
         $custName = $this->session->userdata('customerNameSess');
 
         if ($this->session->has_userdata('customerIDSess')) {
@@ -160,7 +163,6 @@ class cOrder extends CI_Controller {
         }else {
             $custID = '';
         }
-
         $shipFirstName = $this->session->userdata('shippingFirstname');
         $shippingLastname = $this->session->userdata('shippingLastname');
         $shippingAddr = $this->session->userdata('shippingAddr');
@@ -172,13 +174,16 @@ class cOrder extends CI_Controller {
         $shippingEmail = $this->session->userdata('shippingEmail');
         $shippingTel = $this->session->userdata('shippingTel');
 
+          //check last order number
           $olastOrder =  $this->MOrder->mgetOrderID();
-          $tlastOrder = $olastOrder->OrderID;
+          $tlastOrder = $olastOrder->OrderID; //get orderID from last order
           date_default_timezone_set("Australia/Sydney");
+          //setting time format
           $cDate = date('d');
           $cMonth = date('m');
           $cYear = date('Y');
           $cTime = date('H:i:s');
+          //check if user has any purchase history if not create new one
           if ($tlastOrder == 'empty') {
               $nOrder = $cDate.$cMonth.$cYear.'-1';
           }else{
@@ -239,7 +244,7 @@ class cOrder extends CI_Controller {
         $summOrder = array('LastOrder' => $nOrder);
         $this->session->set_userdata($summOrder);
         $this->cart->destroy();
-          redirect('receipt/2');
+        redirect('receipt/2');
   }
 }
 ?>

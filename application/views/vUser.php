@@ -1,6 +1,7 @@
   <!-- <body> -->
   <div class="container-fluid">
       <div class="row">
+        <!-- left side navigation bar -->
         <nav class="col-sm-2 col-md-2 d-none d-sm-block bg-light sidebar">
           <ul class="nav nav-pills flex-column">
             <li class="nav-item">
@@ -16,7 +17,6 @@
               <a class="nav-link" href="#">Export</a>
             </li>
           </ul>
-
           <ul class="nav nav-pills flex-column">
             <li class="nav-item">
               <a class="nav-link" href="#">Nav item</a>
@@ -31,7 +31,6 @@
               <a class="nav-link" href="#">Another nav item</a>
             </li>
           </ul>
-
           <ul class="nav nav-pills flex-column">
             <li class="nav-item">
               <a class="nav-link" href="#">Nav item again</a>
@@ -44,6 +43,7 @@
             </li>
           </ul>
         </nav>
+        <!-- topic -->
         <main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
             <h1 class="my-4"><?php echo $top; ?> Dashboard</h1>
             <section class="row text-center placeholders">
@@ -85,7 +85,8 @@
               <div class="col-md-12 UserList" id="UserList">Load...</div>
             </section>
         </main>
-           <!--  form Add User modal-->
+
+        <!-- modal-->
         <div class="modal fade" id="userform" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog modal-lg" role="document">
                      <div class="modal-content">
@@ -93,9 +94,9 @@
                             <h5 class="modal-title text-info" id="myModalLabel">ADD NEW USER</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                           </div>
-                          <!--popup form-->
+                          <!-- register form-->
                           <div class="modal-body text-secondary">
-                              <form method="post" id="formadduser"  enctype="multipart/form-data">
+                            <form method="post" id="formadduser"  enctype="multipart/form-data">
                                 First name:<br>
                                 <input type="text" name="sFirstname" id="sFirstname" class="form-control" required autocomplete="false" placeholder="Firstname" maxlength="20"><br>
                                 Last name:<br>
@@ -117,13 +118,11 @@
                                   <div class="col-md-6">
                                     <input type="text" name="sPostcode" id="sPostcode" class="form-control" required placeholder="Postcode" maxlength="10">
                                   </div>
-
                                   <label class="col-md-12 col-form-label">Country</label>
                                   <div class="col-md-12">
                                     <input type="text" name="sCountry" id="sCountry" class="form-control" required placeholder="Country" maxlength="20">
                                   </div>
                                 </div>
-
                                 <div class="form-group row">
                                   <label class="col-md-6 col-form-label">Username</label>
                                   <label class="col-md-6 col-form-label">Password</label>
@@ -140,7 +139,6 @@
                                     </small>
                                   </div>
                                 </div>
-
                                   <div class="form-group row">
                                     <label class="col-md-6 col-form-label">Email</label>
                                     <label class="col-md-6 col-form-label">Contact Number</label>
@@ -156,24 +154,19 @@
                                         eg. 0412 345 678.
                                     </small>
                                   </div>
-
                                   <div class="col-md-6">
                                     <label class="col-md-6 col-form-label">Privilege</label>
-                                    <!-- <input type="text" name="sPrivilege" id="sPrivilege" class="form-control" required placeholder="Privilege" maxlength="2"><br>
-                                    <?php echo $PrivilegeID?> -->
-                                    <!-- </?php echo $PrivDesc?> -->
-                                  <select class="form-control" name="sPrivilege" id="sPrivilege">
-                                      <option>Privilege</option>
+                                    <select class="form-control" name="sPrivilege" id="sPrivilege">
                                       <?php foreach ($PrivList as $pvl) {?>
                                         <option value="<?php echo $pvl->PrivilegeID;?>"><?php echo $pvl->PrivilegeDesc;?></option>
                                       <?php } ?>
-                                  </select>
+                                    </select>
                                   </div>
                                 </div>
                                 <input type="hidden" name="UserID" id="UserID">
-                                <!-- <input type="hidden" name="" id="sPrivilegeID" value="1"> -->
                                 <!--  mode 1 = add 2=edit-->
                                 <input type="hidden" name="action_mode" id="action_mode" value="1"><br>
+                                <!-- page token -->
                                 <input type="hidden" name="<?=$csrf['name'];?>" id="csrf_test_name"  value="<?=$csrf['hash'];?>">
                                 <div class="pull-right">
                                   <button type="submit" class="btn btn-success" id="btn-register">Save</button>

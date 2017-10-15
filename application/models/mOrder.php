@@ -7,7 +7,8 @@
            parent::__construct();
        }
 
-  public function mgetOrderID(){
+
+public function mgetOrderID(){
     $SQL = "SELECT
               orders.OrderID
               FROM
@@ -72,9 +73,10 @@
         }
   }
 
+//purchase history in my account page
   public function mgetHistory($CustomerID){
-      $SQL = "SELECT ORD.*, PAY.*, DET.*
-              FROM orders ORD, payment_type PAY, order_detail DET
+      $SQL = "SELECT ORD.*, DET.*
+              FROM orders ORD, order_detail DET
               WHERE CustomerID = '$CustomerID'
               AND ORD.OrderID = DET.OrderID
               GROUP BY

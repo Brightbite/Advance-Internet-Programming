@@ -48,6 +48,7 @@ class cHome extends CI_Controller {
          'name' => $this->security->get_csrf_token_name(),
          'hash' => $this->security->get_csrf_hash()
      );
+    //recommend product in homepage
     $productRecommend = $this->MRecommend->mRecommendation();
     $productRecImage= $this->MRecommend->mRecImage();
 

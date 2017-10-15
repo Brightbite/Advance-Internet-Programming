@@ -63,6 +63,7 @@
   </div>
 </div>
 
+<!-- button javascript -->
 <script type="text/javascript">
           function back(){
                    window.location='home';

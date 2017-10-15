@@ -12,9 +12,9 @@ class cCart extends CI_Controller {
           $this->load->helper('form');
   }
 
-  public function index()
+public function index()
   {
-
+    // user session
     if ($this->session->has_userdata('PrivilegeID')) {
         $PrivilegeID = $this->session->userdata('PrivilegeID');
     }else {
@@ -33,6 +33,7 @@ class cCart extends CI_Controller {
         $custlast = '';
     }
 
+    //customer ID
     if ($this->session->has_userdata('csID')) {
         $custID = $this->session->userdata('csID');
     }else {

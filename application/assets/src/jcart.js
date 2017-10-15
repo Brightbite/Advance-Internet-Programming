@@ -6,59 +6,38 @@ $(document).ready(function(){
 
 });
 
+//signin in cart page
 function SignIn(){
-    // var username = $('#username').val();
-    // var password = $('#password').val();
-    // var csrf_test_name = $('#csrf_test_name').val();
-    // alert(csrf_test_name);
-    // console.log(csrf_test_name);
-    // var tokenhash = <?php echo json_encode($csrf['hash']); ?>;
-    // var tokenname = <?php echo json_encode($csrf['name']); ?>;
-    //console.log('validated '+ username + password);
          $.ajax({
            url:'login',
            data:$('#formsignin').serialize(),
            method:"POST"
          })
          .done(function(data){
-          //   alert('res'+data);
-          //  console.log(data);
            if (data.trim() == 'false'){
-
-              alert('!username or pw incorect');
+              alert('Incorrect username or password! Please try again.');
            }else {
+             //check user priviledge and show different page after login
              switch (data.trim()) {
-                case '':
-                        //  window.location='account';
-                         location.reload();
+                case '': //customer
+                         window.location = 'home';
                 break;
 
-                case '1':
-                        //  window.location='account';
-                         location.reload();
+                case '1': //customer
+                         window.location = 'home';
                 break;
 
-                case '2':
-                          // window.location='#';
-                          // redirect('#','refresh');
-                          location.reload();
+                case '2': //admin
+                        window.location = 'user';
                 break;
 
-                case '3':
-                        // window.location='#';
-                        location.reload();
-                        // redirect('');
+                case '3': //super admin
+                        window.location = 'user';
                 break;
              }
            }
-          //  $('#UserList').html(data);
-           $('#sModal').modal('hide');
-           $('body').removeClass('modal-open');
-           $('.modal-backdrop').remove();
-           location.reload();
          })
          .fail(function(jqXHR, textStatus){
              alert('Error:'+ jqXHR +' '+ textStatus);
          });
-
 }

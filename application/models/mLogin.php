@@ -10,8 +10,7 @@
        public function Login ($username,$password){
            $SQL = 'SELECT *
                    FROM customer
-                   WHERE Username = '.$this->db->escape($username). 'AND Password =' .$this->db->escape($password);
-                   
+                   WHERE Username = '.$this->db->escape($username). 'AND Password =' .$this->db->escape($password); //escape for preventing SQL injection
          $query = $this->db->query($SQL);
           if ($query->num_rows() > 0) {
             return $query->row();

@@ -6,7 +6,7 @@
        {
            parent::__construct();
        }
-
+       //search
        public function mUserList($fname, $lname, $email){
               $SQL = "SELECT * FROM customer WHERE 1 ";
               if ($fname !='') {
@@ -25,7 +25,9 @@
                 return 'empty';
               }
        }
-       public  function mSave($data){
+
+       //register
+       public function mSave($data){
               if ($this->db->insert('customer',$data)) {
                 return 'success';
               }else{
@@ -33,9 +35,9 @@
               }
        }
 
-
+       //delete user
        public function mRemove($data){
-            if ($this->db->delete('customer',$data)) { 
+            if ($this->db->delete('customer',$data)) {
               return 'delete success';
             }else{
               return 'error';
@@ -43,6 +45,17 @@
 
        }
 
+       //edit user
+       public function mEdit($id,$data){
+            $this->db->where('CustomerID',$id);
+            if ($this->db->update('customer',$data)) {
+              return "success";
+            }else{
+              return 'error';
+         }
+       }
+
+       //reset password
        public function mUpdate($email,$data){
             $this->db->where('Email',$email);
             if ($this->db->update('customer',$data)) {
@@ -52,6 +65,7 @@
          }
        }
 
+       //show priviledge in register and edit modal
        public function mPrivilegeList(){
              $SQL = "SELECT * FROM customer_privilege";
              $query = $this->db->query($SQL);

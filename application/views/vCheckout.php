@@ -96,11 +96,10 @@
       <button type="button" class="btn btn-light pull-left" onclick="backtoship()"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Shipping Address</button>
       <button type="button" class="btn btn-primary pull-right" onclick="payment()">Confirm and Pay <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
     </div>
-    <!-- /.col-lg-9 -->
   </div>
 </div>
-<!-- /.container -->
 
+<!-- button javascript -->
 <script type="text/javascript">
         function backtoship(){
             window.location = 'shipping';

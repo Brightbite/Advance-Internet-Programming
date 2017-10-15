@@ -7,7 +7,7 @@
            parent::__construct();
        }
 
-
+//group of three recommendation in home page
        public function mRecommendation(){
          $SQL = "SELECT
          product.ProductID,
@@ -26,6 +26,7 @@
          }
        }
 
+//big one recommendation in home page
        public function mRecImage(){
 
          $SQL = "SELECT

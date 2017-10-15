@@ -12,7 +12,7 @@ class cLogin extends CI_Controller {
 
   public function index(){
   }
-  
+
   public function signIn()
   {
            $csrf = array(
@@ -23,6 +23,7 @@ class cLogin extends CI_Controller {
             $username   =     $this->input->post('username');
             $password   =     $this->input->post('password');
 
+            //encrypt password
             $pwE = md5($password);
 
             $csinfo = $this->MLogin->Login($username,$pwE);
@@ -31,6 +32,7 @@ class cLogin extends CI_Controller {
             }else{
               echo $csinfo->PrivilegeID;
 
+              //store user information in session
               $cusdata = array( 'customerIDSess'   =>   $csinfo->CustomerID,
                                 'customerNameSess' =>   $csinfo->CustomerFirstname,
                                 'customerLastSess' =>   $csinfo->CustomerLastname,

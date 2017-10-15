@@ -60,10 +60,9 @@
 <!-- Container -->
 </div>
 
-
+<!-- button javascript -->
 <script type="text/javascript">
     $(document).ready(function(){
-
         $('#bnt1').click(function(){
              var qty = parseInt($('#qty').val());
              if (qty > 0) {
@@ -72,7 +71,6 @@
              }
         });
         $('#bnt2').click(function(){
-            //alert('bnt2');
              var qty = parseInt($('#qty').val());
 
                  var cqty  = qty + 1;

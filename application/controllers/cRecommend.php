@@ -17,8 +17,6 @@ class cRecommend extends CI_Controller {
             $custID = '';
         }
 
-
-
     $oGroupRecommend = $this->MRecommend->getGruopRecommend($custID);
 
     if (is_array($oGroupRecommend)){

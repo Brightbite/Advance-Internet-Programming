@@ -30,20 +30,14 @@
             </div>
     </div>
 
-
-
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
 
           <div align="center"><br><hr><h5>Recommendation</h5><hr><br></div>
           <div class="row">
-
             <?php if (is_array($productRecommend)){?>
-
               <?php foreach($productRecommend as $prodRec){?>
-
-
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100" style="max-width: 20rem;">
                 <a href="<?php echo base_url()?>catalog_detail/<?=$prodRec->ProductID?>"><input type="hidden" name="" value="<?php echo $prodRec->ProductID;?>">
@@ -84,13 +78,11 @@
           <?php }?>
             <?php } ?>
           </div>
-          <!-- /.row -->
         </div>
-        <!-- /.col-lg-9 -->
       </div>
-      <!-- /.row -->
     </div>
-    <!-- /.container -->
+
+<!-- button javascript -->
   <script type="text/javascript">
         $(document).ready(function(){
 

@@ -29,14 +29,24 @@
                    <th class="text-secondary">Shipping Name</th>
                    <th class="text-secondary">Payment Method</th>
               </tr>
-              <?php foreach ($orderHistory as $history) { ?>
+              <?php if ($orderHistory == 'empty') {
+                       echo '<tr><td colspan="7">Your purchase history is empty.</td></tr>';
+                    }else{?>
+                      <?php foreach ($orderHistory as $history) {
+                        switch ($history->PaymentType){
+                          case '1': $history->PaymentType = 'Credit Card';
+                          break;
+                          case '2': $history->PaymentType = 'Paypal';
+                          break;
+                          }
+                          ?>
                    <tr>
                             <td class="text-success">#<?php echo $history->OrderDate;?></td>
                             <td class="text-secondary">#<?php echo $history->OrderID;?></td>
                             <td class="text-secondary"><?php echo $history->OrderQTY;?></td>
                             <td class="text-secondary">$<?php echo $history->OrderTotal;?></td>
                             <td class="text-secondary"><?php echo $history->ShippingFirstName;?></td>
-                            <td class="text-secondary"><?php echo $history->PaymentTypeDesc;?></td>
+                            <td class="text-secondary"><?php echo $history->PaymentType;?></td>
                             <td><button type="button" name="button"
                               class="btn btn-info pull-right"
                               data-toggle="modal"
@@ -48,10 +58,11 @@
                                                   '<?php echo $history->OrderQTY;?>',
                                                   '<?php echo $history->OrderTotal;?>',
                                                   '<?php echo $history->ShippingFirstName;?>',
-                                                  '<?php echo $history->PaymentTypeDesc;?>',
+                                                  '<?php echo $history->PaymentType;?>',
                                                   )">More Info</button></td>
                    </tr>
-              <?php } ?>
+              <?php } //end foreach?>
+            <?php }  //end else?>
               </table>
 
             </div>
@@ -60,6 +71,7 @@
   </div>
   <!-- row -->
 </div>
+
 <!-- Modal -->
 <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="sModalLabel" >
   <div class="modal-dialog" role="document">
@@ -70,51 +82,45 @@
       </div>
       <form method="post" id="formsignin"  enctype="multipart/form-data" action="login">
       <div class="modal-body">
-
         <div class="form-group row">
          <label for="example-date-input" class="col-5 col-form-label">Purchase date: </label>
          <div class="col-5">
             <input class="form-control" type="text" name="cName" id="OrderDate" value="" >
          </div>
         </div>
-
         <div class="form-group row">
          <label for="example-date-input" class="col-5 col-form-label">OrderID</label>
          <div class="col-5">
             <input class="form-control" type="text" name="cNum" id="OrderID" value="" maxlength="16">
          </div>
         </div>
-
         <div class="form-group row">
          <label for="example-date-input" class="col-5 col-form-label">OrderQTY</label>
          <div class="col-5">
             <input class="form-control" type="text" name="cNum" id="OrderQTY" value="" maxlength="16">
          </div>
         </div>
-
         <div class="form-group row">
          <label for="example-date-input" class="col-5 col-form-label">ShippingFirstName</label>
          <div class="col-5">
             <input class="form-control" type="text" name="cNum" id="ShippingFirstName" value="" maxlength="16">
          </div>
         </div>
-
         <div class="form-group row">
          <label for="example-date-input" class="col-5 col-form-label">PaymentTypeDesc</label>
          <div class="col-5">
             <input class="form-control" type="text" name="cNum" id="PaymentTypeDesc" value="" maxlength="16">
          </div>
         </div>
-
-
       </div>
     </form>
     </div>
   </div>
 </div>
-<!-- /.container -->
+
+<!-- button javascript -->
 <script>
-  function ShowDetail(OrderDate,OrderID,OrderQTY,OrderTotal,ShippingFirstName,PaymentTypeDesc,State,Postcode,Country,Username,Password,Email,Tel,Privilege){
+  function ShowDetail(OrderDate,OrderID,OrderQTY,OrderTotal,ShippingFirstName,PaymentTypeDesc){
          $('#detailModalLabel').text('Purchase Date -'+ ' ' + OrderDate);
          $('#OrderDate').val(OrderDate);
          $('#OrderID').val(OrderID);
