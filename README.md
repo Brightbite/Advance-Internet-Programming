@@ -15,12 +15,14 @@
 
 # API
 
-Retail web app API you could creating an account and accessing to your user data or delete via a RESTful API.
+ - Retail web app API you could creating an account and accessing to your user data or delete via a RESTful API.
 
-create account
-https://kunanonapi.000webhostapp.com/create
-'''
-<!-- <body> -->
+ - create account:
+  https://kunanonapi.000webhostapp.com/create
+
+ example of create user account via API
+
+ Body
     <div class="container">
       <h1 class="my-4  text-info"></h1>
         <div class="row">
@@ -65,19 +67,19 @@ https://kunanonapi.000webhostapp.com/create
               <input type="submit" value="Register New Account" class="btn btn-primary btn-lg btn-block"><br><hr>
             </form>
           </div>
-'''
 
-which is I already put an example in this project you can test it by access through route (your web url)/api/create
 
-delete account
-which is I already put an example in this project you can test it by access through route (your web url)/api/delete=(user ID that you want to delete)
+  which is I already put an example in this project you can test it by access through route (your web url)/api/create
 
-read userlist
-which is I already put an example in this project you can test it by access through route (your web url)/api/read
+  - delete account
+  which is I already put an example in this project you can test it by access through route (your web url)/api/delete=(user ID that you want to delete)
 
-OR
+  - read userlist
+  which is I already put an example in this project you can test it by access through route (your web url)/api/read
 
-you can use these RESTful API with your own application.
+  OR
+
+  you can use these RESTful API with your own application.
 
 
 # Files naming
