@@ -1,5 +1,6 @@
-# Advance-Internet-Programming Project Spring 2017
-- Kunanon Pititheerachot 12634123 - Retail App
+# Retailer web Application
+- Kunanon Pititheerachot 12634123
+- Advanced Internet Programming Project Spring 2017
 
 # Installation and Configuration
 
