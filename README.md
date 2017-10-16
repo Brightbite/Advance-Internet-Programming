@@ -1,157 +1,45 @@
 # Advance-Internet-Programming Project Spring 2017
 - Kunanon Pititheerachot 12634123 - Retail App
 
-# Project files
+# Installation and Configuration
 ```
-RESTful
+  1. Clone or Download the repository
+  2. Create your own database and put database credential in application/config/database.php
+  3. Set up your base URL or website domain in application/config/config.php
+```
+# Running Retail Web App
+```
+  1. Make sure you have properly database and base URL configuration for your own website.
+  2. Upload all your files including your configuration files up to the cloud service via FTP or Github.
+  3. Check your web service with URL you put in configuration.
+```
+# API
+```
+Retail web app API you could creating an account and accessing to your user data or delete via a RESTful API.
 
-API/
-api.php
+create account
+https://kunanonapi.000webhostapp.com/create
+which is I already put an example in this project you can test it by access through route (your web url)/api/create
 
-assets/
-src
-css
-js
+delete account
+https://kunanonapi.000webhostapp.com/delete
+which is I already put an example in this project you can test it by access through route (your web url)/api/delete=(user ID that you want to delete)
 
-Config/
-routes.php
+read userlist
+https://kunanonapi.000webhostapp.com/read
+which is I already put an example in this project you can test it by access through route (your web url)/api/read
 
-Controllers
-cUser.php
-cApi.php	
-cCart.php
-cCatalog.php	
-cCatalogMenu.php	
-cCatalog_Detail.php
-cCheckout.php	
-cCreditcard.php	
-cHome.php	
-cLogin.php	
-cLogout.php	
-cMyaccount.php	
-cOrder.php	
-cPayment.php	
-cProduct.php	
-cRecommend.php	
-cRegister.php	
-cShippingAddress.php	
-cUser.php	
-paypal.php
+OR
 
-
-Models/
-mUser.php
-mCart.php	
-mCatalog.php	
-mLogin.php	
-mOrder.php	
-mProduct.php	
-mRecommend.php	
-mRegister.php	
-mmenu.php
-
-
-Views/
-template/header,footer,cartfooter	
-mywelcome_msg.php	
-vApiForm.php	
-vCart.php	
-vCatalog.php	
-vCatalog_Detail.php
-vCheckout.php
-vCreditcard.php	
-vHome.php	
-vLogout.php	
-vMyaccount.php	
-vOrder.php	
-vProduct.php	
-vProductByCatalog.php	
-vReceipt.php	
-vRecommend.php	
-vRegister.php	
-vShippingAddress.php	
-vUser.php	
-vUserList.php
+you can use these RESTful API with your own application.
 
 ```
-
-# Assessment Item
-
-You will work in groups of up to three developers to design and develop a web application. Using a web development technology of your
-choice (subject to conditions that will be explained in Week 2), you will develop a website with a range of sophisticated functionality
-that includes secure login and the ability to manage data and an administrative roles. The assignment and final demonstrations are due
-at the start of the final laboratory session of the session (i.e., Week 12, starting 16 October). 
-
-Your application will need to have the following features:
-
-⊿ Sign up
-
-⊿ Login
-
-⊿ Ability to create, view, search, edit and delete/hide information
-
-⊿ Logout
-
-⊿ Have useful warning messages if the user enters invalid input
-
-⊿ Administration zone that allows administrators to perform additional actions not available to ordinary users
-
-⊿ Email-based password reset feature
-
-⊿ Integration with a public web service
-
-⊿ Exposes a useful RESTful API
-
-⊿ Deployed on the public internet using a cloud host (e.g., Amazon, Google Cloud, Azure)
-
-The information can represent anything that your group agrees on. During the laboratory session in Week 3, you will decide for yourself what user you are developing for, what purpose your website will serve and what your application will do. You will not be assessed on the quality of the idea. The idea does not have to be ‘good’ so long as you implement it well (i.e., using patterns and principles covered in this subject). 
-
-Your application must also satisfy the following non-functional requirements:
-
-⊿ Your application must incorporate appropriate ‘AJAX’ interactions (i.e., parts of your pages should update without requiring a full page reload)
-
-⊿ Your application must be able to support multiple concurrent users (i.e., you should not have data loss if two people are accessing the application at the same time)
-
-⊿ You should use modern frameworks and design patterns for code running on the client (i.e., the browser) and the server
-
-⊿ You must store data in a database (for example, an SQL database such as MySQL or a ‘NoSQL’ database such as MongoDB)
-
-⊿ Your application must be secure
-
-⊿ You must not store unencrypted passwords
-
-⊿ You must use an authentication framework that is appropriate for your chosen web development technology (i.e., do not write your own 
-authentication code)
-
-⊿ Your code must be well documented: good README files, clear commit messages, explanatory documentation on any non-trivial methods, clear variable names, self-documenting code, good formatting, appropriate use of coding conventions
-
-⊿ You must use git to track your changes and you must regularly push your commits to a public repository so that your tutor and classmates can see your work 
-
-You are not permitted to use the Microsoft .NET framework (UTS offers other subjects in Enterprise .NET).
-
-Costs
-
-BitBucket, Github and Gitlab all provide free hosting for public projects. Please use trial periods and free non-commercial licenses when integrating with commercial services. Reimbursement or financial support will NOT be provided if you choose to use paid plans or services that cost money. Please be very careful when deploying your application. Many cloud hosting providers provide free levels of service suitable for deploying your application. These free services should be used for this assignment. Please be careful when deploying instances as running additional instances can quickly result in a large bill.
-
-Submission
-
-Your assignment will be demonstrated to your tutor and (some) of your classmates during the final lab session. You will demonstrate the functionality as well as the source code. You will have an opportunity to discuss your assignment and your mark with your tutor. 
-
-Before you demonstrate your system, you should thoroughly test your system:
-
-⊿ Attempt to log in with an incorrect password
-
-⊿ Enter invalid data and check that validation works on all fields
-
-⊿ Check that you can log out
-
-⊿ Attempt to access secure pages without logging in
-
-Assessment Criteria
-
-This assessment is worth 40% of your final grade. You will be receiving feedback and guidance throughout the semester. Preparation activities and in-class activities for Assessment 1 will be related to this Assessment and will, at many times, directly incorporate work that you have produced as part of this assessment. The final submission of your project will be assessed according to the following 
-
-
+# Files naming
+```
+  1. Controllers files are using 'c' following by name such as cHome.php, cRegister.php, cLogin.php, etc.
+  2. Models files are using 'm' following by model name such as mProduct.php, mCart.php, mUser.php, etc.
+  3. Views files are using 'v' following by view name such as vHome.php, vMyaccount.php, vUser.php, etc.
+```
 
 # Key Principles
 
