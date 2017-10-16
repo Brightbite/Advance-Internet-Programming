@@ -23,6 +23,7 @@
  example of create user account via API
 
  Body
+ <!-- body -->
     <div class="container">
       <h1 class="my-4  text-info"></h1>
         <div class="row">
@@ -67,7 +68,7 @@
               <input type="submit" value="Register New Account" class="btn btn-primary btn-lg btn-block"><br><hr>
             </form>
           </div>
-
+<!-- end of body -->
 
   which is I already put an example in this project you can test it by access through route (your web url)/api/create
 
