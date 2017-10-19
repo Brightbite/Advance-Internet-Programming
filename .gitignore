@@ -2,3 +2,4 @@
 /deploy_backup.php
 /API/
 /application/config/database.php
+/application/controllers/paypal.php
